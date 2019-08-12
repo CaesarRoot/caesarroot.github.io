@@ -20,7 +20,8 @@
 }
 
 .page-full-content {
-    padding: 4vw !important
+    padding: 4vw !important;
+    background-color: black;
 }
 
 img {
