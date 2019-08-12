@@ -79,7 +79,6 @@ img {
     }
     .post-full-content {
         font-size: 1.6rem;
-        box-shadow: var(--post-full-content-box);
     }
 }
 

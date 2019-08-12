@@ -758,6 +758,7 @@ h6 {
 	padding: 70px 100px 0;
 
 	background: var(--post-full-content);
+	box-shadow: var(--post-full-content-box);
 }
 
 @media (max-width:1170px) {
