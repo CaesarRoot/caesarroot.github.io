@@ -78,7 +78,7 @@ img {
         font-size: 18px !important;
     }
     .post-full-content {
-        font-size: 1.6rem
+        font-size: 1.6rem;
     }
 }
 
@@ -496,13 +496,4 @@ img {
         margin: 10px;
         margin-left: 0
     }
-}
-
-.eyes-container {
-    width: 100%;
-    margin-top: 25px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
 }
