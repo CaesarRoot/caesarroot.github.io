@@ -20,8 +20,7 @@
 }
 
 .page-full-content {
-    padding: 4vw !important;
-    background-color: black;
+    padding: 4vw !important
 }
 
 img {
@@ -80,6 +79,7 @@ img {
     }
     .post-full-content {
         font-size: 1.6rem;
+        background-color: black;
     }
 }
 
