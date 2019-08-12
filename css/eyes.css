@@ -2,16 +2,15 @@
     width: 100%;
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-content: center;
     justify-content: center;
 }
 
 .eyes {
-    margin-bottom: 5px;
     margin-right: 5px;
 }
 
 .count {
-
+    margin-left: 5px;
 }
