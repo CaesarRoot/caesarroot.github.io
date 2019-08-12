@@ -1,9 +1,17 @@
 .eyes-container {
     width: 100%;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 
 .eyes {
     margin-bottom: 5px;
     margin-right: 5px;
+}
+
+.count {
+
 }
