@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//pic.zhih.me">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
+
+	<title>Emacs Org-mode 笔记 | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content="A guide to Emacs and Org-mode">
+
+	
+	<meta name="keywords" content="Emacs, Org-mode">
+	
+
+	
+	<link rel="shortcut icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	<link rel="apple-touch-icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Emacs Org-mode 笔记 | 羊男">
+	<meta property="og:description" content="A guide to Emacs and Org-mode">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/08/12/emacs笔记/">
+
+	
+	<meta property="article:published_time" content="2019-08-12T11:08:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/08/12/emacs笔记/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+<link rel="canonical" href="https://caesarroot.github.io/2019/08/12/emacs笔记/">
+
+
+
+
+
+</head>
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            <li>
+                <a href="/test" title="TEST">TEST</a>
+            </li>
+            
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/caesarroot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-08-12T18:34:53.000Z">
+                    2019-08-12
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/Emacs/">Emacs</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">Emacs Org-mode 笔记</h1>
+            
+            <div style="width: 100%;
+                        margin-top: 16px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;">
+                <svg width="16px" height="10px" viewbox="0 0 16 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs/>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="eye" transform="translate(0.000000, -3.000000)" fill="#000000" fill-rule="nonzero">
+                            <g id="Group">
+                                <rect id="Rectangle-path" opacity="0" x="0" y="0" width="16" height="16"/>
+                                <path d="M8,13 C2,13 0,8 0,8 C0,8 2,3 8,3 C14,3 16,8 16,8 C16,8 14,13 8,13 Z M8,5 C6.343,5 5,6.343 5,8 C5,9.657 6.343,11 8,11 C9.657,11 11,9.657 11,8 C11,6.343 9.657,5 8,5 Z M8,10 C6.896,10 6,9.104 6,8 L8,8 L6.586,6.586 C6.96035905,6.20996515 7.46939099,5.99900849 8,6 C9.104,6 10,6.896 10,8 C10,9.104 9.104,10 8,10 Z" id="Shape"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span id="busuanzi_container_page_pv" style="margin-left: 13px;">
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </div>
+        </header>
+        <div class="post-full ">
+            
+            <figure class="post-full-image" style="background-image: url(https://s2.ax1x.com/2019/08/13/mpoFZd.jpg)">
+            </figure>
+            
+            <div class="post-full-content">
+                <article id="lightgallery" class="markdown-body">
+                    <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-08-12 Mon 11:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emacs Org-mode 笔记</title>
+<meta name="generator" content="Org mode">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+
+</style>
+<script type="text/javascript">
+
+function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6a7ea47">1. Emacs 笔记</a>
+<ul>
+<li><a href="#orga44e949">1.1. core 核心键位</a></li>
+<li><a href="#org7566de2">1.2. buffer管理</a></li>
+<li><a href="#org6da97c2">1.3. 在org大纲中移动 创建org大纲</a></li>
+<li><a href="#orgcd62c20">1.4. style 样式</a>
+<ul>
+<li><a href="#orgf13ff98">1.4.1. 各种格式</a></li>
+<li><a href="#orgdec8264">1.4.2. ordered-list unordered-list description  各种列表（有序/无序/描述）</a></li>
+<li><a href="#orgcf79d1c">1.4.3. checkbox 检查点</a></li>
+<li><a href="#org600f97f">1.4.4. link 链接</a></li>
+<li><a href="#org96b580a">1.4.5. 换行</a></li>
+</ul>
+</li>
+<li><a href="#org095b1fb">1.5. codes 代码块和其他block</a>
+<ul>
+<li><a href="#orgfd6dd0f">1.5.1. 普通代码块</a></li>
+</ul>
+</li>
+<li><a href="#orgac957b1">1.6. table 表格</a>
+<ul>
+<li><a href="#org816a0e3">1.6.1. 创建表格</a></li>
+<li><a href="#org92b3d0b">1.6.2. 增加行列</a></li>
+<li><a href="#orgd96d6de">1.6.3. 删除行列</a></li>
+<li><a href="#orge654cbc">1.6.4. 移动行列</a></li>
+</ul>
+</li>
+<li><a href="#org28d2028">1.7. calendar 日历</a>
+<ul>
+<li><a href="#org40cc6f0">1.7.1. 进入日历</a></li>
+<li><a href="#org2a3d4f5">1.7.2. 基本操作</a></li>
+<li><a href="#org92c4454">1.7.3. 日记</a></li>
+</ul>
+</li>
+<li><a href="#orgbd7c803">1.8. windows 窗口调整</a>
+<ul>
+<li><a href="#orgd99906b">1.8.1. 新建窗口</a></li>
+<li><a href="#org0a8668e">1.8.2. 移动窗口</a></li>
+<li><a href="#org0ceed61">1.8.3. 调整窗口大小</a></li>
+<li><a href="#org44a1444">1.8.4. 调整窗口位置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6a7ea47" class="outline-2">
+<h2 id="org6a7ea47"><span class="section-number-2">1</span> Emacs 笔记</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+修订历史
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-right">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">时间</th>
+<th scope="col" class="org-left">内容                               ;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">2019-07-15</td>
+<td class="org-left">init，增加了一些基本样式和移动的说明</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2019-07-16</td>
+<td class="org-left">增加了对日历使用说明</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-orga44e949" class="outline-3">
+<h3 id="orga44e949"><span class="section-number-3">1.1</span> core 核心键位</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><code>M-m</code> unlock the infinite power !!!</li>
+<li><code>C-x</code> some useful shortcuts !!!</li>
+<li><code>M-x</code> all functions and packages !!!</li>
+<li><code>M-x h d f</code> help to describe a function !!!</li>
+
+<li><code>C-f</code> 删除当前的命令（打错命令可以用这个来删除重新敲）</li>
+<li><code>C-c</code> org模式下面的prefix快捷键，可以查看常用的操作</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7566de2" class="outline-3">
+<h3 id="org7566de2"><span class="section-number-3">1.2</span> buffer管理</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+基本上有两种途径可以实现
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6da97c2" class="outline-3">
+<h3 id="org6da97c2"><span class="section-number-3">1.3</span> 在org大纲中移动 创建org大纲</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li><code>C-c C-n</code> 移动到下一个标题</li>
+<li><code>C-c C-p</code> 移动到上一个标题</li>
+
+<li><code>M-RET</code> 新建标题
+<code>注意</code> 如果是在： 
+<b>之前</b> 那么会在之前新建
+<b>之中</b> 那么会切分成两半
+<b>之后</b> 那么会在之后新建</li>
+<li><code>C-RET</code> 在下面新建标题（跳过所有的子节点）</li>
+<li><code>M-up</code> 向上移动标题（同等级的移动）</li>
+<li><code>M-down</code> 向下移动标题（同等级的移动）</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcd62c20" class="outline-3">
+<h3 id="orgcd62c20"><span class="section-number-3">1.4</span> style 样式</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgf13ff98" class="outline-4">
+<h4 id="orgf13ff98"><span class="section-number-4">1.4.1</span> 各种格式</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<dl class="org-dl">
+<dt>bold 粗体 </dt><dd><b>粗体</b></dd>
+<dt>Italy 斜体</dt><dd><i>斜体</i></dd>
+<dt>delete 删除线</dt><dd><del>delete</del></dd>
+<dt>underline 下划线</dt><dd><span class="underline">下划线</span></dd>
+<dt>subscript 下标</dt><dd>H<sub>2</sub> O</dd>
+<dt>superscript 上标</dt><dd>E = mc<sup>2</sup></dd>
+<dt>monospace 等宽</dt><dd><code>git</code> 或者 <code>git</code> (btw, I love this color!!)</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgdec8264" class="outline-4">
+<h4 id="orgdec8264"><span class="section-number-4">1.4.2</span> ordered-list unordered-list description  各种列表（有序/无序/描述）</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+官网：<a href="https://orgmode.org/manual/Plain-lists.html" target="_blank" rel="noopener">https://orgmode.org/manual/Plain-lists.html</a>
+</p>
+<ol class="org-ol">
+<li>有序列表
+直接标注 1. 或者 1) <code>注意</code> 要使用英文输入</li>
+<li>无序列表
+用 - + 或 *</li>
+<li>描述（类似于定义之类的）
+空格加上两冒号，例如：
+term :: definition
+注意，如果此时是加载无序列表前面，还会自动加粗
+<ol class="org-ol">
+<li>无序列表 :: definition</li>
+<li>无序列表 :: definition</li>
+<li>无序列表 :: definition</li>
+</ol></li>
+</ol>
+<p>
+<code>注意，所有层级关系都可以用以下快捷键</code>
+</p>
+<ul class="org-ul">
+<li><code>M-RET</code> 来插入一个新行（可以自动增加序号）</li>
+
+<li><code>M-up</code> 向上移动标题（同等级的移动）</li>
+<li><code>M-down</code> 向下移动标题（同等级的移动）</li>
+
+<li><code>M-left</code> 不带子节点，让当前标示升级 <b>标题或者列表</b> 列表可以是无序列表，下同</li>
+<li><code>M-right</code> 不带子节点，让当前标示降级 <b>标题或者列表</b></li>
+<li><code>M-S-left</code>  带子节点，让当前标示升级 <b>标题或者列表</b></li>
+<li><code>M-S-right</code> 带子节点，让当前标示升级 <b>标题或者列表</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf79d1c" class="outline-4">
+<h4 id="orgcf79d1c"><span class="section-number-4">1.4.3</span> checkbox 检查点</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<ul class="org-ul">
+<li><code>M-S-RET</code> 创建一个检查点（仅限于org模式）
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 待办事项</li>
+</ul></li>
+<li><code>C-c C-c</code> 改变box的状态
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 未完成</li>
+<li class="on"><code>[X]</code> 已完成</li>
+</ul></li>
+<li><code>S-right</code> 用在标题上: 加上 TODO 或者 DONE 字样;
+用在列表上：改变列表样式（无序改为有序等）</li>
+<li><code>S-right</code> 同上</li>
+
+<li><code>[/]</code> 用来标记完成情况
+使用方法：先写成上面这样，然后创建检查点 <code>M-S-RET</code> ，然后用 <code>M-right</code> 或 <code>M-left</code>  缩进即可
+任务进度<code>[0/3]</code>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li>[ ]<code>[0/2]</code>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> </li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org600f97f" class="outline-4">
+<h4 id="org600f97f"><span class="section-number-4">1.4.4</span> link 链接</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+官网：<a href="https://orgmode.org/manual/Internal-links.html" target="_blank" rel="noopener">https://orgmode.org/manual/Internal-links.html</a>
+</p>
+
+
+<p>
+[[月亮宝石[英]威尔基·柯林斯.徐汝椿等译.上海译文出版社(1980).pdf][d]]
+control x
+control f
+control b
+窗口调整
+全屏
+安装layers
+查看所有layers
+option m
+option x 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org96b580a" class="outline-4">
+<h4 id="org96b580a"><span class="section-number-4">1.4.5</span> 换行</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<ul class="org-ul">
+<li><code>M-m t l</code> 自动换行 toggle - truncate line</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org095b1fb" class="outline-3">
+<h3 id="org095b1fb"><span class="section-number-3">1.5</span> codes 代码块和其他block</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orgfd6dd0f" class="outline-4">
+<h4 id="orgfd6dd0f"><span class="section-number-4">1.5.1</span> 普通代码块</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+例如c：
+</p>
+<div class="org-src-container">
+<pre class="src src-c">int add(int a, int b){
+    return a + b;
+}
+</pre>
+</div>
+
+<p>
+例如java：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public static int add(int a, int b){
+    System.out.println()
+    return a + b;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac957b1" class="outline-3">
+<h3 id="orgac957b1"><span class="section-number-3">1.6</span> table 表格</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+<code>表格对中文支持很差，不建议在表格中使用中文</code>
+</p>
+</div>
+<div id="outline-container-org816a0e3" class="outline-4">
+<h4 id="org816a0e3"><span class="section-number-4">1.6.1</span> 创建表格</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+org模式下
+</p>
+<ul class="org-ul">
+<li><code>| | |</code> 然后 <code>tab</code> ，可以新建对齐的列</li>
+</ul>
+<p>
+在第一步的基础上，可以用
+</p>
+<ul class="org-ul">
+<li><code>|-</code> 然后 <code>tab</code> ，可以新建带横线的边框</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92b3d0b" class="outline-4">
+<h4 id="org92b3d0b"><span class="section-number-4">1.6.2</span> 增加行列</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<ul class="org-ul">
+<li><code>|-</code> 然后 <code>tab</code> 可以新建带横线的边框（新增一行）</li>
+<li><code>|</code> 然后 <code>tab</code> 可以新建一列</li>
+
+<li><code>M-S right</code> 新建一列</li>
+<li><code>M-S down</code> 新建一行</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd96d6de" class="outline-4">
+<h4 id="orgd96d6de"><span class="section-number-4">1.6.3</span> 删除行列</h4>
+<div class="outline-text-4" id="text-1-6-3">
+<ul class="org-ul">
+<li><code>M-S left</code> 删除一列</li>
+<li><code>M-S up</code> 删除一行</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge654cbc" class="outline-4">
+<h4 id="orge654cbc"><span class="section-number-4">1.6.4</span> 移动行列</h4>
+<div class="outline-text-4" id="text-1-6-4">
+<ul class="org-ul">
+<li><code>M-left</code> 向左移动</li>
+<li><code>M-right</code> 向右移动</li>
+<li><code>M-up</code> 向上移动</li>
+<li><code>M-down</code> 向下移动</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org28d2028" class="outline-3">
+<h3 id="org28d2028"><span class="section-number-3">1.7</span> calendar 日历</h3>
+<div class="outline-text-3" id="text-1-7">
+</div>
+<div id="outline-container-org40cc6f0" class="outline-4">
+<h4 id="org40cc6f0"><span class="section-number-4">1.7.1</span> 进入日历</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<p>
+好多种方法可以打开日历
+</p>
+<ul class="org-ul">
+<li><code>C-c &gt;</code> 直接进入</li>
+<li><code>M-x calendar</code> 搜索进入</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2a3d4f5" class="outline-4">
+<h4 id="org2a3d4f5"><span class="section-number-4">1.7.2</span> 基本操作</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<p>
+进入之后下面就有说明
+</p>
+<ul class="org-ul">
+<li><code>?</code> 查看帮助手册</li>
+<li><code>.</code> 定位到当前日期</li>
+<li><code>o</code> 快速定位到其他日期</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92c4454" class="outline-4">
+<h4 id="org92c4454"><span class="section-number-4">1.7.3</span> 日记</h4>
+<div class="outline-text-4" id="text-1-7-3">
+<p>
+<code>基本操作</code>
+</p>
+<ol class="org-ol">
+<li>日记需要遵循一定的格式</li>
+<li>支持鼠标操作（右键日期）</li>
+</ol>
+
+<p>
+<code>查看操作</code>
+通过日历查看
+<code>M-x calendar</code> 进入日历
+</p>
+<ol class="org-ol">
+<li><code>d</code> display 查看日记（不能编辑）</li>
+<li><code>s</code> 直接进入日记文件（可以编辑）</li>
+<li><code>m</code> mark所有有日记的日期</li>
+<li><code>u</code> unmark之前的标记</li>
+</ol>
+
+<p>
+直接查看diary
+</p>
+<ol class="org-ol">
+<li><code>M-x diary</code> 直接查看diary</li>
+</ol>
+
+
+<p>
+<code>新建操作</code>
+</p>
+<ol class="org-ol">
+<li><code>i d</code> 在选择的日期上添加一个日记入口（精确到日）</li>
+<li><code>i w</code> 在选择的星期上添加一个日记入口（精确到周）</li>
+<li><code>i m</code> 在选择的月份上添加一个日记入口（精确到月）</li>
+<li><code>i y</code> 在选择的年份上添加一个日记入口（精确到年）</li>
+<li><code>i u</code> 创建一个在指定日期之后的每年的纪念日（例如节日，生日等等）
+<code>注意是在指定日期之后</code></li>
+<li><code>i b</code> 创建一个指定范围内所有日期的日记入口（范围时间）</li>
+<li><code>i c</code> 创建循环的日记入口</li>
+</ol>
+
+<p>
+<code>消息通知</code>
+</p>
+<ol class="org-ol">
+<li></li>
+
+<li></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd7c803" class="outline-3">
+<h3 id="orgbd7c803"><span class="section-number-3">1.8</span> windows 窗口调整</h3>
+<div class="outline-text-3" id="text-1-8">
+</div>
+<div id="outline-container-orgd99906b" class="outline-4">
+<h4 id="orgd99906b"><span class="section-number-4">1.8.1</span> 新建窗口</h4>
+</div>
+<div id="outline-container-org0a8668e" class="outline-4">
+<h4 id="org0a8668e"><span class="section-number-4">1.8.2</span> 移动窗口</h4>
+</div>
+<div id="outline-container-org0ceed61" class="outline-4">
+<h4 id="org0ceed61"><span class="section-number-4">1.8.3</span> 调整窗口大小</h4>
+</div>
+<div id="outline-container-org44a1444" class="outline-4">
+<h4 id="org44a1444"><span class="section-number-4">1.8.4</span> 调整窗口位置</h4>
+<div class="outline-text-4" id="text-1-8-4">
+<ul class="org-ul">
+<li><code>M-x w .</code> 进入主控面板，可以做一切事情
+拥有对面板控制的最高权限
+包括调整窗口大小，位置，恢复，删除等</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer" target="_blank" rel="noopener">Validate</a></p>
+</div>
+</body>
+</html>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/Emacs/" rel="tag"># Emacs</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/org-mode/" rel="tag"># org-mode</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="建。。建站手册？🗝" href="/2019/08/11/Hello-World/">
+            建。。建站手册？🗝 →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#table-of-contents"><span class="toc-text">Table of Contents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#org6a7ea47"><span class="toc-text">1 Emacs 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#orga44e949"><span class="toc-text">1.1 core 核心键位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org7566de2"><span class="toc-text">1.2 buffer管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org6da97c2"><span class="toc-text">1.3 在org大纲中移动 创建org大纲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgcd62c20"><span class="toc-text">1.4 style 样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#orgf13ff98"><span class="toc-text">1.4.1 各种格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#orgdec8264"><span class="toc-text">1.4.2 ordered-list unordered-list description  各种列表（有序/无序/描述）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#orgcf79d1c"><span class="toc-text">1.4.3 checkbox 检查点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org600f97f"><span class="toc-text">1.4.4 link 链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org96b580a"><span class="toc-text">1.4.5 换行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org095b1fb"><span class="toc-text">1.5 codes 代码块和其他block</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#orgfd6dd0f"><span class="toc-text">1.5.1 普通代码块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgac957b1"><span class="toc-text">1.6 table 表格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#org816a0e3"><span class="toc-text">1.6.1 创建表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org92b3d0b"><span class="toc-text">1.6.2 增加行列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#orgd96d6de"><span class="toc-text">1.6.3 删除行列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#orge654cbc"><span class="toc-text">1.6.4 移动行列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org28d2028"><span class="toc-text">1.7 calendar 日历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#org40cc6f0"><span class="toc-text">1.7.1 进入日历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org2a3d4f5"><span class="toc-text">1.7.2 基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org92c4454"><span class="toc-text">1.7.3 日记</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgbd7c803"><span class="toc-text">1.8 windows 窗口调整</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#orgd99906b"><span class="toc-text">1.8.1 新建窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org0a8668e"><span class="toc-text">1.8.2 移动窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org0ceed61"><span class="toc-text">1.8.3 调整窗口大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#org44a1444"><span class="toc-text">1.8.4 调整窗口位置</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2019/08/12/emacs笔记/">Emacs Org-mode 笔记</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/08/11/Hello-World/">建。。建站手册？🗝</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/08/11/imagetest/">imagetest</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <img class="search-overlay-logo" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="羊男">
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男</a>
+			&copy; 2019
+			<span id="busuanzi_container_site_pv">
+    			本站总访问量<span id="busuanzi_value_site_pv"></span>次
+			</span>
+			<span id="busuanzi_container_site_uv">
+  				访客数<span id="busuanzi_value_site_uv"></span>人次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>if(window.navigator && navigator.serviceWorker) {navigator.serviceWorker.getRegistrations().then(function(registrations) {for(let registration of registrations) {registration.unregister()}})}</script>
+
+
+<script async src="/js/allinone.min.js" id="scriptLoad"></script>
+
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        var bLazy = new Blazy()
+    })
+</script>
+
+
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+<script>
+    lightGallery(document.getElementById('lightgallery'), {
+        selector: '.post-img'
+    });
+</script>
+
+
+
+
+<script async src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script async src="https://unpkg.com/valine@1.3.4/dist/Valine.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Say something',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true,
+        })
+    });
+</script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function(){
+        searchFunc("/")
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
