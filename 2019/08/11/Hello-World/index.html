@@ -184,7 +184,57 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <a href="/2019/08/10/hello-world/" title="ccc">ccc</a>
+                    <p>[TOC]</p>
+<h1 id="修改历史"><a href="#修改历史" class="headerlink" title="修改历史"></a>修改历史</h1><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2019-8-12</td>
+<td>初稿</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>花了点时间捣鼓了个Hexo博客，顺便记录一下捣鼓过程，不想看过程的可以直接跳到<a href="#最后">最后</a></p>
+<p><strong>🕘 预计配置时间</strong>： 3hours？Maybe fewer.</p>
+<p><strong>🖥 完成配之后将拥有：</strong></p>
+<ol>
+<li><p>一个github仓库作为数据存储的静态博客</p>
+</li>
+<li><p>基本功能齐全，前端还算不错的个人博客，省得自己搭架子</p>
+<p><img alt="blog" class="post-img b-lazy" href="../images/2019-08-11-Hello-World/1.png" data-src="../images/2019-08-11-Hello-World/1.png"></p>
+</li>
+<li><p>采用hexo博客框架，<a href="https://github.com/xzhih/hexo-theme-casper" target="_blank" rel="noopener">Casper</a>作为模板，自动渲染md，一键部署到github</p>
+</li>
+<li><p>模板自身支持发布文章，阅读文章，新建页面，分类，标签</p>
+</li>
+<li><p>自己添加了一些功能可以手动写md实现时间轴，增加了流量统计</p>
+</li>
+</ol>
+<h1 id="折腾过程实录"><a href="#折腾过程实录" class="headerlink" title="折腾过程实录"></a>折腾过程实录</h1><p><strong>1. github page</strong></p>
+<p>​    要部署到github的话，先搞一个github仓库，直接google一下<a href="https://www.google.com/search?q=github+page&oq=github+page&aqs=chrome..69i57j35i39j69i60l4.2108j0j4&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener">github page</a>咋整就行了，这一步注意仓库的名字有特殊的要求，不然后面会显示不出来东西。有手就行的东西就不展开了🙌</p>
+<p><strong>2. hexo</strong></p>
+<p>​    同上，google一下<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">hexo</a>的安装过程，同有手就行🤞</p>
+<p>​    这里可以稍微熟悉一下几个命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new post helloworld</span><br><span class="line">hexo clean  # 清空一下之前生成的文件，如果修改不生效可以试试这个命令，先清空一下</span><br><span class="line">hexo g      # generate，编译渲染</span><br><span class="line">hexo d      # deploy，自动部署</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. hexo部署到github page上</strong></p>
+<p>​    google之<a href="https://hexo.io/zh-cn/docs/deployment" target="_blank" rel="noopener">hexo整合github</a>。。有手就行👀。。。</p>
+<p>​    这里可以稍微注意一下，部署的分支和资源存储的分支是分开的，部署的分支github貌似要求是master，资源可以新建一个分支</p>
+<p><strong>4. pick一个主题</strong></p>
+<p>​    这里我选了<a href="https://github.com/xzhih/hexo-theme-casper" target="_blank" rel="noopener">Casper</a>作为模板，另外有一个模板看起来也不错👉<a href="https://blog.zhangruipeng.me/hexo-theme-icarus/about/" target="_blank" rel="noopener">icarus</a>。下面的内容都是根据我选择的Casper展开。</p>
+<p>​    更换主题就是直接把Casper的github repo（具体地址在上面链接👆）clone到<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	稍微解释一下这些个文件夹都是干啥的，之后有用。</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">├── README.md</span><br><span class="line">├── _config.yml          # 配置文件，可以配置很多东西，之后会介绍</span><br><span class="line">├── languages            # 语言包，直接在配置文件里面设置zh-CN就是中文了</span><br><span class="line">│   ├── default.yml</span><br><span class="line">│   ├── fr.yml</span><br><span class="line">│   ├── nl.yml</span><br><span class="line">│   ├── no.yml</span><br><span class="line">│   ├── ru.yml</span><br><span class="line">│   ├── zh-CN.yml</span><br><span class="line">│   └── zh-TW.yml</span><br><span class="line">├── layout               # 布局文件，自定义一些布局基本都在这里修改</span><br><span class="line">│   ├── _layout.swig</span><br><span class="line">│   ├── _partials</span><br><span class="line">│   ├── archive.swig</span><br><span class="line">│   ├── category.swig</span><br><span class="line">│   ├── index.swig</span><br><span class="line">│   ├── page.swig</span><br><span class="line">│   ├── post.swig</span><br><span class="line">│   └── tag.swig</span><br><span class="line">├── scripts</span><br><span class="line">│   └── index.js</span><br><span class="line">└── source               # 源文件，配合布局一起修改</span><br><span class="line">    ├── css</span><br><span class="line">    ├── fonts</span><br><span class="line">    ├── img</span><br><span class="line">    └── js</span><br></pre></td></tr></table></figure></p>
+<p><strong>5. 配置主题</strong></p>
+<p>​    这一步主要是修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![_config](../images/2019-08-11-Hello-World/2.png)</span><br><span class="line"></span><br><span class="line">参考我这个稍微配置一下就行了，另外[Casper](https://github.com/xzhih/hexo-theme-casper)里面写的很清楚了，照着改改就差不多了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**6. 增加流量统计**</span><br><span class="line"></span><br><span class="line">​	提了issue问怎么统计流量，回答说有个评论系统自带了流量统计功能，但是注册过程比较麻烦，就放弃了。这里采用[不蒜子](http://ibruce.info/2015/04/04/busuanzi/)，很是方便，而且速度很快，只要简单配置一下就可以了。</span><br><span class="line"></span><br><span class="line">配置之前先详细解释一下layout的结构：</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">├── _layout.swig            # 页面总体布局（修改基本没用到它）</span><br><span class="line">├── _partials               # 小组件，方便复用</span><br><span class="line">│   ├── about.swig            # 这个就是ABOUT界面上面的那些小东西，见下面图例</span><br><span class="line">│   ├── footer.swig</span><br><span class="line">│   ├── head.swig</span><br><span class="line">│   ├── header.swig</span><br><span class="line">│   ├── index.swig</span><br><span class="line">│   ├── javascript.swig</span><br><span class="line">│   ├── page.swig</span><br><span class="line">│   ├── post.swig</span><br><span class="line">│   ├── public</span><br><span class="line">│   │   ├── fload-header.swig</span><br><span class="line">│   │   ├── icons</span><br><span class="line">│   │   ├── json-ld.swig</span><br><span class="line">│   │   ├── nav.swig</span><br><span class="line">│   │   ├── social.swig</span><br><span class="line">│   │   └── toc.swig</span><br><span class="line">│   ├── search.swig</span><br><span class="line">│   ├── widget</span><br><span class="line">│   │   ├── category.swig</span><br><span class="line">│   │   ├── recent_posts.swig</span><br><span class="line">│   │   └── tagcloud.swig</span><br><span class="line">│   └── widget.swig</span><br><span class="line">├── archive.swig</span><br><span class="line">├── category.swig</span><br><span class="line">├── index.swig</span><br><span class="line">├── page.swig</span><br><span class="line">├── post.swig</span><br><span class="line">└── tag.swig</span><br></pre></td></tr></table></figure></p>
+<p>about.swig:</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>最后就配置好了，嗯。想看配置过程的可以看<a href="#折腾过程实录">折腾过程实录</a></p>
+
                 </article>
                 <ul class="tags-postTags">
                     
@@ -233,7 +283,7 @@
         </a>
     </div>
     <div class="toc-main">
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#修改历史"><span class="toc-text">修改历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#折腾过程实录"><span class="toc-text">折腾过程实录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
     </div>
 </div>
 
