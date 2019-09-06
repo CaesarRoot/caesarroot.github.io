@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>使用最小花费爬楼梯 | 羊男</title>
+	<title>单词拆分 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="使用最小花费爬楼梯 | 羊男">
+	<meta property="og:title" content="单词拆分 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/09/04/使用最小花费爬楼梯/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/09/06/单词拆分/">
 
 	
-	<meta property="article:published_time" content="2019-09-04T20:09:00+08:00"> 
+	<meta property="article:published_time" content="2019-09-06T08:09:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/09/04/使用最小花费爬楼梯/">
+	<meta property="article:published_first" content="羊男, /2019/09/06/单词拆分/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/09/04/使用最小花费爬楼梯/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/09/06/单词拆分/">
 
 
 
@@ -143,8 +143,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-09-04T12:39:01.000Z">
-                    2019-09-4
+                <time class="post-full-meta-date" datetime="2019-09-06T00:23:46.000Z">
+                    2019-09-6
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -153,7 +153,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">使用最小花费爬楼梯</h1>
+            <h1 class="post-full-title">单词拆分</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -179,33 +179,29 @@
                 </span>
             </div>
         </header>
-        <div class="post-full ">
-            
-            <figure class="post-full-image" style="background-image: url(https://s2.ax1x.com/2019/09/04/nZ567F.png)">
-            </figure>
+        <div class="post-full no-image">
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 cost<a href="索引从0开始">i</a>。</p>
-<p>每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。</p>
-<p>您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。</p>
-<p>示例 1:</p>
-<p>输入: cost = [10, 15, 20]<br>输出: 15<br>解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。<br> 示例 2:</p>
-<p>输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]<br>输出: 6<br>解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。<br>注意：</p>
-<p>cost 的长度将会在 [2, 1000]。<br>每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs" target="_blank" rel="noopener">https://leetcode-cn.com/problems/min-cost-climbing-stairs</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>如果便利所有情况的话显然过于复杂，具体的情况数应该是斐波那契数列的某一项，复杂度太高。</p>
-<p>如果考虑用贪婪的话也不太对，因为存在一种情况是首选一个花费较大的，但是之后可能存在一个花费更小的，例如 [0, 1, 2, 2]，如果是贪婪的话选择0-1-2，但是最小的花费应该是0-2</p>
-<p>用贪婪的问题是，这实际上是一个累加的问题，不是基于当前情况就能判断的问题，必须要是前面所有的积累</p>
-<p>故而就想到遍历所有情况，因为若是不知道之后的情况，似乎也是没法确定是否选择当前的走法</p>
-<p>这时候就要转化一下思路，想一想dp的解法</p>
-<p>dp的解法是：</p>
-<p>dp[i] = min(dp[i-1],dp[i-2]) + cost[i] （第0和第1个位置是dp的初始值）</p>
-<p>即要走到第i个台阶，考虑它之前的两个台阶，取小的那个加上当前台阶的花费即可。这样当我们求出最后两个台阶的dp时，就可以取小的那个，然后走完全部台阶</p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>按照上面的想法翻译一下代码即可，需要注意的是最后还要判断一下dp的最后两个位置，取小的值作为结果返回</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minCostClimbingStairs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// dp[i] = min(dp[i-1],dp[i-2]) + cost[i]</span></span><br><span class="line">        <span class="keyword">int</span> a = cost[<span class="number">0</span>], b = cost[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;cost.size(); i++)&#123;</span><br><span class="line">            c = a&gt;b?b:a;</span><br><span class="line">            c += cost[i];</span><br><span class="line">            a = b;</span><br><span class="line">            b = c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a&gt;c?c:a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
+<p>说明：</p>
+<p>拆分时可以重复使用字典中的单词。<br>你可以假设字典中没有重复的单词。<br>示例 1：</p>
+<p>输入: s = “leetcode”, wordDict = [“leet”, “code”]<br>输出: true<br>解释: 返回 true 因为 “leetcode” 可以被拆分成 “leet code”。<br>示例 2：</p>
+<p>输入: s = “applepenapple”, wordDict = [“apple”, “pen”]<br>输出: true<br>解释: 返回 true 因为 “applepenapple” 可以被拆分成 “apple pen apple”。<br>     注意你可以重复使用字典中的单词。<br>示例 3：</p>
+<p>输入: s = “catsandog”, wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]<br>输出: false</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/word-break" target="_blank" rel="noopener">https://leetcode-cn.com/problems/word-break</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>刚开始只想到了暴力搜索</p>
+<p>可以用DFS、BFS还有剪枝之后的DFS</p>
+<p>如果用动态规划的话，可以这样考虑：</p>
+<p>首先令dp数组的第i项表示从0开始到位置i的串可以被拆分，这样只要取出最后一个位置就是题解</p>
+<p>其次为了利用前面的dp数组位置，可以将串拆分为两部分，一部分必然被前面的情况包含，另一部分再判断即可</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>参考了官方题解</p>
+<p>这个方法的想法是对于给定的字符串（s）可以被拆分成子问题 s1 和 s2。如果这些子问题都可以独立地被拆分成符合要求的子问题，那么整个问题 s 也可以满足。也就是，如果 “<br>catsanddog” 可以拆分成两个子字符串 “catsand” 和 “dog” 。子问题 “catsand” 可以进一步拆分成 “cats” 和 “and” ，这两个独立的部分都是字典的一部分，所以 “catsand” 满足题意条件，再往前， “catsand” 和 ”dog” 也分别满足条件，所以整个字符串 “catsanddog” 也满足条件。</p>
+<p>现在，我们考虑 dp 数组求解的过程。我们使用 n+1 大小数组的 dp ，其中 n 是给定字符串的长度。我们也使用 2 个下标指针 i 和 j ，其中 i 是当前字符串从头开始的子字符串（s ′ ）的长度， j 是当前子字符串（s ′ ）的拆分位置，拆分成 s ′ (0,j) 和 s′(j+1,i)。为了求出 dp 数组，我们初始化 dp[0] 为 true ，这是因为空字符串总是字典的一部分。 dp 数组剩余的元素都初始化为 false 。我们用下标 i 来考虑所有从当前字符串开始的可能的子字符串。对于每一个子字符串，我们通过下标 j 将它拆分成 s1 ′ 和 s2 ′（注意 i 现在指向 s2 ′  的结尾）。为了将dp[i] 数组求出来，我们依次检查每个 dp[j] 是否为 true ，也就是子字符串 s1 ′ 是否满足题目要求。如果满足，我们接下来检查 s2 ′ 是否在字典中。如果包含，我们接下来检查 s2 ′ 是否在字典中，如果两个字符串都满足要求，我们让 dp[i] 为 true ，否则令其为<br>false 。</p>
+<p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
+<p>c++代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">contain</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">string</span> ss: v)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ss == s)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> dp[s.size()+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=s.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; j++)&#123;</span><br><span class="line">                dp[i] = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span>(dp[j] &amp;&amp; contain(s.substr(j, i-j), wordDict))&#123;</span><br><span class="line">                    dp[i] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.size()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>写出状态转移方程就会清晰很多</p>
 
                 </article>
                 <ul class="tags-postTags">
@@ -226,14 +222,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="最大正方形" href="/2019/09/04/最大正方形/">
-            ← 最大正方形
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="判断子序列" href="/2019/09/03/判断子序列/">
-            判断子序列 →
+        <a class="next-post" title="三角形最小路径和" href="/2019/09/05/三角形最小路径和/">
+            三角形最小路径和 →
         </a>
         
     </nav>
@@ -259,7 +251,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
     </div>
 </div>
 
