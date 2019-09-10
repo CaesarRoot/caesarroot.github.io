@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>三角形最小路径和 | 羊男</title>
+	<title>乘积最大子序列 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="三角形最小路径和 | 羊男">
+	<meta property="og:title" content="乘积最大子序列 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/09/05/三角形最小路径和/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/09/10/乘积最大子序列/">
 
 	
-	<meta property="article:published_time" content="2019-09-05T22:09:00+08:00"> 
+	<meta property="article:published_time" content="2019-09-10T13:09:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/09/05/三角形最小路径和/">
+	<meta property="article:published_first" content="羊男, /2019/09/10/乘积最大子序列/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/09/05/三角形最小路径和/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/09/10/乘积最大子序列/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-09-05T14:57:22.000Z">
-                    2019-09-5
+                <time class="post-full-meta-date" datetime="2019-09-10T05:59:39.000Z">
+                    2019-09-10
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">三角形最小路径和</h1>
+            <h1 class="post-full-title">乘积最大子序列</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -187,20 +187,18 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
-<p>例如，给定三角形：</p>
-<p>[<br>     [2],<br>    [3,4],<br>   [6,5,7],<br>  [4,1,8,3]<br>]<br>自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/triangle" target="_blank" rel="noopener">https://leetcode-cn.com/problems/triangle</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>注意两点：</p>
-<ol>
-<li>不能从上往下的贪婪，而是要从下往上的贪婪</li>
-<li>从下而上的贪婪可以保证当前位置到最低点的路径和是最大的。自然到了最高点，就可以求出最大值</li>
-</ol>
-<p>这是因为，基于当前的最优并不是全局最优，而从后往前则可以考虑全局</p>
-<p>用一位数组存储即可，边计算边保存，恰好不会被覆盖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[j] = min(dp[j], dp[j+1]) + triangle[i][j]</span><br></pre></td></tr></table></figure>
-
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[triangle.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;triangle.size(); k++)&#123;</span><br><span class="line">            dp[k] = triangle[triangle.size()<span class="number">-1</span>][k];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=triangle.size()<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;triangle[i].size(); j++)&#123;</span><br><span class="line">                dp[j] = min(dp[j], dp[j+<span class="number">1</span>]) + triangle[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 nums ，找出一个序列中乘积最大的连续子序列（该序列至少包含一个数）。</p>
+<p>示例 1:</p>
+<p>输入: [2,3,-2,4]<br>输出: 6<br>解释: 子数组 [2,3] 有最大乘积 6。<br>示例 2:</p>
+<p>输入: [-2,0,-1]<br>输出: 0<br>解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-product-subarray" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-subarray</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>连续最大的乘积序列，可以考虑什么时候连乘会变小—有时候是0，有时候是负数</p>
+<p>对于负数而言，他会让之前正数连乘的积变成最小；同时也会让之前的负数连乘变成最大。因此我们要保留两个值：之前连乘的最大和最小值</p>
+<p>对于可能出现0的情况，其实不用考虑，因为此时连乘的最大最小值都是0</p>
+<p>为了保证每次都可以得到连乘的max和min，在每次计算乘积的时候，都要取计算的结果和当前位置的max或者min。例如，计算连乘max的时候，MAX = max(MAX*nums[i], nums[i])</p>
+<p>遇到负数，交换最大最小，再计算</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>参考：<a href="https://leetcode-cn.com/problems/maximum-product-subarray/solution/hua-jie-suan-fa-152-cheng-ji-zui-da-zi-xu-lie-by-g/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-subarray/solution/hua-jie-suan-fa-152-cheng-ji-zui-da-zi-xu-lie-by-g/</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">-100000</span>;</span><br><span class="line">        <span class="keyword">int</span> Max = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> Min = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = Max;</span><br><span class="line">                Max = Min;</span><br><span class="line">                Min = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            Max = max(Max*nums[i], nums[i]);</span><br><span class="line">            Min = min(Min*nums[i], nums[i]);</span><br><span class="line">            </span><br><span class="line">            result = max(result, Max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
                 </article>
@@ -222,14 +220,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="单词拆分" href="/2019/09/06/单词拆分/">
-            ← 单词拆分
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="解码方法" href="/2019/09/05/解码方法/">
-            解码方法 →
+        <a class="next-post" title="单词拆分" href="/2019/09/06/单词拆分/">
+            单词拆分 →
         </a>
         
     </nav>
@@ -255,7 +249,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
     </div>
 </div>
 
