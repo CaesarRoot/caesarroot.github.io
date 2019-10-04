@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>三角形最小路径和 | 羊男</title>
+	<title>回文子串 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="三角形最小路径和 | 羊男">
+	<meta property="og:title" content="回文子串 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/09/05/三角形最小路径和/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/04/回文子串/">
 
 	
-	<meta property="article:published_time" content="2019-09-05T22:09:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-04T16:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/09/05/三角形最小路径和/">
+	<meta property="article:published_first" content="羊男, /2019/10/04/回文子串/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/09/05/三角形最小路径和/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/04/回文子串/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-09-05T14:57:22.000Z">
-                    2019-09-5
+                <time class="post-full-meta-date" datetime="2019-10-04T08:46:28.000Z">
+                    2019-10-4
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">三角形最小路径和</h1>
+            <h1 class="post-full-title">回文子串</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -183,27 +183,20 @@
                 </span>
             </div>
         </header>
-        <div class="post-full ">
-            
-            <figure class="post-full-image" style="background-image: url(https://s2.ax1x.com/2019/09/17/nI3pge.jpg)">
-            </figure>
+        <div class="post-full no-image">
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
-<p>例如，给定三角形：</p>
-<p>[<br>     [2],<br>    [3,4],<br>   [6,5,7],<br>  [4,1,8,3]<br>]<br>自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/triangle" target="_blank" rel="noopener">https://leetcode-cn.com/problems/triangle</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>注意两点：</p>
-<ol>
-<li>不能从上往下的贪婪，而是要从下往上的贪婪</li>
-<li>从下而上的贪婪可以保证当前位置到最低点的路径和是最大的。自然到了最高点，就可以求出最大值</li>
-</ol>
-<p>这是因为，基于当前的最优并不是全局最优，而从后往前则可以考虑全局</p>
-<p>用一位数组存储即可，边计算边保存，恰好不会被覆盖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[j] = min(dp[j], dp[j+1]) + triangle[i][j]</span><br></pre></td></tr></table></figure>
-
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[triangle.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;triangle.size(); k++)&#123;</span><br><span class="line">            dp[k] = triangle[triangle.size()<span class="number">-1</span>][k];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=triangle.size()<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;triangle[i].size(); j++)&#123;</span><br><span class="line">                dp[j] = min(dp[j], dp[j+<span class="number">1</span>]) + triangle[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。</p>
+<p>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被计为是不同的子串。</p>
+<p>示例 1:</p>
+<p>输入: “abc”<br>输出: 3<br>解释: 三个回文子串: “a”, “b”, “c”.<br>示例 2:</p>
+<p>输入: “aaa”<br>输出: 6<br>说明: 6个回文子串: “a”, “a”, “a”, “aa”, “aa”, “aaa”.</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/palindromic-substrings" target="_blank" rel="noopener">https://leetcode-cn.com/problems/palindromic-substrings</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>动态规划好像有点难想，就放弃了</p>
+<p>朴素的想法是用中心扩展来判断是否是回文串，在中心扩展时顺便可以计算出所有回文串的数量，因此复杂度可以低一点（边判断边累加求和）</p>
+<p>遍历每个字符，作为中心点中心扩展，省去了确定范围的麻烦，以及在判断的时候就可以顺便求和</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countSubstrings</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)&#123;</span><br><span class="line">            num += count(s, i, i);</span><br><span class="line">            num += count(s, i, i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&gt;=<span class="number">0</span> &amp;&amp; right&lt;s.size() &amp;&amp; s[left]==s[right])&#123;</span><br><span class="line">            num++;</span><br><span class="line">            left--;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
                 </article>
@@ -214,7 +207,7 @@
                     </li>
                     
                     <li>
-                        <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+                        <a href="/tags/字符串/" rel="tag"># 字符串</a>
                     </li>
                     
                 </ul>
@@ -225,14 +218,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="单词拆分" href="/2019/09/06/单词拆分/">
-            ← 单词拆分
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="解码方法" href="/2019/09/05/解码方法/">
-            解码方法 →
+        <a class="next-post" title="两个字符串的最小ASCII删除和" href="/2019/10/04/两个字符串的最小ASCII删除和/">
+            两个字符串的最小ASCII删除和 →
         </a>
         
     </nav>
@@ -258,7 +247,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
     </div>
 </div>
 
