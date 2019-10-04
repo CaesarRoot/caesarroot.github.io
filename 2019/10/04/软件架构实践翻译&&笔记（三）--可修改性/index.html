@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>最长回文子串 | 羊男</title>
+	<title>软件架构实践翻译&&笔记（三）--可修改性 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="最长回文子串 | 羊男">
+	<meta property="og:title" content="软件架构实践翻译&&笔记（三）--可修改性 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/09/04/最长回文子串/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/04/软件架构实践翻译&&笔记（三）--可修改性/">
 
 	
-	<meta property="article:published_time" content="2019-09-04T23:09:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-04T09:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/09/04/最长回文子串/">
+	<meta property="article:published_first" content="羊男, /2019/10/04/软件架构实践翻译&&笔记（三）--可修改性/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/09/04/最长回文子串/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/04/软件架构实践翻译&&笔记（三）--可修改性/">
 
 
 
@@ -147,17 +147,19 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-09-04T15:37:35.000Z">
-                    2019-09-4
+                <time class="post-full-meta-date" datetime="2019-10-04T01:19:57.000Z">
+                    2019-10-4
                 </time>
                 
                 <span class="date-divider">/</span>
                 
-                <a href="/categories/算法/">算法</a>&nbsp;&nbsp;
+                <a href="/categories/读书笔记/">读书笔记</a>&nbsp;&nbsp;
+                
+                <a href="/categories/读书笔记/翻译/">翻译</a>&nbsp;&nbsp;
                 
                 
             </div>
-            <h1 class="post-full-title">最长回文子串</h1>
+            <h1 class="post-full-title">软件架构实践翻译&&笔记（三）--可修改性</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -183,43 +185,30 @@
                 </span>
             </div>
         </header>
-        <div class="post-full ">
-            
-            <figure class="post-full-image" style="background-image: url(https://s2.ax1x.com/2019/09/04/nekdZ8.png)">
-            </figure>
+        <div class="post-full no-image">
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
-<p>示例 1：</p>
-<p>输入: “babad”<br>输出: “bab”<br>注意: “aba” 也是一个有效答案。<br>示例 2：</p>
-<p>输入: “cbbd”<br>输出: “bb”</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/longest-palindromic-substring" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-palindromic-substring</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先能想到的一个思路是获得所有子串，判断是否是回文，再取最长的</p>
-<p>稍微优化一下就是，遍历每一个字符，作为中心点，向两边扩展，这样可以直接判断是否是回文，然后长度也可以直接求出</p>
-<p>注意这里中心点可以是一个，例如aba；也可以是两个，例如abba</p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>这里因为两种情况的扩展是相似的，所以可以抽象成一个函数，不同的是传入的参数来控制中心点是一个还是两个</p>
-<p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = expandAroundCenter(s, i, i);</span><br><span class="line">        <span class="keyword">int</span> len2 = expandAroundCenter(s, i, i + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> len = Math.max(len1, len2);</span><br><span class="line">        <span class="keyword">if</span> (len &gt; end - start) &#123;</span><br><span class="line">            start = i - (len - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            end = i + len / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s.substring(start, end + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">expandAroundCenter</span><span class="params">(String s, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> L = left, R = right;</span><br><span class="line">    <span class="keyword">while</span> (L &gt;= <span class="number">0</span> &amp;&amp; R &lt; s.length() &amp;&amp; s.charAt(L) == s.charAt(R)) &#123;</span><br><span class="line">        L--;</span><br><span class="line">        R++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> R - L - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>评论下面还有两个方法可以优化</p>
-<ol>
-<li><p>字符中间插入特殊字符，来同一个两种中心点</p>
-</li>
-<li><p>马拉车算法</p>
-<p><a href="https://segmentfault.com/a/1190000008484167" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008484167</a></p>
-</li>
-</ol>
+                    <h3 id="可修改性"><a href="#可修改性" class="headerlink" title="可修改性"></a>可修改性</h3><h4 id="Tactics"><a href="#Tactics" class="headerlink" title="Tactics"></a>Tactics</h4><h5 id="1-Reduce-the-Size-of-a-Module"><a href="#1-Reduce-the-Size-of-a-Module" class="headerlink" title="1. Reduce the Size of a Module"></a>1. Reduce the Size of a Module</h5><ul>
+<li>Split module：如果一个被修改的模块包含了大量职责，那么修改的代价就会很高。将大的模块细化成许多小的模块可以减少未来修改的平均代价。</li>
+</ul>
+<h5 id="2-Increase-Cohesion"><a href="#2-Increase-Cohesion" class="headerlink" title="2. Increase Cohesion"></a>2. Increase Cohesion</h5><p>增加内聚。将职责移交给另一个模块的目的是减少修改原模块职责的副作用 —— 使其不会影响到其他模块。</p>
+<ul>
+<li>Increase semantic coherence：如果A和B的职责不是为了<strong>服务同一个目的而存在</strong>，那么它们应该被放在不同的模块中。可以新建一个模块或是移入一个已经存在的模块。识别需要迁移的职责的一个方法是假设可能发生的变化是如何影响模块的。如果一些职责不会被这些变化影响，那么这些职责应该被迁移。</li>
+</ul>
+<h5 id="3-Reduce-Coupling"><a href="#3-Reduce-Coupling" class="headerlink" title="3. Reduce Coupling"></a>3. Reduce Coupling</h5><ul>
+<li>Encapsulate：封装赋予一个模块显式的接口。<strong>此接口包括了应用编程接口API和它有关的职责</strong>，例如”对于输入的参数进行语法转化，使之转化成内部的表示”。封装是最常见的一种可修改性策略，减少了修改一个模块而影响其他模块的可能性。耦合的强度现在转移到了接口上。这些强度大大减少了，因为接口限制了外部职责和内部模块的交互。外部的职责现在只要直接访问外部的接口就可以和模块交互（间接交互，但是，有些情况是不会改变的，例如依赖服务本身是不会改变的）。接口被设计来增加可修改性，它们应该是抽象的，屏蔽了模块可能改变的细节 —— 隐藏了这些细节。</li>
+<li>Use an intermediary：<strong>使用一个中介打破了依赖</strong>。假设职责A和B之间有依赖关系（例如执行A之前要求先执行B），但是这种依赖关系可以由引入一个中介而被打破。中介的类型取决于依赖的类型。例如，发布订阅中介将会移除数据生产者对于消费者所必要的认知。数据仓库也是同样如此，它分离了数据的读取者和写入者。在面向服务的架构中，服务在一个动态的查找中互相发现，服务的目录就是一个中介。</li>
+<li>Restrict dependencies：<strong>限制一个模块依赖其他的模块。实践中是限制模块的可见性</strong>（当开发者不能看见一个接口的时候，他们不能使用这些接口）<strong>以及权限</strong>。（限制权限，只供有权限的模块使用）这种策略被用于分层的架构中，每层只被允许调用下面的层。（有时仅仅是相邻的下一层）；以及用于包裹器中，外部的实体尽能见到（因此智能依赖）包裹器而不能见到它内部的功能。</li>
+<li>Refactor：如果受到同一个变化影响的两个模块是相同的（至少部分相同），那么就要进行重构。代码重构是敏捷软件开发的一个重要支撑。<strong>作为一个对于多余代码或者过度复杂的代码的清理</strong>，这一思想也被用于软件架构中。常见的职责（以及实现它们的代码）被重构到模块之外并且分配到一个适当的位置。将相同职责的放在一起 —— 也就是让他们成为一个父模块的子模块 —— 可以减少耦合。</li>
+<li>Abstract common services：<strong>两个模块提供的不是相同的服务，但是是相似的服务，那么一个经济的方法是将它们实现一次</strong>，实现成一个抽象的方式。任何一个对于此服务的修改只需要出现在一个地方，减少了修改的代价。一个引入抽象的方法是将描述（和实现）变成模块行为的参数。这种参数是足够简单的（例如关键变量的值），或复杂的（特定语言的复杂语句）。</li>
+</ul>
 
                 </article>
                 <ul class="tags-postTags">
                     
                     <li>
-                        <a href="/tags/刷题/" rel="tag"># 刷题</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+                        <a href="/tags/读书笔记，架构，翻译/" rel="tag"># 读书笔记，架构，翻译</a>
                     </li>
                     
                 </ul>
@@ -230,14 +219,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="最小路径和" href="/2019/09/05/最小路径和/">
-            ← 最小路径和
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="最大正方形" href="/2019/09/04/最大正方形/">
-            最大正方形 →
+        <a class="next-post" title="素数筛法" href="/2019/09/26/素数筛法/">
+            素数筛法 →
         </a>
         
     </nav>
@@ -263,7 +248,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#可修改性"><span class="toc-text">可修改性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Tactics"><span class="toc-text">Tactics</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Reduce-the-Size-of-a-Module"><span class="toc-text">1. Reduce the Size of a Module</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Increase-Cohesion"><span class="toc-text">2. Increase Cohesion</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Reduce-Coupling"><span class="toc-text">3. Reduce Coupling</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
