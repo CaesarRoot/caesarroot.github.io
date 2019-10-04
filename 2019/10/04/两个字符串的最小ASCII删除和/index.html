@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>石子游戏 | 羊男</title>
+	<title>两个字符串的最小ASCII删除和 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="石子游戏 | 羊男">
+	<meta property="og:title" content="两个字符串的最小ASCII删除和 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/10/04/石子游戏/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/04/两个字符串的最小ASCII删除和/">
 
 	
-	<meta property="article:published_time" content="2019-10-04T10:10:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-04T16:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/10/04/石子游戏/">
+	<meta property="article:published_first" content="羊男, /2019/10/04/两个字符串的最小ASCII删除和/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/10/04/石子游戏/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/04/两个字符串的最小ASCII删除和/">
 
 
 
@@ -147,7 +147,7 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-10-04T02:41:25.000Z">
+                <time class="post-full-meta-date" datetime="2019-10-04T08:16:03.000Z">
                     2019-10-4
                 </time>
                 
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">石子游戏</h1>
+            <h1 class="post-full-title">两个字符串的最小ASCII删除和</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -187,34 +187,25 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>亚历克斯和李用几堆石子在做游戏。偶数堆石子排成一行，每堆都有正整数颗石子 piles[i] 。</p>
-<p>游戏以谁手中的石子最多来决出胜负。石子的总数是奇数，所以没有平局。</p>
-<p>亚历克斯和李轮流进行，亚历克斯先开始。 每回合，玩家从行的开始或结束处取走整堆石头。 这种情况一直持续到没有更多的石子堆为止，此时手中石子最多的玩家获胜。</p>
-<p>假设亚历克斯和李都发挥出最佳水平，当亚历克斯赢得比赛时返回 true ，当李赢得比赛时返回 false 。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/stone-game" target="_blank" rel="noopener">https://leetcode-cn.com/problems/stone-game</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>有个题解写的蛮好，就直接参考了他的思路</p>
-<ol>
-<li><p>先找方程</p>
-<p>需要起始位置，还有能区别两个人的first和second</p>
-<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/04/uBc72q.png" data-src="https://s2.ax1x.com/2019/10/04/uBc72q.png"></p>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定两个字符串s1, s2，找到使两个字符串相等所需删除字符的ASCII值的最小和。</p>
+<p>示例 1:</p>
+<p>输入: s1 = “sea”, s2 = “eat”<br>输出: 231<br>解释: 在 “sea” 中删除 “s” 并将 “s” 的值(115)加入总和。<br>在 “eat” 中删除 “t” 并将 116 加入总和。<br>结束时，两个字符串相等，115 + 116 = 231 就是符合条件的最小和。<br>示例 2:</p>
+<p>输入: s1 = “delete”, s2 = “leet”<br>输出: 403<br>解释: 在 “delete” 中删除 “dee” 字符串变成 “let”，<br>将 100[d]+101[e]+101[e] 加入总和。在 “leet” 中删除 “e” 将 101[e] 加入总和。<br>结束时，两个字符串都等于 “let”，结果即为 100+101+101+101 = 403 。<br>如果改为将两个字符串转换为 “lee” 或 “eet”，我们会得到 433 或 417 的结果，比答案更大。<br>注意:</p>
+<p>0 &lt; s1.length, s2.length &lt;= 1000。<br>所有字符串中的字符ASCII值在[97, 122]之间。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/minimum-ascii-delete-sum-for-two-strings" target="_blank" rel="noopener">https://leetcode-cn.com/problems/minimum-ascii-delete-sum-for-two-strings</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ol>
+<li><p>思路的转化</p>
 </li>
-<li><p>再找递推关系</p>
-<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/04/uBcqMV.png" data-src="https://s2.ax1x.com/2019/10/04/uBcqMV.png"></p>
-<p>就是先收后手的转化以及比较</p>
-</li>
-<li><p>找原始递推条件</p>
-<p>一路递推下去起始就是i=j的时候</p>
-<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/04/uBgZIH.png" data-src="https://s2.ax1x.com/2019/10/04/uBgZIH.png"></p>
-</li>
-<li><p>画出矩阵图</p>
-<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/04/uBgGdg.png" data-src="https://s2.ax1x.com/2019/10/04/uBgGdg.png"></p>
-<p>这一步主要是为了写起来更直观</p>
+<li><p>dp数组含义的确定</p>
 </li>
 </ol>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>参考题解：</p>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/stone-game/solution/jie-jue-bo-yi-wen-ti-de-dong-tai-gui-hua-tong-yong/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/stone-game/solution/jie-jue-bo-yi-wen-ti-de-dong-tai-gui-hua-tong-yong/</a><br>来源：力扣（LeetCode）</p>
-<p>c++代码如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">stoneGame</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; piles)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = piles.size();</span><br><span class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; dp[<span class="number">1000</span>][<span class="number">1000</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; N; j++)&#123;</span><br><span class="line">            dp[i][j].first = <span class="number">0</span>;</span><br><span class="line">            dp[i][j].second = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">            dp[i][i].first = piles[i];</span><br><span class="line">            dp[i][i].second = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;N;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+j&lt;N) &#123;</span><br><span class="line">                    <span class="keyword">int</span> left = piles[i] + dp[i+<span class="number">1</span>][i+j].second;</span><br><span class="line">                    <span class="keyword">int</span> right = piles[j] + dp[i][i+j<span class="number">-1</span>].second;</span><br><span class="line">                    dp[i][i+j].first = max(left, right);</span><br><span class="line">                    <span class="keyword">if</span>(left &gt; right)&#123;</span><br><span class="line">                        dp[i][i+j].second = dp[i+<span class="number">1</span>][i+j].first;</span><br><span class="line">                    &#125; <span class="keyword">else</span></span><br><span class="line">                        dp[i][i+j].second = dp[i][i+j<span class="number">-1</span>].second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][N<span class="number">-1</span>].first &gt; dp[<span class="number">0</span>][N<span class="number">-1</span>].second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>将减法转为加法：因为两个字符串是固定的，因此其实求的是最大的公共子串。</p>
+<p>dp数组是一个二维数组，dp[i][j]表示s1[0…i]和s2[0…j]的最大公共子串的ASCII和</p>
+<p>因此递推关系如下</p>
+<p>如果s1[i] == s2[j]，那么dp[i][j] = dp[i-1][j-1] + ASCII(s1[i])</p>
+<p>否则，因为最后两个字符不相等，可以随意去掉一个（同时出现并不会影响到最大子串）即 dp[i][j] = max(dp[i-1][j], dp[i][j-1])</p>
+<p>初始条件：可以容易看出初始条件为dp[0][0…s2.length()]和dp[0…s1.length()][0]</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumDeleteSum</span><span class="params">(<span class="built_in">string</span> s1, <span class="built_in">string</span> s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">1001</span>][<span class="number">1001</span>];</span><br><span class="line">        <span class="keyword">int</span> N1 = s1.size(), N2 = s2.size();</span><br><span class="line">        <span class="keyword">int</span> totalSum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N1;i++) totalSum += s1[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N2;j++) totalSum += s2[j];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N1;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N2;j++) dp[i][j]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N2;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1[<span class="number">0</span>]==s2[j])&#123;</span><br><span class="line">                <span class="keyword">while</span>(j&lt;N2)&#123;</span><br><span class="line">                    dp[<span class="number">0</span>][j] = s1[<span class="number">0</span>];</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N1;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1[i]==s2[<span class="number">0</span>])&#123;</span><br><span class="line">                <span class="keyword">while</span>(i&lt;N1)&#123;</span><br><span class="line">                    dp[i][<span class="number">0</span>] = s2[<span class="number">0</span>];</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N1;i++) </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;N2;j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(s1[i]==s2[j]) dp[i][j] = dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + s1[i];</span><br><span class="line">                <span class="keyword">else</span> dp[i][j] = max(dp[i<span class="number">-1</span>][j], dp[i][j<span class="number">-1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> totalSum - dp[N1<span class="number">-1</span>][N2<span class="number">-1</span>]*<span class="number">2</span>;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
                 </article>
@@ -236,14 +227,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="不同的二叉搜索树" href="/2019/10/04/不同的二叉搜索树/">
-            ← 不同的二叉搜索树
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="软件架构实践翻译&&笔记（三）--可修改性" href="/2019/10/04/软件架构实践翻译&&笔记（三）--可修改性/">
-            软件架构实践翻译&&笔记（三）--可修改性 →
+        <a class="next-post" title="不同的二叉搜索树II" href="/2019/10/04/不同的二叉搜索树II/">
+            不同的二叉搜索树II →
         </a>
         
     </nav>
