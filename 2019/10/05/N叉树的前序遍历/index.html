@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>乘积最大子序列 | 羊男</title>
+	<title>N叉树的前序遍历 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="乘积最大子序列 | 羊男">
+	<meta property="og:title" content="N叉树的前序遍历 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/09/10/乘积最大子序列/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/05/N叉树的前序遍历/">
 
 	
-	<meta property="article:published_time" content="2019-09-10T13:09:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-05T10:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/09/10/乘积最大子序列/">
+	<meta property="article:published_first" content="羊男, /2019/10/05/N叉树的前序遍历/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/09/10/乘积最大子序列/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/05/N叉树的前序遍历/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-09-10T05:59:39.000Z">
-                    2019-09-10
+                <time class="post-full-meta-date" datetime="2019-10-05T02:33:04.000Z">
+                    2019-10-5
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">乘积最大子序列</h1>
+            <h1 class="post-full-title">N叉树的前序遍历</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -183,25 +183,25 @@
                 </span>
             </div>
         </header>
-        <div class="post-full ">
-            
-            <figure class="post-full-image" style="background-image: url(https://s2.ax1x.com/2019/09/17/nI3qxg.jpg)">
-            </figure>
+        <div class="post-full no-image">
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 nums ，找出一个序列中乘积最大的连续子序列（该序列至少包含一个数）。</p>
-<p>示例 1:</p>
-<p>输入: [2,3,-2,4]<br>输出: 6<br>解释: 子数组 [2,3] 有最大乘积 6。<br>示例 2:</p>
-<p>输入: [-2,0,-1]<br>输出: 0<br>解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-product-subarray" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-subarray</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>连续最大的乘积序列，可以考虑什么时候连乘会变小—有时候是0，有时候是负数</p>
-<p>对于负数而言，他会让之前正数连乘的积变成最小；同时也会让之前的负数连乘变成最大。因此我们要保留两个值：之前连乘的最大和最小值</p>
-<p>对于可能出现0的情况，其实不用考虑，因为此时连乘的最大最小值都是0</p>
-<p>为了保证每次都可以得到连乘的max和min，在每次计算乘积的时候，都要取计算的结果和当前位置的max或者min。例如，计算连乘max的时候，MAX = max(MAX*nums[i], nums[i])</p>
-<p>遇到负数，交换最大最小，再计算</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>参考：<a href="https://leetcode-cn.com/problems/maximum-product-subarray/solution/hua-jie-suan-fa-152-cheng-ji-zui-da-zi-xu-lie-by-g/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-subarray/solution/hua-jie-suan-fa-152-cheng-ji-zui-da-zi-xu-lie-by-g/</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">-100000</span>;</span><br><span class="line">        <span class="keyword">int</span> Max = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> Min = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = Max;</span><br><span class="line">                Max = Min;</span><br><span class="line">                Min = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            Max = max(Max*nums[i], nums[i]);</span><br><span class="line">            Min = min(Min*nums[i], nums[i]);</span><br><span class="line">            </span><br><span class="line">            result = max(result, Max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个 N 叉树，返回其节点值的前序遍历。</p>
+<p>例如，给定一个 3叉树 :</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/05/us9c4S.png" data-src="https://s2.ax1x.com/2019/10/05/us9c4S.png"></p>
+<p>返回其前序遍历: [1,3,5,6,2,4]。</p>
+<p>说明: 递归法很简单，你可以使用迭代法完成此题吗?</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal" target="_blank" rel="noopener">https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ol>
+<li>递归</li>
+<li>迭代</li>
+</ol>
+<p>递归因为只需要处理一下当前节点即可，所以返回void即可；不需要全局数据，只要传入一个引用参数，修改引用参数即可。</p>
+<p>迭代要用栈，注意压栈顺序是从右往左。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Node*&gt; children;</span><br><span class="line"></span><br><span class="line">    Node() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Node(<span class="keyword">int</span> _val, <span class="built_in">vector</span>&lt;Node*&gt; _children) &#123;</span><br><span class="line">        val = _val;</span><br><span class="line">        children = _children;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; preorder(Node* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="keyword">return</span> ans;</span><br><span class="line">        <span class="built_in">stack</span>&lt;Node*&gt; n;</span><br><span class="line">        n.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!n.empty())&#123;</span><br><span class="line">            root = n.top();</span><br><span class="line">            n.pop();</span><br><span class="line">            ans.push_back(root -&gt; val);</span><br><span class="line">            <span class="built_in">vector</span>&lt;Node*&gt; c = root -&gt; children;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=c.size()<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">                n.push(c[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Node*&gt; children;</span><br><span class="line"></span><br><span class="line">    Node() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Node(<span class="keyword">int</span> _val, <span class="built_in">vector</span>&lt;Node*&gt; _children) &#123;</span><br><span class="line">        val = _val;</span><br><span class="line">        children = _children;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; preorder(Node* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        DFS(ans, root);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; ans, Node* node)</span></span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(node == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">         ans.push_back(node -&gt; val);</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">auto</span> n: node -&gt; children)&#123;</span><br><span class="line">             DFS(ans, n);</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
                 </article>
@@ -212,7 +212,11 @@
                     </li>
                     
                     <li>
-                        <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+                        <a href="/tags/暴搜/" rel="tag"># 暴搜</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/树/" rel="tag"># 树</a>
                     </li>
                     
                 </ul>
@@ -223,14 +227,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="软件架构实践翻译&&笔记（一）--可用性" href="/2019/09/19/软件架构实践翻译&&笔记（一）可用性/">
-            ← 软件架构实践翻译&&笔记（一）--可用性
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="单词拆分" href="/2019/09/06/单词拆分/">
-            单词拆分 →
+        <a class="next-post" title="二叉树的最大深度" href="/2019/10/05/二叉树的最大深度/">
+            二叉树的最大深度 →
         </a>
         
     </nav>
