@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>素数筛法 | 羊男</title>
+	<title>括号生成 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="素数筛法 | 羊男">
+	<meta property="og:title" content="括号生成 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/09/26/素数筛法/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/06/括号生成/">
 
 	
-	<meta property="article:published_time" content="2019-09-26T19:09:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-06T16:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/09/26/素数筛法/">
+	<meta property="article:published_first" content="羊男, /2019/10/06/括号生成/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/09/26/素数筛法/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/06/括号生成/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-09-26T11:57:08.000Z">
-                    2019-09-26
+                <time class="post-full-meta-date" datetime="2019-10-06T08:44:32.000Z">
+                    2019-10-6
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">素数筛法</h1>
+            <h1 class="post-full-title">括号生成</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -187,23 +187,26 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <ol>
-<li><p>判断单个数字n是否是素数，只需要依次从2判断到根号n即可</p>
-</li>
-<li><p>判断小于n有几个素数，就可以用筛法</p>
-</li>
-<li><p>判断[a, b]之间有几个素数，也可以转化成问题2</p>
-</li>
-</ol>
-<p>![image-20190926200125757](/Users/cengshaoxun/Library/Application Support/typora-user-images/image-20190926200125757.png)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> prime[<span class="number">1000000</span>];</span><br><span class="line"><span class="keyword">bool</span> is_prime[<span class="number">1000000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sieve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) is_prime[i] = <span class="literal">true</span>;</span><br><span class="line">    is_prime[<span class="number">0</span>] = is_prime[<span class="number">1</span>] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(is_prime[i])&#123;</span><br><span class="line">            prime[p++] = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span> * i; j &lt;= n; j += i) is_prime[j] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sieve(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。</p>
+<p>例如，给出 n = 3，生成结果为：</p>
+<p>[<br>  “((()))”,<br>  “(()())”,<br>  “(())()”,<br>  “()(())”,<br>  “()()()”<br>]</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/generate-parentheses" target="_blank" rel="noopener">https://leetcode-cn.com/problems/generate-parentheses</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>DFS，每次考虑一个位置放左括号还是右括号。为了防止垃圾情况过多，预先剪枝，即只有合理的时候才会继续，那么只要是能到最后（所有括号都被用完），就可以得到一个解。</p>
+<p>具体来说就是：</p>
+<p>用一个栈（一个整数就够了）来维护当前栈中的左括号数量，来实时判断是否可以放右括号；还需要左右括号的数量；还需要当前的字符串</p>
+<p>对于每一个位置，左括号可以随便放，右括号要考虑一下，如果栈中有左括号，那么可以放，否则不行。这样预先剪枝，到最后如果左右括号都用完，自然就形成一个解，而不用最后判断。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; generateParenthesis(<span class="keyword">int</span> n) &#123;</span><br><span class="line">      <span class="keyword">int</span> left = n, right = n;</span><br><span class="line">      <span class="keyword">int</span> <span class="built_in">stack</span> = <span class="number">0</span>;</span><br><span class="line">      <span class="built_in">string</span> s = <span class="string">""</span>;</span><br><span class="line">      DFS(<span class="built_in">stack</span>, left, right, s);</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    stack表示栈中左括号的数量</span></span><br><span class="line"><span class="comment">    left表示剩余的左括号数量</span></span><br><span class="line"><span class="comment">    right表示剩余的右括号数量</span></span><br><span class="line"><span class="comment">    s表示当前的字符串情况</span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> <span class="built_in">stack</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(left == right &amp;&amp; left == <span class="number">0</span>)&#123;  <span class="comment">// 括号全都用上了表示得到一个结果</span></span><br><span class="line">        ans.push_back(s);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(left != <span class="number">0</span>)&#123;  <span class="comment">// 左括号随便放</span></span><br><span class="line">        DFS(<span class="built_in">stack</span>+<span class="number">1</span>, left<span class="number">-1</span>, right, s+<span class="string">"("</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">stack</span> != <span class="number">0</span> &amp;&amp; right != <span class="number">0</span>)&#123;  <span class="comment">// 右括号有条件地放</span></span><br><span class="line">        DFS(<span class="built_in">stack</span><span class="number">-1</span>, left, right<span class="number">-1</span>, s+<span class="string">")"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
                 </article>
                 <ul class="tags-postTags">
                     
                     <li>
-                        <a href="/tags/数学问题/" rel="tag"># 数学问题</a>
+                        <a href="/tags/刷题/" rel="tag"># 刷题</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/暴搜/" rel="tag"># 暴搜</a>
                     </li>
                     
                 </ul>
@@ -214,14 +217,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="软件架构实践翻译&&笔记（三）--可修改性" href="/2019/10/04/软件架构实践翻译&&笔记（三）--可修改性/">
-            ← 软件架构实践翻译&&笔记（三）--可修改性
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="c++默认实参和重载" href="/2019/09/24/c-默认实参和重载/">
-            c++默认实参和重载 →
+        <a class="next-post" title="全排列" href="/2019/10/06/全排列/">
+            全排列 →
         </a>
         
     </nav>
@@ -247,7 +246,7 @@
         </a>
     </div>
     <div class="toc-main">
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
     </div>
 </div>
 
