@@ -139,7 +139,7 @@
             <h1 class="site-title">
                 Archives
             </h1>
-            <h2 class="site-description">Total: 35</h2>
+            <h2 class="site-description">Total: 36</h2>
         </div>
         
         
@@ -150,6 +150,58 @@
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="不同路径" href="/2019/10/06/不同路径/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								算法
+								| 
+								
+								<time datetime="2019-10-06T11:11:46.000Z">
+									2019-10-06
+								</time>
+							</span>
+							<h2 class="post-card-title">不同路径</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								题目一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							3
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
 			
 			<article class="post-card post  no-image ">
 				
@@ -176,11 +228,11 @@
 								
 								
 								
-								
-								
 								题目给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
 例如，给出 n = 3，生成结果为：
-[  “((()))”, 
+[  “((()))”,  “(()())”,  “(())()”,  “()(())”,  “()()()”]
+来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/generate-parentheses
+思路DFS，每次考虑一个位置放左括号还是右括号。为了防止垃圾情况过多，预先剪枝，即只有合
 								...
 							</p>
 						</div>
@@ -650,58 +702,6 @@ BSTIterator iterator = new BSTIterator(root);iterator.next();    // 返回 3iter
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="先序遍历构造二叉树" href="/2019/10/04/先序遍历构造二叉树/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-04T15:17:12.000Z">
-									2019-10-04
-								</time>
-							</span>
-							<h2 class="post-card-title">先序遍历构造二叉树</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目返回与给定先序遍历 preorder 相匹配的二叉搜索树（binary search tree）的根结点。
-(回想一下，二叉搜索树是二叉树的一种，其每个节点都满足以下规则，对于 node.left 的任何后代，值总 &lt; node.val，而 node.right 的任何后代，值总 &gt; node.val。此外，先序遍历首先显示节点的值，然后遍历 node.left，接着遍历 node.right。）
-示例：
-输入：[8,5,1,7,10,12]输出：[8,5,1
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							3
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -746,6 +746,12 @@ BSTIterator iterator = new BSTIterator(root);iterator.next();    // 返回 3iter
       
       
       <li>
+        <a href="/2019/10/06/不同路径/">不同路径</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2019/10/06/括号生成/">括号生成</a>
       </li>
       
@@ -756,10 +762,6 @@ BSTIterator iterator = new BSTIterator(root);iterator.next();    // 返回 3iter
       </li>
       
       
-      
-      <li>
-        <a href="/2019/10/06/c-容器库（一）/">c++容器库（一）</a>
-      </li>
       
       
       

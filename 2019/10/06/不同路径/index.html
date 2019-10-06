@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>最大二叉树 | 羊男</title>
+	<title>不同路径 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="最大二叉树 | 羊男">
+	<meta property="og:title" content="不同路径 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/10/04/最大二叉树/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/06/不同路径/">
 
 	
-	<meta property="article:published_time" content="2019-10-04T21:10:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-06T19:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/10/04/最大二叉树/">
+	<meta property="article:published_first" content="羊男, /2019/10/06/不同路径/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/10/04/最大二叉树/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/06/不同路径/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-10-04T13:12:49.000Z">
-                    2019-10-4
+                <time class="post-full-meta-date" datetime="2019-10-06T11:11:46.000Z">
+                    2019-10-6
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">最大二叉树</h1>
+            <h1 class="post-full-title">不同路径</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -187,23 +187,20 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个不含重复元素的整数数组。一个以此数组构建的最大二叉树定义如下：</p>
-<p>二叉树的根是数组中的最大元素。<br>左子树是通过数组中最大值左边部分构造出的最大二叉树。<br>右子树是通过数组中最大值右边部分构造出的最大二叉树。<br>通过给定的数组构建最大二叉树，并且输出这个树的根节点。</p>
-<p>示例 ：</p>
-<p>输入：[3,2,1,6,0,5]<br>输出：返回下面这棵树的根节点：</p>
-<pre><code>  6
-/   \</code></pre><p>   3     5<br>    \    /<br>     2  0<br>       <br>        1</p>
-<p>提示：</p>
-<p>给定的数组的大小在 [1, 1000] 之间。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-binary-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-binary-tree</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接暴力搜索即可</p>
-<p>找出最大节点，DFS左右递归建树，然后拼起来，返回即可</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>c++如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span> </span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> DFS(nums, <span class="number">0</span>, nums.size()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">DFS</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left&gt;right) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(left == right) <span class="keyword">return</span> <span class="keyword">new</span> TreeNode(nums[left]);</span><br><span class="line">        <span class="keyword">int</span> maxIndex = findMaxPosition(nums, left, right);</span><br><span class="line">        TreeNode* leftChild = DFS(nums, left, maxIndex<span class="number">-1</span>);</span><br><span class="line">        TreeNode* rightChild = DFS(nums, maxIndex+<span class="number">1</span>, right);</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(nums[maxIndex]);</span><br><span class="line">        root -&gt; left = leftChild;</span><br><span class="line">        root -&gt; right = rightChild;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMaxPosition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = nums[left];</span><br><span class="line">        <span class="keyword">int</span> index = left;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=left+<span class="number">1</span>; i&lt;=right; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;max)&#123;</span><br><span class="line">                max = nums[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/unique-paths" target="_blank" rel="noopener">https://leetcode-cn.com/problems/unique-paths</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>一开始想用DFS，写起来容易，就是超时了。</p>
+<p>DFS重复计算了很多，即经过一个格子的时候其实早就经过了，当然可以用记忆化搜索来优化，用一个二维数组来存储一下即可。</p>
+<p>考虑用动态规划，用一个二维数组来表示某位置到终点的情况数，(x,y)位置的次数等于(x+1,y) + (x, y+1)，这样就有递推关系了，然后原始条件就是右下角的那几个。</p>
+<p>其实二维数组套两层循环，一次也只是用到了一维数组，因此可以稍微优化一下。这里稍微画一个图看着写就行了。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>优化前：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> ans;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[m+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[m][i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) dp[j][n] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=m<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=n<span class="number">-1</span>;j&gt;=<span class="number">1</span>;j--)&#123;</span><br><span class="line">                dp[i][j] = dp[i+<span class="number">1</span>][j] + dp[i][j+<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>题解中有一个正向遍历一次的方法思路蛮巧妙的：</p>
-<p>遍历一次数组并随时将新的节点插入树的相应位置，如果当前遍历的值大于树的根节点，则将当前节点作为新的根节点，将原来的树当作新根节点的左子树，否则的话，将其递归的交给根节点的右子树处理（因为从左向右遍历，新的节点一定在右边）。</p>
-<p>作者：ruo-shui-qing-ying<br>链接：<a href="https://leetcode-cn.com/problems/maximum-binary-tree/solution/czi-xia-er-shang-by-ruo-shui-qing-ying/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-binary-tree/solution/czi-xia-er-shang-by-ruo-shui-qing-ying/</a></p>
+<p>优化后：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> ans;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[m+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) dp[j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=m<span class="number">-1</span>;j&gt;=<span class="number">1</span>;j--)&#123;</span><br><span class="line">                dp[j] = dp[j] + dp[j+<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
                 </article>
                 <ul class="tags-postTags">
@@ -213,11 +210,11 @@
                     </li>
                     
                     <li>
-                        <a href="/tags/暴搜/" rel="tag"># 暴搜</a>
+                        <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
                     </li>
                     
                     <li>
-                        <a href="/tags/树/" rel="tag"># 树</a>
+                        <a href="/tags/暴搜/" rel="tag"># 暴搜</a>
                     </li>
                     
                 </ul>
@@ -228,14 +225,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="二叉搜索树的范围和" href="/2019/10/04/二叉搜索树的范围和/">
-            ← 二叉搜索树的范围和
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="买卖股票的最佳时机含手续费" href="/2019/10/04/买卖股票的最佳时机含手续费/">
-            买卖股票的最佳时机含手续费 →
+        <a class="next-post" title="括号生成" href="/2019/10/06/括号生成/">
+            括号生成 →
         </a>
         
     </nav>
