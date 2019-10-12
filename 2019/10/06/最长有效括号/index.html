@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>买卖股票的最佳时机含手续费 | 羊男</title>
+	<title>最长有效括号 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="买卖股票的最佳时机含手续费 | 羊男">
+	<meta property="og:title" content="最长有效括号 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/10/04/买卖股票的最佳时机含手续费/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/06/最长有效括号/">
 
 	
-	<meta property="article:published_time" content="2019-10-04T20:10:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-06T22:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/10/04/买卖股票的最佳时机含手续费/">
+	<meta property="article:published_first" content="羊男, /2019/10/06/最长有效括号/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/10/04/买卖股票的最佳时机含手续费/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/06/最长有效括号/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-10-04T12:40:28.000Z">
-                    2019-10-4
+                <time class="post-full-meta-date" datetime="2019-10-06T14:08:22.000Z">
+                    2019-10-6
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">买卖股票的最佳时机含手续费</h1>
+            <h1 class="post-full-title">最长有效括号</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -187,21 +187,25 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 prices，其中第 i 个元素代表了第 i 天的股票价格 ；非负整数 fee 代表了交易股票的手续费用。</p>
-<p>你可以无限次地完成交易，但是你每次交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
-<p>返回获得利润的最大值。</p>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长的包含有效括号的子串的长度。</p>
 <p>示例 1:</p>
-<p>输入: prices = [1, 3, 2, 8, 4, 9], fee = 2<br>输出: 8<br>解释: 能够达到的最大利润:<br>在此处买入 prices[0] = 1<br>在此处卖出 prices[3] = 8<br>在此处买入 prices[4] = 4<br>在此处卖出 prices[5] = 9<br>总利润: ((8 - 1) - 2) + ((9 - 4) - 2) = 8.<br>注意:</p>
-<p>0 &lt; prices.length &lt;= 50000.<br>0 &lt; prices[i] &lt; 50000.<br>0 &lt;= fee &lt; 50000.</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>回想一下没有手续费的情况。只要每次比上次多，就可以卖出，比上次少，就忽略。其实隐含着比上次少，更新最小值，比上次多，那么加上股票价格，并且更新最小值为当前值。</p>
-<p>因此有手续费的情况下，维护一个最小值，当有值比最小值小，更新最小值；若大，差值超过手续费，则加上，并且更新当前最小值为当前值减去手续费，否则不做任何处理。更新当前最小值为当前值减去手续费可以保证连续递增的情况下正确计算，且当作最小值也是正确的，因为如果值比这个最小值大且没有大得超过手续费，那么说明不值得更新。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>参考：</p>
-<p>作者：rancho628<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/ti-hao-122mei-you-shou-xu-fei-jia-yi-dian-dong-xi-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/ti-hao-122mei-you-shou-xu-fei-jia-yi-dian-dong-xi-/</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices, <span class="keyword">int</span> fee)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> inhand = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.size();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i]-inhand&gt;fee) &#123;</span><br><span class="line">                profit += (prices[i]-inhand-fee);</span><br><span class="line">                inhand = prices[i]-fee;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(prices[i]&lt;inhand)&#123;</span><br><span class="line">                inhand = prices[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>输入: “(()”<br>输出: 2<br>解释: 最长有效括号子串为 “()”<br>示例 2:</p>
+<p>输入: “)()())”<br>输出: 4<br>解释: 最长有效括号子串为 “()()”</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/longest-valid-parentheses" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-valid-parentheses</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>最开始想到用栈模拟。</p>
+<p>题解里面用的是动态规划感觉还是比较容易些。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
+<p>定义一个dp数组。第i个位置为以i结尾的最长括号的长度。</p>
+<p>那么可以得到递推关系：</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/12/uXqRC8.png" data-src="https://s2.ax1x.com/2019/10/12/uXqRC8.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dp[] = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">')'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i - <span class="number">1</span>) == <span class="string">'('</span>) &#123;</span><br><span class="line">                    dp[i] = (i &gt;= <span class="number">2</span> ? dp[i - <span class="number">2</span>] : <span class="number">0</span>) + <span class="number">2</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i - dp[i - <span class="number">1</span>] &gt; <span class="number">0</span> &amp;&amp; s.charAt(i - dp[i - <span class="number">1</span>] - <span class="number">1</span>) == <span class="string">'('</span>) &#123;</span><br><span class="line">                    dp[i] = dp[i - <span class="number">1</span>] + ((i - dp[i - <span class="number">1</span>]) &gt;= <span class="number">2</span> ? dp[i - dp[i - <span class="number">1</span>] - <span class="number">2</span>] : <span class="number">0</span>) + <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                maxans = Math.max(maxans, dp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>另外评论区有其他解法也值得参考：</p>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-2/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-2/</a></p>
+<p>用栈模拟</p>
+<p>注意一下整个栈清空时候能正确计算。即()()可以算出4。</p>
+<p>这样就要保留一下前一个位置的信息，且用下标直接减，不要用pop出来的数字+1。</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/10/12/uXL8xg.png" data-src="https://s2.ax1x.com/2019/10/12/uXL8xg.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxans = <span class="number">0</span>;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">'('</span>) &#123;</span><br><span class="line">                stack.push(i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stack.pop();  <span class="comment">// 直接舍弃</span></span><br><span class="line">                <span class="keyword">if</span> (stack.empty()) &#123;</span><br><span class="line">                    stack.push(i);  <span class="comment">// 处理的就是)()()这种情况</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;  <span class="comment">// 计算舍弃之后的前一位到目前的距离</span></span><br><span class="line">                    maxans = Math.max(maxans, i - stack.peek());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
                 </article>
                 <ul class="tags-postTags">
@@ -214,6 +218,10 @@
                         <a href="/tags/刷题/" rel="tag"># 刷题</a>
                     </li>
                     
+                    <li>
+                        <a href="/tags/栈/" rel="tag"># 栈</a>
+                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -222,14 +230,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="最大二叉树" href="/2019/10/04/最大二叉树/">
-            ← 最大二叉树
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="回文子串" href="/2019/10/04/回文子串/">
-            回文子串 →
+        <a class="next-post" title="不同路径" href="/2019/10/06/不同路径/">
+            不同路径 →
         </a>
         
     </nav>
