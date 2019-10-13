@@ -22,7 +22,7 @@
 	<link rel="preconnect" href="//gravatar.loli.net">
 	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
 
-	<title>括号生成 | 羊男</title>
+	<title>找到字符串中所有字母异位词 | 羊男</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -50,14 +50,14 @@
 
 	<meta property="og:site_name" content="羊男">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="括号生成 | 羊男">
+	<meta property="og:title" content="找到字符串中所有字母异位词 | 羊男">
 	<meta property="og:description" content>
-	<meta property="og:url" content="https://caesarroot.github.io/2019/10/06/括号生成/">
+	<meta property="og:url" content="https://caesarroot.github.io/2019/10/13/找到字符串中所有字母异位词/">
 
 	
-	<meta property="article:published_time" content="2019-10-06T16:10:00+08:00"> 
+	<meta property="article:published_time" content="2019-10-13T16:10:00+08:00"> 
 	<meta property="article:author" content="CaesarRoot">
-	<meta property="article:published_first" content="羊男, /2019/10/06/括号生成/">
+	<meta property="article:published_first" content="羊男, /2019/10/13/找到字符串中所有字母异位词/">
 	
 
 	
@@ -67,7 +67,7 @@
 	
 	
 	
-<link rel="canonical" href="https://caesarroot.github.io/2019/10/06/括号生成/">
+<link rel="canonical" href="https://caesarroot.github.io/2019/10/13/找到字符串中所有字母异位词/">
 
 
 
@@ -147,8 +147,8 @@
     <div class="inner">
         <header class="post-full-header">
             <div class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2019-10-06T08:44:32.000Z">
-                    2019-10-6
+                <time class="post-full-meta-date" datetime="2019-10-13T08:54:25.000Z">
+                    2019-10-13
                 </time>
                 
                 <span class="date-divider">/</span>
@@ -157,7 +157,7 @@
                 
                 
             </div>
-            <h1 class="post-full-title">括号生成</h1>
+            <h1 class="post-full-title">找到字符串中所有字母异位词</h1>
             
             <div style="width: 100%;
                         margin-top: 16px;
@@ -187,15 +187,27 @@
             
             <div class="post-full-content">
                 <article id="lightgallery" class="markdown-body">
-                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。</p>
-<p>例如，给出 n = 3，生成结果为：</p>
-<p>[<br>  “((()))”,<br>  “(()())”,<br>  “(())()”,<br>  “()(())”,<br>  “()()()”<br>]</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/generate-parentheses" target="_blank" rel="noopener">https://leetcode-cn.com/problems/generate-parentheses</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>DFS，每次考虑一个位置放左括号还是右括号。为了防止垃圾情况过多，预先剪枝，即只有合理的时候才会继续，那么只要是能到最后（所有括号都被用完），就可以得到一个解。</p>
-<p>具体来说就是：</p>
-<p>用一个栈（一个整数就够了）来维护当前栈中的左括号数量，来实时判断是否可以放右括号；还需要左右括号的数量；还需要当前的字符串</p>
-<p>对于每一个位置，左括号可以随便放，右括号要考虑一下，如果栈中有左括号，那么可以放，否则不行。这样预先剪枝，到最后如果左右括号都用完，自然就形成一个解，而不用最后判断。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; generateParenthesis(<span class="keyword">int</span> n) &#123;</span><br><span class="line">      <span class="keyword">int</span> left = n, right = n;</span><br><span class="line">      <span class="keyword">int</span> <span class="built_in">stack</span> = <span class="number">0</span>;</span><br><span class="line">      <span class="built_in">string</span> s = <span class="string">""</span>;</span><br><span class="line">      DFS(<span class="built_in">stack</span>, left, right, s);</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    stack表示栈中左括号的数量</span></span><br><span class="line"><span class="comment">    left表示剩余的左括号数量</span></span><br><span class="line"><span class="comment">    right表示剩余的右括号数量</span></span><br><span class="line"><span class="comment">    s表示当前的字符串情况</span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> <span class="built_in">stack</span>, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(left == right &amp;&amp; left == <span class="number">0</span>)&#123;  <span class="comment">// 括号全都用上了表示得到一个结果</span></span><br><span class="line">        ans.push_back(s);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(left != <span class="number">0</span>)&#123;  <span class="comment">// 左括号随便放</span></span><br><span class="line">        DFS(<span class="built_in">stack</span>+<span class="number">1</span>, left<span class="number">-1</span>, right, s+<span class="string">"("</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">stack</span> != <span class="number">0</span> &amp;&amp; right != <span class="number">0</span>)&#123;  <span class="comment">// 右括号有条件地放</span></span><br><span class="line">        DFS(<span class="built_in">stack</span><span class="number">-1</span>, left, right<span class="number">-1</span>, s+<span class="string">")"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。</p>
+<p>字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。</p>
+<p>说明：</p>
+<p>字母异位词指字母相同，但排列不同的字符串。<br>不考虑答案输出的顺序。<br>示例 1:</p>
+<p>输入:<br>s: “cbaebabacd” p: “abc”</p>
+<p>输出:<br>[0, 6]</p>
+<p>解释:<br>起始索引等于 0 的子串是 “cba”, 它是 “abc” 的字母异位词。<br>起始索引等于 6 的子串是 “bac”, 它是 “abc” 的字母异位词。<br> 示例 2:</p>
+<p>输入:<br>s: “abab” p: “ab”</p>
+<p>输出:<br>[0, 1, 2]</p>
+<p>解释:<br>起始索引等于 0 的子串是 “ab”, 它是 “ab” 的字母异位词。<br>起始索引等于 1 的子串是 “ba”, 它是 “ab” 的字母异位词。<br>起始索引等于 2 的子串是 “ab”, 它是 “ab” 的字母异位词。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/find-all-anagrams-in-a-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-all-anagrams-in-a-string</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>双指针。</p>
+<p>注意一下这里每个字符的数量要完全匹配。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>两种写法。</p>
+<p>第一种考虑当某个字符变多的时候。</p>
+<p>例如窗口中有两个a，但是p中只有一个a，这时需要缩小窗口，直到只有一个a，同时注意更新match</p>
+<p>当match达到要求，直接就可以得到结果</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findAnagrams(<span class="built_in">string</span> s, <span class="built_in">string</span> p) &#123;</span><br><span class="line">        <span class="keyword">int</span> count[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> diff = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> match = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: p)&#123;</span><br><span class="line">            <span class="keyword">if</span>(count[c]==<span class="number">0</span>) diff++;</span><br><span class="line">            count[c] += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> window[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>, l = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">while</span>(r &lt; s.size())&#123;</span><br><span class="line">            window[s[r]]++;</span><br><span class="line">            <span class="keyword">if</span>(window[s[r]] == count[s[r]])&#123;</span><br><span class="line">                match++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">while</span>(window[s[r]] &gt; count[s[r]])&#123;</span><br><span class="line">                    window[s[l]]--;</span><br><span class="line">                    <span class="keyword">if</span>(window[s[l]] == count[s[l]]<span class="number">-1</span>) match--;</span><br><span class="line">                    l++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(match == diff)&#123;</span><br><span class="line">               ans.push_back(l);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>第二种是不管字符数目超过，一直累加到match达到要求，此时要注意窗口中字符种类虽然达到要求，但是个数不一定符合。所以需要缩小窗口，直到窗口大小如果等于p的长度，且match仍然符合要求，那么得到一个结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findAnagrams(<span class="built_in">string</span> s, <span class="built_in">string</span> p) &#123;</span><br><span class="line">        <span class="keyword">int</span> count[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> diff = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> match = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: p)&#123;</span><br><span class="line">            <span class="keyword">if</span>(count[c]==<span class="number">0</span>) diff++;</span><br><span class="line">            count[c] += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> window[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>, l = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">while</span>(r &lt; s.size())&#123;</span><br><span class="line">            window[s[r]]++;</span><br><span class="line">            <span class="keyword">if</span>(window[s[r]] == count[s[r]])</span><br><span class="line">                match++;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(match == diff)&#123;</span><br><span class="line">                <span class="keyword">if</span>(r-l+<span class="number">1</span> == p.size())&#123;</span><br><span class="line">                    ans.push_back(l);</span><br><span class="line">                &#125;</span><br><span class="line">                window[s[l]]--;</span><br><span class="line">                <span class="keyword">if</span>(window[s[l]] == count[s[l]]<span class="number">-1</span>) &#123;</span><br><span class="line">                    match--;</span><br><span class="line">                &#125;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 </article>
@@ -206,7 +218,7 @@
                     </li>
                     
                     <li>
-                        <a href="/tags/暴搜/" rel="tag"># 暴搜</a>
+                        <a href="/tags/双指针/" rel="tag"># 双指针</a>
                     </li>
                     
                 </ul>
@@ -217,14 +229,10 @@
     
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="不同路径" href="/2019/10/06/不同路径/">
-            ← 不同路径
-        </a>
-        
         <span class="prev-next-post">·</span>
         
-        <a class="next-post" title="全排列" href="/2019/10/06/全排列/">
-            全排列 →
+        <a class="next-post" title="c++容器库（二）" href="/2019/10/12/c-容器库（二）/">
+            c++容器库（二） →
         </a>
         
     </nav>

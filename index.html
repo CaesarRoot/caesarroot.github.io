@@ -160,6 +160,122 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
+					<a class="post-card-content-link" title="找到字符串中所有字母异位词" href="/2019/10/13/找到字符串中所有字母异位词/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								算法
+								| 
+								
+								<time datetime="2019-10-13T08:54:25.000Z">
+									2019-10-13
+								</time>
+							</span>
+							<h2 class="post-card-title">找到字符串中所有字母异位词</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								题目给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。
+字符串只包含小写英文字母，并且字符串 s 和
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							6
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="c++容器库（二）" href="/2019/10/12/c-容器库（二）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-10-12T15:14:25.000Z">
+									2019-10-12
+								</time>
+							</span>
+							<h2 class="post-card-title">c++容器库（二）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								顺序容器
+添加元素容器元素是拷贝。即容器中的元素与提供值的对象之间没有任何关联，修改容器的值不会影响到原始对象，反之亦然。
+
+push_back
+追加元素到尾部。array和forward_list不支持此操作。（string支持此操作）
+
+push_front
+在头部插入。
+list, forward_list, deque支持此操作
+vector不支持此操作。
+
+insert单一插入
+任意位置插入
+接受一个迭代器
+在迭代器之前插入
+vector不支持push_front，
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							1
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
 					<a class="post-card-content-link" title="最小覆盖子串" href="/2019/10/12/最小覆盖子串/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -182,11 +298,12 @@
 								
 								
 								
-								
-								
 								题目给你一个字符串 S、一个字符串 T，请在字符串 S 里面找出：包含 T 所有字母的最小子串。
 示例：
-输入: S = “ADOBECODEBANC”, T 
+输入: S = “ADOBECODEBANC”, T = “ABC”输出: “BANC”
+来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/minimum-window-substring
+思路用一个数组记录一下要搜索的子串对应字符出现的次数。
+然后用两个指针l和r，一个指针r向右，一直搜索到l到r之间的子串包含要搜索的
 								...
 							</p>
 						</div>
@@ -595,118 +712,6 @@ http://www.cplusplus.com/reference/i
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="二叉搜索树的迭代器" href="/2019/10/05/二叉搜索树的迭代器/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-05T03:26:19.000Z">
-									2019-10-05
-								</time>
-							</span>
-							<h2 class="post-card-title">二叉搜索树的迭代器</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。
-调用 next() 将返回二叉搜索树中的下一个最小的数。
-示例：
-BSTIterator iterator = new BSTIterator(root);iterator.next();    // 返回 3iterator.next();    // 返回 7iterator.hasNext(); // 返回 trueiterator.next();    // 返回 9iterator.hasNex
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							5
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="N叉树的前序遍历" href="/2019/10/05/N叉树的前序遍历/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-05T02:33:04.000Z">
-									2019-10-05
-								</time>
-							</span>
-							<h2 class="post-card-title">N叉树的前序遍历</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目给定一个 N 叉树，返回其节点值的前序遍历。
-例如，给定一个 3叉树 :
-
-返回其前序遍历: [1,3,5,6,2,4]。
-说明: 递归法很简单，你可以使用迭代法完成此题吗?
-来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal
-思路
-递归
-迭代
-
-递归因为只需要处理一下当前节点即可，所以返回void即可；不需要全局数据，只要传入一个引用参数，修改引用参数即可。
-迭
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -751,20 +756,24 @@ BSTIterator iterator = new BSTIterator(root);iterator.next();    // 返回 3iter
       
       
       <li>
+        <a href="/2019/10/13/找到字符串中所有字母异位词/">找到字符串中所有字母异位词</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/10/12/c-容器库（二）/">c++容器库（二）</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2019/10/12/最小覆盖子串/">最小覆盖子串</a>
       </li>
       
       
       
-      <li>
-        <a href="/2019/10/06/最长有效括号/">最长有效括号</a>
-      </li>
       
-      
-      
-      <li>
-        <a href="/2019/10/06/不同路径/">不同路径</a>
-      </li>
       
       
       
@@ -867,7 +876,7 @@ BSTIterator iterator = new BSTIterator(root);iterator.next();    // 返回 3iter
 		<h3 class="read-next-card-header-title">Tag Cloud</h3>
 	</header>
 	<div class="read-next-card-content-ext">
-		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 14px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/刷题，暴搜/" style="font-size: 14px;">刷题，暴搜</a> <a href="/tags/动态规划/" style="font-size: 22px;">动态规划</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 14px;">容器</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 20px;">暴搜</a> <a href="/tags/架构/" style="font-size: 16px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 18px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
+		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 17.33px;">c++</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 15.67px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/刷题，暴搜/" style="font-size: 14px;">刷题，暴搜</a> <a href="/tags/动态规划/" style="font-size: 22.33px;">动态规划</a> <a href="/tags/双指针/" style="font-size: 14px;">双指针</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 15.67px;">容器</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 20.67px;">暴搜</a> <a href="/tags/架构/" style="font-size: 15.67px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 19px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 15.67px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 15.67px;">读书笔记</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
 	</div>
 </article>
 
