@@ -154,7 +154,7 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="编辑距离" href="/2019/11/24/编辑距离/">
+					<a class="post-card-content-link" title="我的日程安排表III" href="/2019/11/27/我的日程安排表III/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
 								
@@ -162,11 +162,11 @@
 								算法
 								| 
 								
-								<time datetime="2019-11-24T02:09:57.000Z">
-									2019-11-24
+								<time datetime="2019-11-27T03:27:26.000Z">
+									2019-11-27
 								</time>
 							</span>
-							<h2 class="post-card-title">编辑距离</h2>
+							<h2 class="post-card-title">我的日程安排表III</h2>
 						</header>
 						<div class="post-card-excerpt">
 							<p>
@@ -178,9 +178,8 @@
 								
 								
 								
-								题目给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。
-你可以对一个单词进行如下三种操作：
-插入一个字符
+								题目实现一个 MyCalendar 类来存放你的日程安排，你可以一直添加新的日程安排。
+MyCalendar 有一个 book(int start, int e
 								...
 							</p>
 						</div>
@@ -251,6 +250,62 @@
 						</div>
 						<span class="reading-time">
 							4
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="编辑距离" href="/2019/11/24/编辑距离/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								算法
+								| 
+								
+								<time datetime="2019-11-24T02:09:57.000Z">
+									2019-11-24
+								</time>
+							</span>
+							<h2 class="post-card-title">编辑距离</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								题目给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。
+你可以对一个单词进行如下三种操作：
+插入一个字符删除一个字符替换一个字符
+来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/edit-distance
+思路暴力搜索很难表示三种情况
+考虑利用动态规划
+长的字符串的编辑距离依赖于短的字符串的编辑距离
+利用一个二维数组DP[i][j]，表示word1从0开始长度为i的子
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							3
 							min read
 						</span>
 					</footer>
@@ -650,62 +705,6 @@ nums1 = [1, 2]nums2 = [3, 4]
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="最长有效括号" href="/2019/10/06/最长有效括号/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-06T14:08:22.000Z">
-									2019-10-06
-								</time>
-							</span>
-							<h2 class="post-card-title">最长有效括号</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目给定一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长的包含有效括号的子串的长度。
-示例 1:
-输入: “(()”输出: 2解释: 最长有效括号子串为 “()”示例 2:
-输入: “)()())”输出: 4解释: 最长有效括号子串为 “()()”
-来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/longest-valid-parentheses
-思路最开始想到用栈模拟。
-题解里面用的是动态规划感觉还是比较容易些。
-题解
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -750,6 +749,12 @@ nums1 = [1, 2]nums2 = [3, 4]
       
       
       <li>
+        <a href="/2019/11/27/我的日程安排表III/">我的日程安排表III</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2019/11/24/编辑距离/">编辑距离</a>
       </li>
       
@@ -760,10 +765,6 @@ nums1 = [1, 2]nums2 = [3, 4]
       </li>
       
       
-      
-      <li>
-        <a href="/2019/11/23/戳气球/">戳气球</a>
-      </li>
       
       
       
