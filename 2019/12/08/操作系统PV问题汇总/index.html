@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//pic.zhih.me">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
+
+	<title>操作系统PV问题汇总 | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	<link rel="apple-touch-icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="操作系统PV问题汇总 | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2019/12/08/操作系统PV问题汇总/">
+
+	
+	<meta property="article:published_time" content="2019-12-08T16:12:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/12/08/操作系统PV问题汇总/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+<link rel="canonical" href="https://caesarroot.github.io/2019/12/08/操作系统PV问题汇总/">
+
+
+
+
+
+</head>
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            <li>
+                <a href="/timeline" title="TIMELINE">TIMELINE</a>
+            </li>
+            
+            <li>
+                <a href="/categories/leetcode" title="CODING">CODING</a>
+            </li>
+            
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/caesarroot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-12-08T08:03:18.000Z">
+                    2019-12-8
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/操作系统/">操作系统</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">操作系统PV问题汇总</h1>
+            
+            <div style="width: 100%;
+                        margin-top: 16px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;">
+                <svg width="16px" height="10px" viewbox="0 0 16 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs/>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="eye" transform="translate(0.000000, -3.000000)" fill="#000000" fill-rule="nonzero">
+                            <g id="Group">
+                                <rect id="Rectangle-path" opacity="0" x="0" y="0" width="16" height="16"/>
+                                <path d="M8,13 C2,13 0,8 0,8 C0,8 2,3 8,3 C14,3 16,8 16,8 C16,8 14,13 8,13 Z M8,5 C6.343,5 5,6.343 5,8 C5,9.657 6.343,11 8,11 C9.657,11 11,9.657 11,8 C11,6.343 9.657,5 8,5 Z M8,10 C6.896,10 6,9.104 6,8 L8,8 L6.586,6.586 C6.96035905,6.20996515 7.46939099,5.99900849 8,6 C9.104,6 10,6.896 10,8 C10,9.104 9.104,10 8,10 Z" id="Shape"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span id="busuanzi_container_page_pv" style="margin-left: 13px;">
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </div>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="lightgallery" class="markdown-body">
+                    <h1 id="哲学家就餐问题"><a href="#哲学家就餐问题" class="headerlink" title="哲学家就餐问题"></a>哲学家就餐问题</h1><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/08/QaQrmd.png" data-src="https://s2.ax1x.com/2019/12/08/QaQrmd.png"></p>
+<h1 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h1><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/08/QaldNq.png" data-src="https://s2.ax1x.com/2019/12/08/QaldNq.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/08/QalrgU.png" data-src="https://s2.ax1x.com/2019/12/08/QalrgU.png"></p>
+<p>生产者消费者问题中empty和full总是交替出现，和为定值，即为缓冲区大小</p>
+<h1 id="读者-写者问题"><a href="#读者-写者问题" class="headerlink" title="读者-写者问题"></a>读者-写者问题</h1><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/08/Qa1VP0.png" data-src="https://s2.ax1x.com/2019/12/08/Qa1VP0.png"></p>
+<p>![image](/Users/cengshaoxun/Library/Application Support/typora-user-images/image-20191208161739650.png)</p>
+<p>上述方案不限制同时读的读者数量，可以在开头和结尾加入有初始值的P和V来限制同时读取的读者的数量</p>
+<h1 id="理发师问题"><a href="#理发师问题" class="headerlink" title="理发师问题"></a>理发师问题</h1><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/08/Qa1OL4.png" data-src="https://s2.ax1x.com/2019/12/08/Qa1OL4.png"></p>
+<p>![image](/Users/cengshaoxun/Library/Application Support/typora-user-images/image-20191208162220184.png)</p>
+<p>必须要比较大小，不能用另一个PV操作来实现，因为人满了之后顾客要离开，而不是继续排队等待椅子</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<li>《操作系统教程（第五版）》–高等教育出版社出版</li>
+</ol>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="C++学习笔记（一）" href="/2019/12/06/C-学习笔记（一）/">
+            C++学习笔记（一） →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#哲学家就餐问题"><span class="toc-text">哲学家就餐问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生产者-消费者问题"><span class="toc-text">生产者-消费者问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#读者-写者问题"><span class="toc-text">读者-写者问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理发师问题"><span class="toc-text">理发师问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    </div>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2019/12/08/操作系统PV问题汇总/">操作系统PV问题汇总</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/06/C-学习笔记（一）/">C++学习笔记（一）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/11/27/我的日程安排表III/">我的日程安排表III</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/翻译/">翻译</a></li></ul></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 18px;">c++</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 16px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/动态规划/" style="font-size: 22px;">动态规划</a> <a href="/tags/双指针/" style="font-size: 16px;">双指针</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 16px;">容器</a> <a href="/tags/操作系统/" style="font-size: 14px;">操作系统</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 22px;">暴搜</a> <a href="/tags/架构/" style="font-size: 16px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 20px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <img class="search-overlay-logo" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="羊男">
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男</a>
+			&copy; 2019
+			<span id="busuanzi_container_site_pv">
+    			本站总访问量<span id="busuanzi_value_site_pv"></span>次
+			</span>
+			<span id="busuanzi_container_site_uv">
+  				访客数<span id="busuanzi_value_site_uv"></span>人次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>if(window.navigator && navigator.serviceWorker) {navigator.serviceWorker.getRegistrations().then(function(registrations) {for(let registration of registrations) {registration.unregister()}})}</script>
+
+
+<script async src="/js/allinone.min.js" id="scriptLoad"></script>
+
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        var bLazy = new Blazy()
+    })
+</script>
+
+
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+<script>
+    lightGallery(document.getElementById('lightgallery'), {
+        selector: '.post-img'
+    });
+</script>
+
+
+
+
+<script async src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script async src="https://unpkg.com/valine@1.3.4/dist/Valine.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Say something',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true,
+        })
+    });
+</script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function(){
+        searchFunc("/")
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

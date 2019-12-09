@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//pic.zhih.me">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
+
+	<title>C++学习笔记（一） | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	<link rel="apple-touch-icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="C++学习笔记（一） | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2019/12/06/C-学习笔记（一）/">
+
+	
+	<meta property="article:published_time" content="2019-12-06T17:12:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/12/06/C-学习笔记（一）/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+<link rel="canonical" href="https://caesarroot.github.io/2019/12/06/C-学习笔记（一）/">
+
+
+
+
+
+</head>
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            <li>
+                <a href="/timeline" title="TIMELINE">TIMELINE</a>
+            </li>
+            
+            <li>
+                <a href="/categories/leetcode" title="CODING">CODING</a>
+            </li>
+            
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/caesarroot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-12-06T09:32:45.000Z">
+                    2019-12-6
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/c/">c++</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">C++学习笔记（一）</h1>
+            
+            <div style="width: 100%;
+                        margin-top: 16px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;">
+                <svg width="16px" height="10px" viewbox="0 0 16 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs/>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="eye" transform="translate(0.000000, -3.000000)" fill="#000000" fill-rule="nonzero">
+                            <g id="Group">
+                                <rect id="Rectangle-path" opacity="0" x="0" y="0" width="16" height="16"/>
+                                <path d="M8,13 C2,13 0,8 0,8 C0,8 2,3 8,3 C14,3 16,8 16,8 C16,8 14,13 8,13 Z M8,5 C6.343,5 5,6.343 5,8 C5,9.657 6.343,11 8,11 C9.657,11 11,9.657 11,8 C11,6.343 9.657,5 8,5 Z M8,10 C6.896,10 6,9.104 6,8 L8,8 L6.586,6.586 C6.96035905,6.20996515 7.46939099,5.99900849 8,6 C9.104,6 10,6.896 10,8 C10,9.104 9.104,10 8,10 Z" id="Shape"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span id="busuanzi_container_page_pv" style="margin-left: 13px;">
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </div>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="lightgallery" class="markdown-body">
+                    <h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>不能重载内置类型的操作符，因此至少有一个运算分量是自定义类型</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>从重载的形式来看：</p>
+<ol>
+<li>作为成员函数重载</li>
+<li>作为全局函数重载</li>
+</ol>
+<p>其中，如果一个运算符函数是成员函数，则它的第一个（左侧）运算对象绑定到隐式的thi指针上</p>
+<p>从运算分量的数目来看：</p>
+<ol>
+<li>单目</li>
+<li>双目</li>
+</ol>
+<p>其中对于二元运算来说，左侧运算对象传递给第一个参数，而右侧对象传递给第二个参数</p>
+<h2 id="不能被重载的操作符"><a href="#不能被重载的操作符" class="headerlink" title="不能被重载的操作符"></a>不能被重载的操作符</h2><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYkIht.png" data-src="https://s2.ax1x.com/2019/12/06/QYkIht.png"></p>
+<p>四个操作符不能被重载</p>
+<h2 id="不推荐被重载的操作符"><a href="#不推荐被重载的操作符" class="headerlink" title="不推荐被重载的操作符"></a>不推荐被重载的操作符</h2><p>逗号、取地址、逻辑与和逻辑或运算符</p>
+<p>因为使用重载的运算符本质上是一次函数调用，所以这些关于运算对象求值顺序的规则无法应用到重载的运算符上。特别是逻辑与运算符、逻辑或运算符和逗号运算符的运算对象求值顺序规则无法保留下来。</p>
+<p>除此之外，&amp;&amp;和||运算符的重载版本也无法保留内置运算符的短路求值属性，两个运算对象总是会被求值</p>
+<p>还有一个原因使得我们一般不重载逗号运算符和取地址运算符：C++语言已经定义了这两种运算符用于类类型对象时的特殊含义，这一点与大多数运算符都不相同。因为这两种运算符已经有了内置的含义，所以一般来说它们不应该被重载，否则它们的行为将异于常态，从而导致类的用户无法适应</p>
+<h2 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h2><p>遵循原有的语法：单目/双目、优先级、结合性</p>
+<h2 id="选择成员还是非成员重载"><a href="#选择成员还是非成员重载" class="headerlink" title="选择成员还是非成员重载"></a>选择成员还是非成员重载</h2><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYAWvT.png" data-src="https://s2.ax1x.com/2019/12/06/QYAWvT.png"></p>
+<p>对于第一条：</p>
+<p>原因是：编译器如果遇到内置类型作为运算分量的操作符，那么无法识别，会先去类内找有无重载版本，然后再在全局找有无重载版本，这四个函数有内部合成的函数，例如=对应的是赋值操作，类内已有合成的默认行为，因此如果是全局重载，编译器根本不会找到，优先找类内部的重载版本</p>
+<p>一个错误的示例：</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYEFRP.png" data-src="https://s2.ax1x.com/2019/12/06/QYEFRP.png"></p>
+<p>这里产生错误的原因是有一对矛盾冲突：即类内操作符重载要求第一个参数必须是本类本对象的this指针，而双目运算要求第一个参数是必须是双目操作符左边的运算分量</p>
+<p>同样的一个例子是&lt;&lt;操作符的重载版本只能是全局重载</p>
+<h2 id="双目操作符重载"><a href="#双目操作符重载" class="headerlink" title="双目操作符重载"></a>双目操作符重载</h2><h3 id="重载形式"><a href="#重载形式" class="headerlink" title="重载形式"></a>重载形式</h3><p>两种形式：</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYEuIs.png" data-src="https://s2.ax1x.com/2019/12/06/QYEuIs.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYENdJ.png" data-src="https://s2.ax1x.com/2019/12/06/QYENdJ.png"></p>
+<p>全局函数重载，写成友元函数friend</p>
+<p>双目运算符为了支持对称调用，一般做如下处理</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYEbwQ.png" data-src="https://s2.ax1x.com/2019/12/06/QYEbwQ.png"></p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>一般来说双目运算返回的是一个临时变量（右值）</p>
+<p>而单目运算符如果需要改变自身状态的话，返回引用（左值）</p>
+<h3 id="返回值的编译优化"><a href="#返回值的编译优化" class="headerlink" title="返回值的编译优化"></a>返回值的编译优化</h3><p>一个例子：</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/06/QYViTJ.png" data-src="https://s2.ax1x.com/2019/12/06/QYViTJ.png"></p>
+<h2 id="单目操作符重载"><a href="#单目操作符重载" class="headerlink" title="单目操作符重载"></a>单目操作符重载</h2><h3 id="重载形式-1"><a href="#重载形式-1" class="headerlink" title="重载形式"></a>重载形式</h3><p>![image](/Users/cengshaoxun/Library/Application Support/typora-user-images/image-20191209213530405.png)</p>
+<h2 id="特殊例子"><a href="#特殊例子" class="headerlink" title="特殊例子"></a>特殊例子</h2><h3 id="前缀-和后缀"><a href="#前缀-和后缀" class="headerlink" title="前缀++和后缀++"></a>前缀++和后缀++</h3><p>主要区别在返回值和参数上</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q08Wfs.png" data-src="https://s2.ax1x.com/2019/12/09/Q08Wfs.png"></p>
+<h3 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h3><p>默认是浅拷贝</p>
+<p>例如如果对象在heap上有分配空间，拷贝的时候会指向同一块内存空间，那么就会导致一个对象析构的时候另一个对象的指针飞了</p>
+<p>但是就算重载了赋值操作，例如下面这段代码，如果是自我赋值的话，仍然会出现问题，因此还要避免自我赋值</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q0JQr6.png" data-src="https://s2.ax1x.com/2019/12/09/Q0JQr6.png"></p>
+<h3 id="下标运算符"><a href="#下标运算符" class="headerlink" title="下标运算符"></a>下标运算符</h3><p>[]运算符只能在类内重载，不能作为全局函数重载</p>
+<p>一般都要重载两个版本（const的和非const的）</p>
+<p>非const版本返回引用，可以作为左值被修改</p>
+<p>const版本的返回值可以不是引用</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q0YWfH.png" data-src="https://s2.ax1x.com/2019/12/09/Q0YWfH.png"></p>
+<p>多维数组的情况：</p>
+<p>如果是二维的数组，那么其实只要返回指针，第二次的[]操作其实用的是指针的[]</p>
+<p>如果是多维的数组，那么可以嵌套一个内部类</p>
+<p>如下：</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q0UUk8.png" data-src="https://s2.ax1x.com/2019/12/09/Q0UUk8.png"></p>
+<p>这样就可以实现多个维度的嵌套</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="( )运算符"></a>( )运算符</h3><p>只能是成员函数</p>
+<p>既是函数调用，也是类型转化（也可以通过带有一个参数的构造函数重载，然后直接赋值，同样也可以达到隐式转化的目的；两个转化的方向不同，一个是将本类转为其他——（）运算符，一个是将其他转为本类—— 构造函数）</p>
+<p>作为类型转化操作符：</p>
+<p>可以减少混合计算中需要定义的操作符重载函数的数量（也可以通过写成构造函数的形式，将传入的参数转为本类型）</p>
+<p>如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rational</span> &#123;</span> </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Rational(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2) &#123; n = n1; d = n2; &#125; </span><br><span class="line">    <span class="comment">// 重载构造函数也可以达到隐式类型转化的目的</span></span><br><span class="line">    Rational(<span class="keyword">double</span> d)&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"constructor"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"operator ()"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span>  (<span class="keyword">double</span>)n/d; &#125;</span><br><span class="line">    <span class="comment">// 可以和()共存，最佳匹配，直接匹配到这个函数</span></span><br><span class="line">    <span class="keyword">double</span> <span class="keyword">operator</span>+(<span class="keyword">double</span> d)&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"operator +"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span> d + n/d;&#125;</span><br><span class="line">    <span class="comment">// 不能和()共存</span></span><br><span class="line">    <span class="comment">// 因为都要进行类型转化，无法确定是调用这个函数，将double转为Rational，还是调用()，将Rational转为都变了</span></span><br><span class="line">    <span class="comment">// 两个都可以转化，产生歧义</span></span><br><span class="line">    <span class="comment">// double operator+(Rational d)&#123;cout &lt;&lt; "operator +" &lt;&lt; endl; return 0;&#125; </span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span>  n, d;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Rational  rr = <span class="number">1.1</span>;</span><br><span class="line">    <span class="function">Rational  <span class="title">r</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span></span>;  </span><br><span class="line">    <span class="comment">// 调用()进行类型转化</span></span><br><span class="line">    <span class="keyword">double</span> x = r;  </span><br><span class="line">    <span class="comment">// 如果参数和operator +匹配的话那么优先调用operater +</span></span><br><span class="line">    <span class="comment">// 否则调用()</span></span><br><span class="line">    x = r + x; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>作为函数调用重载：</p>
+<p>可以实现函数对象，在标准库中广泛使用</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q00B5V.png" data-src="https://s2.ax1x.com/2019/12/09/Q00B5V.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q00fV1.png" data-src="https://s2.ax1x.com/2019/12/09/Q00fV1.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q00456.png" data-src="https://s2.ax1x.com/2019/12/09/Q00456.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q00bKH.png" data-src="https://s2.ax1x.com/2019/12/09/Q00bKH.png"></p>
+<p>函数对象也有局限性，即如果定义的接口是指针，那么不能传入函数对象，因为类型不同</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q00XVI.png" data-src="https://s2.ax1x.com/2019/12/09/Q00XVI.png"></p>
+<p>于是可以使用function类型，这个类型的接口可以传入所有可调用类型</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q0BpRS.png" data-src="https://s2.ax1x.com/2019/12/09/Q0BpRS.png"></p>
+<p>但是有个缺点就是重载函数不行，还得用函数指针或是lambda对象</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/09/Q0BPMQ.png" data-src="https://s2.ax1x.com/2019/12/09/Q0BPMQ.png"></p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/c/" rel="tag"># c++</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="操作系统PV问题汇总" href="/2019/12/08/操作系统PV问题汇总/">
+            ← 操作系统PV问题汇总
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="我的日程安排表III" href="/2019/11/27/我的日程安排表III/">
+            我的日程安排表III →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符重载"><span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#条件"><span class="toc-text">条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不能被重载的操作符"><span class="toc-text">不能被重载的操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不推荐被重载的操作符"><span class="toc-text">不推荐被重载的操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本原则"><span class="toc-text">基本原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择成员还是非成员重载"><span class="toc-text">选择成员还是非成员重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双目操作符重载"><span class="toc-text">双目操作符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重载形式"><span class="toc-text">重载形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回值"><span class="toc-text">返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回值的编译优化"><span class="toc-text">返回值的编译优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单目操作符重载"><span class="toc-text">单目操作符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重载形式-1"><span class="toc-text">重载形式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊例子"><span class="toc-text">特殊例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前缀-和后缀"><span class="toc-text">前缀++和后缀++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值操作符"><span class="toc-text">赋值操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下标运算符"><span class="toc-text">下标运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符"><span class="toc-text">( )运算符</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2019/12/08/操作系统PV问题汇总/">操作系统PV问题汇总</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/06/C-学习笔记（一）/">C++学习笔记（一）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/11/27/我的日程安排表III/">我的日程安排表III</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/翻译/">翻译</a></li></ul></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 18px;">c++</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 16px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/动态规划/" style="font-size: 22px;">动态规划</a> <a href="/tags/双指针/" style="font-size: 16px;">双指针</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 16px;">容器</a> <a href="/tags/操作系统/" style="font-size: 14px;">操作系统</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 22px;">暴搜</a> <a href="/tags/架构/" style="font-size: 16px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 20px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <img class="search-overlay-logo" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="羊男">
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男</a>
+			&copy; 2019
+			<span id="busuanzi_container_site_pv">
+    			本站总访问量<span id="busuanzi_value_site_pv"></span>次
+			</span>
+			<span id="busuanzi_container_site_uv">
+  				访客数<span id="busuanzi_value_site_uv"></span>人次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>if(window.navigator && navigator.serviceWorker) {navigator.serviceWorker.getRegistrations().then(function(registrations) {for(let registration of registrations) {registration.unregister()}})}</script>
+
+
+<script async src="/js/allinone.min.js" id="scriptLoad"></script>
+
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        var bLazy = new Blazy()
+    })
+</script>
+
+
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+<script>
+    lightGallery(document.getElementById('lightgallery'), {
+        selector: '.post-img'
+    });
+</script>
+
+
+
+
+<script async src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script async src="https://unpkg.com/valine@1.3.4/dist/Valine.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Say something',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true,
+        })
+    });
+</script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function(){
+        searchFunc("/")
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
