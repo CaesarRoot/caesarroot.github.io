@@ -139,7 +139,7 @@
             <h1 class="site-title">
                 Archives
             </h1>
-            <h2 class="site-description">Total: 50</h2>
+            <h2 class="site-description">Total: 52</h2>
         </div>
         
         
@@ -150,6 +150,122 @@
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-17T01:23:25.000Z">
+									2019-12-17
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（三）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								拷贝赋值和销毁拷贝构造函数形式：
+
+即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数
+合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（二）" href="/2019/12/16/C-学习笔记（二）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-16T11:19:45.000Z">
+									2019-12-16
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（二）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								模板两种：类属函数，类属类
+类属函数同一函数对不同类型的数据完成相同的操作
+宏实现的缺陷：只能实现简单的功能，没有类型检查
+函数重载的缺陷：需要定义的重载函数太多，定义不全
+函数指针：
+
+需要定义额外参数
+大量指针运算
+实现起来复杂
+可读性差
+这就是template引入的目标：完全，清晰
+
+T类型只要符合：重载&gt;操作符，有=操作符（默认有），有拷贝构造函数（默认有）（尽量使用const &amp;的方式，可以避免使用拷贝构造）。
+函数模版在编译的时候会根据传入的类型生成
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
 			
 			<article class="post-card post  no-image ">
 				
@@ -176,15 +292,19 @@
 								
 								
 								
-								
-								
 								哲学家就餐问题
 生产者-消费者问题
 
 生产者消费者问题中empty和full总是交替出现，和为定值，即为缓冲区大小
 读者-写者问题
 
-上述方案不限制同时读的读者
+上述方案不限制同时读的读者数量，可以在开头和结尾加入有初始值的P和V来限制同时读取的读者的数量
+理发师问题
+
+必须要比较大小，不能用另一个PV操作来实现，因为人满了之后顾客要离开，而不是继续排队等待椅子
+前驱关系如果各个程序之间有前驱和后继的先后执行顺序关系，那么可以用PV操作来表达
+
+设置6个初始值为0的信号量，在此进程之前必须要完成的进程用
 								...
 							</p>
 						</div>
@@ -201,7 +321,7 @@
 							</div>
 						</div>
 						<span class="reading-time">
-							0
+							1
 							min read
 						</span>
 					</footer>
@@ -266,7 +386,7 @@
 							</div>
 						</div>
 						<span class="reading-time">
-							5
+							12
 							min read
 						</span>
 					</footer>
@@ -313,20 +433,24 @@
       
       
       <li>
+        <a href="/2019/12/17/C-学习笔记（三）/">C++学习笔记（三）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/16/C-学习笔记（二）/">C++学习笔记（二）</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2019/12/08/操作系统PV问题汇总/">操作系统PV问题汇总</a>
       </li>
       
       
       
-      <li>
-        <a href="/2019/12/06/C-学习笔记（一）/">C++学习笔记（一）</a>
-      </li>
       
-      
-      
-      <li>
-        <a href="/2019/11/27/我的日程安排表III/">我的日程安排表III</a>
-      </li>
       
       
       

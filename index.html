@@ -160,6 +160,122 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-17T01:23:25.000Z">
+									2019-12-17
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（三）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								拷贝赋值和销毁拷贝构造函数形式：
+
+即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数
+合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（二）" href="/2019/12/16/C-学习笔记（二）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-16T11:19:45.000Z">
+									2019-12-16
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（二）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								模板两种：类属函数，类属类
+类属函数同一函数对不同类型的数据完成相同的操作
+宏实现的缺陷：只能实现简单的功能，没有类型检查
+函数重载的缺陷：需要定义的重载函数太多，定义不全
+函数指针：
+
+需要定义额外参数
+大量指针运算
+实现起来复杂
+可读性差
+这就是template引入的目标：完全，清晰
+
+T类型只要符合：重载&gt;操作符，有=操作符（默认有），有拷贝构造函数（默认有）（尽量使用const &amp;的方式，可以避免使用拷贝构造）。
+函数模版在编译的时候会根据传入的类型生成
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
 					<a class="post-card-content-link" title="操作系统PV问题汇总" href="/2019/12/08/操作系统PV问题汇总/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -182,15 +298,19 @@
 								
 								
 								
-								
-								
 								哲学家就餐问题
 生产者-消费者问题
 
 生产者消费者问题中empty和full总是交替出现，和为定值，即为缓冲区大小
 读者-写者问题
 
-上述方案不限制同时读的读者
+上述方案不限制同时读的读者数量，可以在开头和结尾加入有初始值的P和V来限制同时读取的读者的数量
+理发师问题
+
+必须要比较大小，不能用另一个PV操作来实现，因为人满了之后顾客要离开，而不是继续排队等待椅子
+前驱关系如果各个程序之间有前驱和后继的先后执行顺序关系，那么可以用PV操作来表达
+
+设置6个初始值为0的信号量，在此进程之前必须要完成的进程用
 								...
 							</p>
 						</div>
@@ -207,7 +327,7 @@
 							</div>
 						</div>
 						<span class="reading-time">
-							0
+							1
 							min read
 						</span>
 					</footer>
@@ -272,7 +392,7 @@
 							</div>
 						</div>
 						<span class="reading-time">
-							5
+							12
 							min read
 						</span>
 					</footer>
@@ -614,116 +734,6 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="寻找两个有序数组的中位数" href="/2019/10/14/寻找两个有序数组的中位数/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-14T12:54:24.000Z">
-									2019-10-14
-								</time>
-							</span>
-							<h2 class="post-card-title">寻找两个有序数组的中位数</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
-请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
-你可以假设 nums1 和 nums2 不会同时为空。
-示例 1:
-nums1 = [1, 3]nums2 = [2]
-则中位数是 2.0示例 2:
-nums1 = [1, 2]nums2 = [3, 4]
-则中位数是 (2 + 3)/2 = 2.5
-来源：力扣（LeetCode）链接：https://leetco
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="无重复字符的最长子串" href="/2019/10/13/无重复字符的最长子串/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-13T09:41:46.000Z">
-									2019-10-13
-								</time>
-							</span>
-							<h2 class="post-card-title">无重复字符的最长子串</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-示例 1:
-输入: “abcabcbb”输出: 3解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。示例 2:
-输入: “bbbbb”输出: 1解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。示例 3:
-输入: “pwwkew”输出: 3解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							2
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -734,7 +744,7 @@ nums1 = [1, 2]nums2 = [3, 4]
 	<nav class="pagination">
 		
 		<nav class="page-nav">
-			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">NEXT →</a>
+			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">NEXT →</a>
 		</nav>
 		
 	</nav>
@@ -768,20 +778,24 @@ nums1 = [1, 2]nums2 = [3, 4]
       
       
       <li>
+        <a href="/2019/12/17/C-学习笔记（三）/">C++学习笔记（三）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/16/C-学习笔记（二）/">C++学习笔记（二）</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2019/12/08/操作系统PV问题汇总/">操作系统PV问题汇总</a>
       </li>
       
       
       
-      <li>
-        <a href="/2019/12/06/C-学习笔记（一）/">C++学习笔记（一）</a>
-      </li>
       
-      
-      
-      <li>
-        <a href="/2019/11/27/我的日程安排表III/">我的日程安排表III</a>
-      </li>
       
       
       
