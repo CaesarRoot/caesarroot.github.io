@@ -160,6 +160,59 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（四）" href="/2019/12/17/C-学习笔记（四）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-17T07:42:51.000Z">
+									2019-12-17
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（四）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								类继承成员函数两种成员函数
+
+基类希望其派生类进行覆盖的函数，这一种函数是虚函数，当我们使用指针或引用调用虚函数时，该调用将被动态绑定，根据应用或指针所绑定的对
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							14
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
 					<a class="post-card-content-link" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -182,12 +235,13 @@
 								
 								
 								
-								
-								
 								拷贝赋值和销毁拷贝构造函数形式：
 
 即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数
-合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷
+合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷贝构造函数来拷贝，内置类型直接拷贝，对于数组，一个一个拷贝数组类型的成员，如果数组类型是类类型，则使用元素的拷贝构造函数来进行拷贝。注意以上的拷贝为浅拷贝
+调用时机
+拷贝赋值运算符形式：
+1234class Foo &#123;public:  Foo&amp; operator=(const Foo&amp;);&#
 								...
 							</p>
 						</div>
@@ -668,72 +722,6 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="N皇后II" href="/2019/11/14/N皇后II/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-11-14T13:56:19.000Z">
-									2019-11-14
-								</time>
-							</span>
-							<h2 class="post-card-title">N皇后II</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
-给定一个整数 n，返回 n 皇后不同的解决方案的数量。
-示例:
-输入: 4
-输出: 2
-解释: 4 皇后问题存在如下两个不同的解法。
-[
- [“.Q..”,  // 解法 1
-  “…Q”,
-  “Q…”,
-  “..Q.”],
- [“..Q.”,  // 解法 2
-  “Q…”,
-  “…Q”,
-  “.Q..”]
-]
-来源：力扣（LeetCode）
-链接：https://
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							5
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -778,6 +766,12 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
       
       
       <li>
+        <a href="/2019/12/17/C-学习笔记（四）/">C++学习笔记（四）</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2019/12/17/C-学习笔记（三）/">C++学习笔记（三）</a>
       </li>
       
@@ -788,10 +782,6 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
       </li>
       
       
-      
-      <li>
-        <a href="/2019/12/08/操作系统PV问题汇总/">操作系统PV问题汇总</a>
-      </li>
       
       
       

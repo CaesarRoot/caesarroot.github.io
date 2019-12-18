@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//pic.zhih.me">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
+
+	<title>C++学习笔记（四） | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	<link rel="apple-touch-icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="C++学习笔记（四） | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2019/12/17/C-学习笔记（四）/">
+
+	
+	<meta property="article:published_time" content="2019-12-17T15:12:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/12/17/C-学习笔记（四）/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+<link rel="canonical" href="https://caesarroot.github.io/2019/12/17/C-学习笔记（四）/">
+
+
+
+
+
+</head>
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            <li>
+                <a href="/timeline" title="TIMELINE">TIMELINE</a>
+            </li>
+            
+            <li>
+                <a href="/categories/leetcode" title="CODING">CODING</a>
+            </li>
+            
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/caesarroot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-12-17T07:42:51.000Z">
+                    2019-12-17
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/c/">c++</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">C++学习笔记（四）</h1>
+            
+            <div style="width: 100%;
+                        margin-top: 16px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;">
+                <svg width="16px" height="10px" viewbox="0 0 16 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs/>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="eye" transform="translate(0.000000, -3.000000)" fill="#000000" fill-rule="nonzero">
+                            <g id="Group">
+                                <rect id="Rectangle-path" opacity="0" x="0" y="0" width="16" height="16"/>
+                                <path d="M8,13 C2,13 0,8 0,8 C0,8 2,3 8,3 C14,3 16,8 16,8 C16,8 14,13 8,13 Z M8,5 C6.343,5 5,6.343 5,8 C5,9.657 6.343,11 8,11 C9.657,11 11,9.657 11,8 C11,6.343 9.657,5 8,5 Z M8,10 C6.896,10 6,9.104 6,8 L8,8 L6.586,6.586 C6.96035905,6.20996515 7.46939099,5.99900849 8,6 C9.104,6 10,6.896 10,8 C10,9.104 9.104,10 8,10 Z" id="Shape"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span id="busuanzi_container_page_pv" style="margin-left: 13px;">
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </div>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="lightgallery" class="markdown-body">
+                    <h1 id="类继承"><a href="#类继承" class="headerlink" title="类继承"></a>类继承</h1><h2 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h2><p>两种成员函数</p>
+<ol>
+<li>基类希望其派生类进行覆盖的函数，这一种函数是虚函数，当我们使用指针或引用调用虚函数时，该调用将被动态绑定，根据应用或指针所绑定的对象类型的不同，该调用可能执行基类的版本，也可能执行某个派生类的版本。如果基类把一个函数声明成虚函数，则该函数在派生类中隐式地也是虚函数</li>
+<li>基类不希望派生类进行覆盖的函数，这一类函数为非虚函数</li>
+</ol>
+<p>注意，如果派生类没有覆盖基类中的某个虚函数，则该虚函数的行为类似于其他的普通成员，派生类会直接继承其在基类中的版本</p>
+<h2 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h2><p>派生类对象包含多个组成部分：含有派生类自己定义的（非静态）成员的子对象，以及一个与该派生类继承的基类对应的子对象，如果有多个基类，那么这样的对象也有多个</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/17/QoLJHg.png" data-src="https://s2.ax1x.com/2019/12/17/QoLJHg.png"></p>
+<h2 id="派生类构造函数"><a href="#派生类构造函数" class="headerlink" title="派生类构造函数"></a>派生类构造函数</h2><p>尽管在派生类对象中含有从基类继承而来的成员，但是派生类并不能直接初始化这些成员。和其他创建了基类对象的代码一样，派生类也必须使用基类的构造函数来初始化它的基类部分</p>
+<p>派生类构造函数同样是铜鼓哦构造函数初始化列表来将实参传递给基类构造函数的</p>
+<h2 id="静态类型和动态类型"><a href="#静态类型和动态类型" class="headerlink" title="静态类型和动态类型"></a>静态类型和动态类型</h2><p>静态类型是在编译时就确定了的</p>
+<p>动态类型这是在变量或表达式表示的内存中的对象的类型，运行时才可知</p>
+<p>如果表达式既不是引用也不是指针，则它的动态类型永远与静态类型一致</p>
+<p>用dynamic_cast请求类型转换，该转换的安全检查将在运行时执行</p>
+<p>用static_cast来强制覆盖掉编译器的检查工作，在编译期间就使得类型转化了</p>
+<h2 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h2><p>引用或者指针调用一个函数的时候</p>
+<ol>
+<li>如果说非虚函数，那么编译时期就可以确定</li>
+<li>如果是虚函数，那么要到运行时刻才可以确定</li>
+</ol>
+<p>通过对象调用的函数编译时就可以确定，因为对象的类型是确定不变的（静态类型等于动态类型）</p>
+<p>虚函数一定要有定义，即使没有被用到；其他函数如果没有被用到，不需要给出定义</p>
+<h3 id="override"><a href="#override" class="headerlink" title="override"></a>override</h3><p>这个关键字可以让编译器检查是否真的覆盖了虚函数</p>
+<p>override关键字只能修饰虚函数</p>
+<h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><p>如果被final修饰，那么将不能被覆盖</p>
+<p>只有虚函数才能被定义为final</p>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>虚函数的默认参数是静态绑定的</p>
+<p>即如果我们通过基类的引用或指针调用函数，则使用基类中定义的默认实参，即使实际运行的是派生类中的函数版本也还是如此</p>
+<h2 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h2><p>书写=0就可以将一个虚函数说明为纯虚函数</p>
+<p>含有纯虚函数的类是抽象类</p>
+<p>抽象类不能实例化</p>
+<p>派生类必须给出纯虚函数的实现，否则仍然是抽象类</p>
+<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3><p>与派生类分享，但是不会被其他类公共访问，可以看作是public和private中和后的产物</p>
+<p>派生类的成员或友元只能通过派生类对象来访问基类的受保护成员</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span>&#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>:</span><span class="keyword">public</span> Father&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 子类不能直接访问父类中的protected成员或是方法</span></span><br><span class="line">    <span class="comment">// 只能通过他的子类来使用</span></span><br><span class="line">    <span class="comment">// void f(Father f)&#123;cout &lt;&lt; f.a &lt;&lt; endl;&#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(Son s)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; s.a &lt;&lt; <span class="built_in">endl</span>;s.g();&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="派生列表中的访问说明符"><a href="#派生列表中的访问说明符" class="headerlink" title="派生列表中的访问说明符"></a>派生列表中的访问说明符</h3><p>派生访问说明符对于派生类的成员（及友元）能否访问其直接基类的成员没什么印象，对基类成员的访问权限只与积累中的访问说明符有关</p>
+<p>派生访问说明符的目的是控制派生类用户（包括派生类的派生类在内）对于基类成员的访问权限</p>
+<h2 id="类型转化-1"><a href="#类型转化-1" class="headerlink" title="类型转化"></a>类型转化</h2><p>对于代码中的某个节点来说，如果积累的公有成员是可访问的，则派生类向基类的类型转化也是可访问的；反之则不行</p>
+<p>例如：</p>
+<ol>
+<li>如果是私有继承，那么用户代码不能使用派生类向基类的转化</li>
+<li>无论D以什么方式继承B，D的成员函数和友元都可以使用派生类向基类的转化</li>
+<li>如果D继承B的方式是公有的或者受保护的，则D的派生类的成员和友元可以使用D向B的转换</li>
+</ol>
+<h2 id="友元和继承"><a href="#友元和继承" class="headerlink" title="友元和继承"></a>友元和继承</h2><p>友元关系不能传递，不能继承</p>
+<p>基类的友元在访问派生类成员时不具有特殊性；派生类的友元也不能随意访问基类的成员</p>
+<p>每个类负责控制自己的成员的访问权限，因此如果基类定义了友元，那么这个友元可以访问之类中的基类部分，即使这一部分之类都无法访问，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> father;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">F</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>:</span><span class="keyword">public</span> Father&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> son;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(Son s)</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">F</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// F是父类的友元，因此可以访问Son中的Father的私有部分</span></span><br><span class="line">    <span class="comment">// 尽管这一部分是Son都不能访问的</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(Son s)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; s.father &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承中的类作用域"><a href="#继承中的类作用域" class="headerlink" title="继承中的类作用域"></a>继承中的类作用域</h2><p>如果一个名字在派生类的作用域内无法正确解析，则编译器将继续在外层的基类作用域中寻找改名字的定义</p>
+<h3 id="在编译时就进行名字查找"><a href="#在编译时就进行名字查找" class="headerlink" title="在编译时就进行名字查找"></a>在编译时就进行名字查找</h3><p>一个对象、引用或指针的静态类型决定了该对象的哪些成员是可见的，我们能使用哪些成员仍然是由静态类型决定的</p>
+<h3 id="名字冲突与继承"><a href="#名字冲突与继承" class="headerlink" title="名字冲突与继承"></a>名字冲突与继承</h3><p>派生类的成员将隐藏同名的基类成员（因为在当前作用域中就已经找到了名字，就不会再去基类找了）</p>
+<p>可以通过using来使用一个被隐藏的基类成员</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QTfG6J.png" data-src="https://s2.ax1x.com/2019/12/18/QTfG6J.png"></p>
+<h3 id="查找顺序"><a href="#查找顺序" class="headerlink" title="查找顺序"></a>查找顺序</h3><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QTfDpD.png" data-src="https://s2.ax1x.com/2019/12/18/QTfDpD.png"></p>
+<h3 id="名字查找优先于类型检查"><a href="#名字查找优先于类型检查" class="headerlink" title="名字查找优先于类型检查"></a>名字查找优先于类型检查</h3><p>即使派生类成员和基类成员的形参列表不一致，基类成员也仍然会被隐藏掉</p>
+<p>一旦名字找到，编译基就不再继续查找了，因此如果之类中有同名（只是同名，参数不一定相同）函数，就会覆盖掉基类中的所有同名函数</p>
+<h3 id="虚函数的调用"><a href="#虚函数的调用" class="headerlink" title="虚函数的调用"></a>虚函数的调用</h3><p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QThauj.png" data-src="https://s2.ax1x.com/2019/12/18/QThauj.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QThyCT.png" data-src="https://s2.ax1x.com/2019/12/18/QThyCT.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QThDU0.png" data-src="https://s2.ax1x.com/2019/12/18/QThDU0.png"></p>
+<h3 id="覆盖重载的函数"><a href="#覆盖重载的函数" class="headerlink" title="覆盖重载的函数"></a>覆盖重载的函数</h3><p>如果子类中有了一个同名的函数，那么基类中的所有函数都会被覆盖</p>
+<p>如果想继承所有的函数，但是只是覆盖掉其中几个，可以用using语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"Father f()"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"Father f(int)"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>:</span><span class="keyword">public</span> Father&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> Father::f;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"Son f()"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Son s;</span><br><span class="line">    s.f();</span><br><span class="line">    <span class="comment">// 使用了using就可以继承父类的所有同名方法了</span></span><br><span class="line">    <span class="comment">// 只会覆盖掉其中子类自定义的版本</span></span><br><span class="line">    s.f(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="构造函数与拷贝控制以及析构函数"><a href="#构造函数与拷贝控制以及析构函数" class="headerlink" title="构造函数与拷贝控制以及析构函数"></a>构造函数与拷贝控制以及析构函数</h2><p>无论是合成的默认构造函数，还是拷贝构造函数，还是赋值运算符，还是析构函数，它们除了负责自己的那一部分，还要负责直接基类中的那一部分的对应行为</p>
+<p>因此如果基类中的默认构造函数、拷贝构造函数、拷贝赋值运算符或析构函数是被删除的函数或者不可访问的函数，则派生类中对应的成员是被删除的，因为编译器不能使用基类成员来执行派生类对象基类部分的构造、赋值或者销毁操作</p>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><p>基类的析构函数一般要定义成虚函数，这样就可以动态调用到子类的析构函数，正确释放资源</p>
+<p>析构函数和其他不同，只要负责自己销毁，因为会自动调用父类的析构进行销毁，但是例如构造函数、拷贝控制，都要现式写明调用情况或是拷贝的情况。</p>
+<p>即子类的析构函数只要析构自己就行了，不用再写任何其他的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~A()&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"Father's ~"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~B()&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"Son's ~"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    B b;</span><br><span class="line">    <span class="comment">// 输出为</span></span><br><span class="line">    <span class="comment">// Son's ~</span></span><br><span class="line">    <span class="comment">// Father's ~</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>之前已经看到过了，如果要使用基类的特定构造函数，要显式写明</p>
+<p>下面是调用拷贝构造函数和其他构造函数的写法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    A()&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"A's A()"</span> &lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">    A(<span class="keyword">int</span> a):a(a)&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"A's A(int)"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">    A(<span class="keyword">const</span> A&amp; a)&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"A's copy constructor"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    B()&#123;&#125;</span><br><span class="line">    <span class="comment">// 指定调用父类的某个构造函数</span></span><br><span class="line">    B(<span class="keyword">int</span> a):A(a)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    C()&#123;&#125;</span><br><span class="line">    C(<span class="keyword">const</span> C&amp; c)&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"C's copy constructor"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    D()&#123;&#125;</span><br><span class="line">    D(<span class="keyword">const</span> D&amp; d):A(d)&#123; </span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"D's copy constructor"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 如果子类没有指明调用父类的哪个构造函数</span></span><br><span class="line">    <span class="comment">// 那么调用默认构造函数</span></span><br><span class="line">    B b0;</span><br><span class="line">    <span class="function">B <span class="title">b</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">// 如果子类没有自己定义拷贝构造函数</span></span><br><span class="line">    <span class="comment">// 那么会自动调用父类的拷贝构造函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用子类合成拷贝构造函数</span></span><br><span class="line">    <span class="comment">// 将调用父类的拷贝构造函数</span></span><br><span class="line">    <span class="function">B <span class="title">b2</span><span class="params">(b)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果子类自定义了拷贝构造函数</span></span><br><span class="line">    <span class="comment">// 而没有指定基类部分如何拷贝</span></span><br><span class="line">    <span class="comment">// 那么默认掉用父类的默认构造函数</span></span><br><span class="line">    C c;</span><br><span class="line">    <span class="function">C <span class="title">c2</span><span class="params">(c)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果在初始化列表中指明调用了基类的拷贝构造函数</span></span><br><span class="line">    <span class="comment">// 那么会正确拷贝基类部分</span></span><br><span class="line">    D d0;</span><br><span class="line">    <span class="function">D <span class="title">d1</span><span class="params">(d0)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>析构函数的执行顺序和构造函数相反：派生类的析构函数首先执行，然后是基类的析构函数；基类的构造函数先执行，然后是派生类的构造函数</p>
+<h3 id="拷贝控制"><a href="#拷贝控制" class="headerlink" title="拷贝控制"></a>拷贝控制</h3><p>合成的拷贝控制成员负责本类的赋值操作，还要负责直接基类中对应的操作。即要负责直接基类部分的复制</p>
+<p>上面已经看了拷贝构造函数的写法，下面看赋值运算符的写法</p>
+<p>同样也要显式写出：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    A&amp; <span class="keyword">operator</span>=(A&amp; a)&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A's ="</span> &lt;&lt; <span class="built_in">endl</span>;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    B &amp; <span class="keyword">operator</span>=(B&amp; a)&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B's ="</span> &lt;&lt; <span class="built_in">endl</span>;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    C &amp; <span class="keyword">operator</span>=(C&amp; a)&#123; </span><br><span class="line">        <span class="comment">// 注意写法</span></span><br><span class="line">        A::<span class="keyword">operator</span>=(a);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"C's ="</span> &lt;&lt; <span class="built_in">endl</span>;<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 默认不会调用基类的赋值操作</span></span><br><span class="line">    <span class="comment">// 因此不会拷贝基类部分</span></span><br><span class="line">    B b1;</span><br><span class="line">    B b2;</span><br><span class="line">    b1 = b2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 需要显式写出调用基类的赋值运算符</span></span><br><span class="line">    C c1;</span><br><span class="line">    C c2;</span><br><span class="line">    c1 = c2;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意这里调用赋值运算符的特殊写法</p>
+<p>上面传递给基类的赋值运算符的时候，基类只会释放掉基类部分的空间，并且进行赋值，因此不会有问题</p>
+<p>无论基类的构造函数或赋值运算符是定义一的还是合成的，派生类的对应操作都能使用它们</p>
+<h3 id="番外：在构造函数和析构函数中调用虚函数"><a href="#番外：在构造函数和析构函数中调用虚函数" class="headerlink" title="番外：在构造函数和析构函数中调用虚函数"></a>番外：在构造函数和析构函数中调用虚函数</h3><p>执行虚构的时候，部分已经被销毁</p>
+<p>执行构造的时候，还未完成对象创建</p>
+<p>为了能够正确处理这种未完成状态，编译器认为对西那个的类型在构造或析构的过程中反复发生了改变一样（即类型是不确定的，按照当前构造或是析构的程度来确定当前的状态）</p>
+<p>也就是说，当我们构建一个对象时，需要把对象的类和构造函数的类看作是同一个：对虚构函数的调用绑定真好符合这种把对象的类和构造函数的类看成同一个的要求，对析构函数也是同样的道理</p>
+<p>上述绑定不但对直接调用虚函数有效，对间接调用也是有效的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    A()&#123;f();&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"A's f()"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~A()&#123;f();&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"B's f()"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 无论是构造过程还是析构过程</span></span><br><span class="line">    <span class="comment">// 调用的都是A的f()</span></span><br><span class="line">    <span class="comment">// 因为到A的时候</span></span><br><span class="line">    <span class="comment">// 1. B还没有构造</span></span><br><span class="line">    <span class="comment">// 2. B已经析构</span></span><br><span class="line">    <span class="comment">// 因此调用的都是A的f</span></span><br><span class="line">    B b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="“继承”构造函数"><a href="#“继承”构造函数" class="headerlink" title="“继承”构造函数"></a>“继承”构造函数</h2><p>类不能继承默认、拷贝和移动构造函数，因为编译器会为派生类合成默认的</p>
+<p>和”继承”别的函数一样，使用using即可，不过using完了之后，其他函数是直接照搬过来，但是对于构造函数，编译器会稍作修改</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QTqAUJ.png" data-src="https://s2.ax1x.com/2019/12/18/QTqAUJ.png"></p>
+<p>还有一个区别就是，普通函数的using可以改变访问级别，例如我在private里面using，那么”继承”下来的函数就会是private的，但不是构造函数不一样，基类的私有构造函数在派生类中还是一个私有构造函数，而不管using出现在哪</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QTqBVg.png" data-src="https://s2.ax1x.com/2019/12/18/QTqBVg.png"></p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QTqIIJ.png" data-src="https://s2.ax1x.com/2019/12/18/QTqIIJ.png"></p>
+<h2 id="容器与继承"><a href="#容器与继承" class="headerlink" title="容器与继承"></a>容器与继承</h2><p>容器内要放同一个类型的对象</p>
+<p>不能放基类，否则会被切片</p>
+<p>因此要放指针</p>
+<p>当容器深拷贝时，不能直接push指针（否则就是浅拷贝），因此需要将一个clone函数处理成虚函数，这样就可以根据类型动态调用深拷贝</p>
+<p>对于数组来说，下标运算符其实是指针的偏移，而指针的偏移是按照静态类型来计算的，因此不要把数组看作是多态的</p>
+<p><img alt="image" class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/18/QTXkVS.png" data-src="https://s2.ax1x.com/2019/12/18/QTXkVS.png"></p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/c/" rel="tag"># c++</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
+            C++学习笔记（三） →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#类继承"><span class="toc-text">类继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#成员函数"><span class="toc-text">成员函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转化"><span class="toc-text">类型转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#派生类构造函数"><span class="toc-text">派生类构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态类型和动态类型"><span class="toc-text">静态类型和动态类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚函数"><span class="toc-text">虚函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#override"><span class="toc-text">override</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final"><span class="toc-text">final</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-text">默认参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#纯虚函数"><span class="toc-text">纯虚函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问控制"><span class="toc-text">访问控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#protected"><span class="toc-text">protected</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#派生列表中的访问说明符"><span class="toc-text">派生列表中的访问说明符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转化-1"><span class="toc-text">类型转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#友元和继承"><span class="toc-text">友元和继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承中的类作用域"><span class="toc-text">继承中的类作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在编译时就进行名字查找"><span class="toc-text">在编译时就进行名字查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#名字冲突与继承"><span class="toc-text">名字冲突与继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找顺序"><span class="toc-text">查找顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#名字查找优先于类型检查"><span class="toc-text">名字查找优先于类型检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚函数的调用"><span class="toc-text">虚函数的调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#覆盖重载的函数"><span class="toc-text">覆盖重载的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数与拷贝控制以及析构函数"><span class="toc-text">构造函数与拷贝控制以及析构函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#析构函数"><span class="toc-text">析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝控制"><span class="toc-text">拷贝控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#番外：在构造函数和析构函数中调用虚函数"><span class="toc-text">番外：在构造函数和析构函数中调用虚函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#“继承”构造函数"><span class="toc-text">“继承”构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器与继承"><span class="toc-text">容器与继承</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2019/12/17/C-学习笔记（四）/">C++学习笔记（四）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/17/C-学习笔记（三）/">C++学习笔记（三）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/16/C-学习笔记（二）/">C++学习笔记（二）</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/翻译/">翻译</a></li></ul></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 18px;">c++</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 16px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/动态规划/" style="font-size: 22px;">动态规划</a> <a href="/tags/双指针/" style="font-size: 16px;">双指针</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 16px;">容器</a> <a href="/tags/操作系统/" style="font-size: 14px;">操作系统</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 22px;">暴搜</a> <a href="/tags/架构/" style="font-size: 16px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 20px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 16px;">读书笔记</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <img class="search-overlay-logo" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="羊男">
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男</a>
+			&copy; 2019
+			<span id="busuanzi_container_site_pv">
+    			本站总访问量<span id="busuanzi_value_site_pv"></span>次
+			</span>
+			<span id="busuanzi_container_site_uv">
+  				访客数<span id="busuanzi_value_site_uv"></span>人次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>if(window.navigator && navigator.serviceWorker) {navigator.serviceWorker.getRegistrations().then(function(registrations) {for(let registration of registrations) {registration.unregister()}})}</script>
+
+
+<script async src="/js/allinone.min.js" id="scriptLoad"></script>
+
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        var bLazy = new Blazy()
+    })
+</script>
+
+
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+<script>
+    lightGallery(document.getElementById('lightgallery'), {
+        selector: '.post-img'
+    });
+</script>
+
+
+
+
+<script async src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script async src="https://unpkg.com/valine@1.3.4/dist/Valine.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Say something',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true,
+        })
+    });
+</script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function(){
+        searchFunc("/")
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
