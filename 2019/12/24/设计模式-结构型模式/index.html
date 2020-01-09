@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//pic.zhih.me">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+	<link rel="preload" href="https://pic.zhih.me/blog/header.jpg" as="image">
+
+	<title>设计模式-结构型模式 | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	<link rel="apple-touch-icon" href="https://s2.ax1x.com/2019/08/12/ex3faD.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="设计模式-结构型模式 | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2019/12/24/设计模式-结构型模式/">
+
+	
+	<meta property="article:published_time" content="2019-12-24T16:12:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/12/24/设计模式-结构型模式/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+<link rel="canonical" href="https://caesarroot.github.io/2019/12/24/设计模式-结构型模式/">
+
+
+
+
+
+</head>
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            <li>
+                <a href="/timeline" title="TIMELINE">TIMELINE</a>
+            </li>
+            
+            <li>
+                <a href="/categories/leetcode" title="CODING">CODING</a>
+            </li>
+            
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/caesarroot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-12-24T08:59:55.000Z">
+                    2019-12-24
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/软件设计/">软件设计</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">设计模式-结构型模式</h1>
+            
+            <div style="width: 100%;
+                        margin-top: 16px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;">
+                <svg width="16px" height="10px" viewbox="0 0 16 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs/>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="eye" transform="translate(0.000000, -3.000000)" fill="#000000" fill-rule="nonzero">
+                            <g id="Group">
+                                <rect id="Rectangle-path" opacity="0" x="0" y="0" width="16" height="16"/>
+                                <path d="M8,13 C2,13 0,8 0,8 C0,8 2,3 8,3 C14,3 16,8 16,8 C16,8 14,13 8,13 Z M8,5 C6.343,5 5,6.343 5,8 C5,9.657 6.343,11 8,11 C9.657,11 11,9.657 11,8 C11,6.343 9.657,5 8,5 Z M8,10 C6.896,10 6,9.104 6,8 L8,8 L6.586,6.586 C6.96035905,6.20996515 7.46939099,5.99900849 8,6 C9.104,6 10,6.896 10,8 C10,9.104 9.104,10 8,10 Z" id="Shape"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span id="busuanzi_container_page_pv" style="margin-left: 13px;">
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </div>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="lightgallery" class="markdown-body">
+                    <h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><p>当客户类调用适配器的方法时，在适配器类的内部将调用适配者类的方法，而这个过程对客户类是透明的，客户类并不直接访问适配者类。因此，适配器可以使由于接口不兼容而不能交互的类可以一起工作</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>适配器模式(Adapter Pattern) :将一个接口转换成客户希望的另一个接口，适配器模式使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。</p>
+<p>适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。</p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p>分为两种</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPiuJx.png" data-src="https://s2.ax1x.com/2019/12/24/lPiuJx.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPiQSK.png" data-src="https://s2.ax1x.com/2019/12/24/lPiQSK.png"></p>
+<p>类适配器中Target是接口，因为Adapter继承Adaptee，单继承</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPFmng.png" data-src="https://s2.ax1x.com/2019/12/24/lPFmng.png"></p>
+<p>类适配器是通过继承的方式调用被适配的接口</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPFMAs.png" data-src="https://s2.ax1x.com/2019/12/24/lPFMAs.png"></p>
+<p>而对象适配器则是通过关联一个被适配者的对象来实现的</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPkCKU.png" data-src="https://s2.ax1x.com/2019/12/24/lPkCKU.png"></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPkPrF.png" data-src="https://s2.ax1x.com/2019/12/24/lPkPrF.png"></p>
+<p>第三方模块是被适配者，原来的模块是目标类target，采用对象适配器模式类图如下</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPkXLD.png" data-src="https://s2.ax1x.com/2019/12/24/lPkXLD.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPVdsK.png" data-src="https://s2.ax1x.com/2019/12/24/lPVdsK.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPVcRI.png" data-src="https://s2.ax1x.com/2019/12/24/lPVcRI.png"></p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>将目标类和适配者类解耦</p>
+<p>增加了类的透明性和复用性</p>
+<p>灵活性和扩展性都非常好，通过使用配置文件，可以很方便地更换适配器，也可以在不修改原有代码的基础上增加新的适配器类，完全符合“开闭原则”。 </p>
+<h2 id="类适配器vs对象适配器"><a href="#类适配器vs对象适配器" class="headerlink" title="类适配器vs对象适配器"></a>类适配器vs对象适配器</h2><p>由于适配器类是适配者类的子类，因此可以在适配器类中置换一些适配者的方法，使得适配器的灵活性更强。 </p>
+<p>对于类适配器来说，Java、C#等不支持多重继承的语言，一次最多只能适配一个适配者类，而且目标抽象类只能为抽象类（因为有的方法没有实现，因此不能让它实例化）， 不能为具体类，其使用有一定的局限性，不能将一个适 配者类和它的子类都适配到目标接口。 </p>
+<p>一个对象适配器可以把多个不同的适配者适配到同一个目标，也就是说，同一个适配器可以把适配者类和它的子类都适配到目标接口。</p>
+<p>与类适配器模式相比，要想置换适配者类的方法就不容易。如果一定要置换掉适配者类的一个或多个方法，就只好先做一个适配者类的子类，将适配者类的方法置换掉，然后再把适配者类的子类当做真正的适配者进行适配，实现过程较为复杂。</p>
+<p>具体选择哪一种，可以稍微写一下代码实现，从实现角度来考虑。</p>
+<p>类适配器用的多：猜测是因为有的时候适配需要修改一些父类的实现才能实现适配。</p>
+<p>类适配器一般是一对一的情况下使用。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPEtu8.png" data-src="https://s2.ax1x.com/2019/12/24/lPEtu8.png"></p>
+<p>总的来说有两条</p>
+<ol>
+<li>修改接口。定义一个抽象，这个抽象是客户想要的接口，然后有一个实现，实现中调用另外的符合需求的接口</li>
+<li>将两个类扭在一起</li>
+</ol>
+<h2 id="模式扩展"><a href="#模式扩展" class="headerlink" title="模式扩展"></a>模式扩展</h2><h3 id="默认适配器"><a href="#默认适配器" class="headerlink" title="默认适配器"></a>默认适配器</h3><p>当不需要全部实现接口提供的方法时，可先设计一个抽象类实现接口，并为该接口中每个方法提供一个默认实现(空方法)，那么该抽象类的子类可有选择地覆盖父类的某些方法来实现需求，它适用于一个接口不想使用其所有的方法的情况。因此也称为单接口适配器模式</p>
+<p><a href="https://blog.csdn.net/IO_Field/article/details/52791975" target="_blank" rel="noopener">https://blog.csdn.net/IO_Field/article/details/52791975</a></p>
+<p><strong>本质就是绕过接口必须实现</strong>这一规则</p>
+<h3 id="双向适配器"><a href="#双向适配器" class="headerlink" title="双向适配器"></a>双向适配器</h3><p>在对象适配器的使用过程中，如果在适配器中同时包含对目标类和适配者类的引用，适配者可以通过它调用目标类中的方法，目标类也可以通过它调用适配者类中的方法，那么该适配器就是一个双向适配器。</p>
+<p>分析：只能用对象适配器模式，且两边都是，因此是一个对称的结构。且要有专门的方法set进适配者。在两个不同的方法中封装对于实现方法的调用</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPZLhd.png" data-src="https://s2.ax1x.com/2019/12/24/lPZLhd.png"></p>
+<h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>树形结构，递归调用，一致处理叶子节点和非叶子节点</p>
+<h2 id="组合模式-1"><a href="#组合模式-1" class="headerlink" title="组合模式"></a>组合模式</h2><p>组合模式(Composite Pattern):组合多个对象形成树形结构以表示“整体-部分”的结构层次。组合模式对单个对象(即叶子对象)和组合对象(即容器对象)的使用具有一致性。</p>
+<p>组合模式又可以称为“整体-部分”(Part-Whole)模式，属于对象的结构模式，它将对象组织到树结构中，可以用来描述整体与部分的关系。</p>
+<h2 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPutuq.png" data-src="https://s2.ax1x.com/2019/12/24/lPutuq.png"></p>
+<p>由于要叶子和非叶子要相同对待，那么就要继承自统一的接口。其中如果是非叶子节点，那么还要聚合这个接口</p>
+<p>对于叶子节点来说，有三个方法都是不能有实现的，因此：</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPKBeP.png" data-src="https://s2.ax1x.com/2019/12/24/lPKBeP.png"></p>
+<p><strong>透明性往往是要牺牲安全性</strong></p>
+<p><strong>这里的叶子节点的三个方法都是要抛出异常的，不是可以调用的方法</strong></p>
+<p>同时注意非叶子节点中的operation代码，需要遍历列表调用：</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPKgzj.png" data-src="https://s2.ax1x.com/2019/12/24/lPKgzj.png"></p>
+<p><strong>因为组合是递归的，是一次性调用下去的，是内部遍历</strong></p>
+<p><strong>如果需要迭代器，那么是一个外部遍历，要额外维护一个栈或者队列来记录当前访问到哪一个元素</strong></p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPK4e0.png" data-src="https://s2.ax1x.com/2019/12/24/lPK4e0.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPMY7V.png" data-src="https://s2.ax1x.com/2019/12/24/lPMY7V.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPMY7V.png" data-src="https://s2.ax1x.com/2019/12/24/lPMY7V.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPM5jA.png" data-src="https://s2.ax1x.com/2019/12/24/lPM5jA.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPQ9H0.png" data-src="https://s2.ax1x.com/2019/12/24/lPQ9H0.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPQtKA.png" data-src="https://s2.ax1x.com/2019/12/24/lPQtKA.png"></p>
+<h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><p>可以清楚地定义分层次的复杂对象 </p>
+<p>客户端可以一致的使用组合结构或其中单个对象 </p>
+<p>定义了包含叶子对象和容器对象的类层次结构，叶子对象可以被组合成更复杂的容器对象，而这个容器对象又可以被组合，这样不断递归下去，可 以形成复杂的树形结构</p>
+<p>更容易在组合体内加入对象构件（例如上面的例子中新增一个新的文件类型）</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>使设计变得更加抽象，对象的业务规则如果很复杂，则实现组合模式具有很大挑战性，而且不是所有的方法都与叶子对象子类都有关联</p>
+<p>增加新构件时可能会产生一些问题，很难对容器中的构件类型进行限制。 </p>
+<h2 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h2><p>需要表示一个对象整体或部分层次</p>
+<p>一致对待整体和部分</p>
+<p>客户端可以针对抽象构件编程，无须关心对象层次结构的细节</p>
+<p>对象的结构是动态的并且复杂程度不一样，但客户需要一致地处理它们</p>
+<h2 id="模式扩展-1"><a href="#模式扩展-1" class="headerlink" title="模式扩展"></a>模式扩展</h2><h3 id="透明组合模式和安全组合模式"><a href="#透明组合模式和安全组合模式" class="headerlink" title="透明组合模式和安全组合模式"></a>透明组合模式和安全组合模式</h3><p>所谓的透明，是对于客户端来说透明，及叶子节点和非叶子节点没有任何区别，这样接口固定，但是必然导致叶子节点有多余的方法，这样就不安全</p>
+<p>所谓安全，及叶子节点只有operation方法，而非叶子节点有增加删除的方法，接口只有operation，这样会保证不会进行非法操作，但是要判断是叶子节点还是非叶子节点，这样就不透明了</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPQbrR.png" data-src="https://s2.ax1x.com/2019/12/24/lPQbrR.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPlnzQ.png" data-src="https://s2.ax1x.com/2019/12/24/lPlnzQ.png"></p>
+<p>即：</p>
+<p>透明模式：对待叶子节点和非叶子节点一样，所有的接口方法都可以调用</p>
+<p>安全模式：调用前要先判断一下是什么类型再调用其方法</p>
+<p><strong>透明性往往是要牺牲安全性</strong></p>
+<p><strong>透明模式中叶子节点的三个方法都是要抛出异常的，不是可以调用的方法</strong></p>
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>两个变化维度，例如形状和颜色，需要进行组合，如果采用继承，那么产生的类的数量是乘积关系；而如果采用组合，那么类的数量是相加的关系</p>
+<p>继承：静态的强耦合</p>
+<p>组合：动态的弱耦合</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>桥接模式(Bridge Pattern):将抽象部分与它的实现部分分离，使它们都可以独立地变化。它是一种对象结构型模式。</p>
+<p>又称为柄体(Handle and Body)模式或接口(Interface)模式。</p>
+<h2 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP3qqs.png" data-src="https://s2.ax1x.com/2019/12/24/lP3qqs.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPYYJx.png" data-src="https://s2.ax1x.com/2019/12/24/lPYYJx.png"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP8eJK.png" data-src="https://s2.ax1x.com/2019/12/24/lP8eJK.png"></p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPYrTA.png" data-src="https://s2.ax1x.com/2019/12/24/lPYrTA.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPYTkn.png" data-src="https://s2.ax1x.com/2019/12/24/lPYTkn.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPYvm4.png" data-src="https://s2.ax1x.com/2019/12/24/lPYvm4.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPYz79.png" data-src="https://s2.ax1x.com/2019/12/24/lPYz79.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPNoR0.png" data-src="https://s2.ax1x.com/2019/12/24/lPNoR0.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPNHMT.png" data-src="https://s2.ax1x.com/2019/12/24/lPNHMT.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPU8oj.png" data-src="https://s2.ax1x.com/2019/12/24/lPU8oj.png"></p>
+<h2 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h2><p>分离抽象接口及其实现部分</p>
+<p>桥接模式有时类似于多继承方案，但是多继承方案违背了类的单一职责原则(即一个类只有一个变化的原因)，复用性比较差，而且多继承结构中类的个数非常庞大，桥接模式是比多继承方案更好的解决方法</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPtw90.png" data-src="https://s2.ax1x.com/2019/12/24/lPtw90.png"></p>
+<p>提高了系统的可扩充性</p>
+<p>实现细节对客户透明，可以对用户隐藏实现细节</p>
+<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><p>增加系统的理解与设计难度，由于聚合关联关系建立在抽象层，要求开发者针对抽象进行设计与编程</p>
+<p>桥接模式要求正确识别出系统中两个独立变化的维度， 因此其使用范围具有一定的局限性 </p>
+<h2 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h2><p>总结来说有两个方面：</p>
+<ol>
+<li>两个变化维度</li>
+<li>抽象和实现分离</li>
+</ol>
+<p>需要在构件的抽象化角色和具体化角色之间增加更多的灵活性， 避免在两个层次之间建立静态的继承联系，通过桥接模式可以使它们在抽象层建立一个关联关系 </p>
+<p>抽象化角色和实现化角色可以以继承的方式独立扩展而互不影响 </p>
+<p>一个类存在两个独立变化的维度 </p>
+<p>不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系 统 </p>
+<h2 id="模式联用"><a href="#模式联用" class="headerlink" title="模式联用"></a>模式联用</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPae74.png" data-src="https://s2.ax1x.com/2019/12/24/lPae74.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPa3jK.png" data-src="https://s2.ax1x.com/2019/12/24/lPa3jK.png"></p>
+<h1 id="桥接模式vs命令模式"><a href="#桥接模式vs命令模式" class="headerlink" title="桥接模式vs命令模式"></a>桥接模式vs命令模式</h1><p>参考：<a href="https://www.iteye.com/blog/c610367182-1965668" target="_blank" rel="noopener">https://www.iteye.com/blog/c610367182-1965668</a></p>
+<p>不仅Implementor具有变化（ConcreteImplementor），而且Abstraction也可以发生变化（RefinedAbstraction），而且两者的变化是完全独立的，RefinedAbstraction与ConcreateImplementor之间松散耦合，它们仅仅通过Abstraction与Implementor之间的关系联系起来。强调Implementor接口仅提供基本操作，而Abstraction则基于这些基本操作定义更高层次的操作</p>
+<p>并不考虑Context的变化，只有算法的可替代性。强调Strategy抽象接口的提供的是一种算法，一般是无状态、无数据的，Context简单调用这些算法完成其操作</p>
+<h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><p>对客户透明的方式动态地给一个对象附加上更多的责任</p>
+<p>在不需要创造更多子类的情况下，将对象的功能加以扩展</p>
+<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>装饰模式(Decorator Pattern) :动态地给一个对象增加一些额外的职责(Responsibility)，就增加对象功能来说，装饰模式比生成子类实现更为灵活。</p>
+<p>其别名也可以称为包装器(Wrapper)，与适配器模式的别名相同，但它们适用于不同的场合。根据翻译的不同，装饰模式也有人称之为“油漆工模式”，它是一种对象结构型模式。</p>
+<h2 id="类图-3"><a href="#类图-3" class="headerlink" title="类图"></a>类图</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPa2Nj.png" data-src="https://s2.ax1x.com/2019/12/24/lPa2Nj.png"></p>
+<p>为什么正常的component和decorator不一样？</p>
+<p>从设计上来说，装饰者只是增加一个小职责，因此和正常的component就是不一样</p>
+<p>从调用上来说，层层调用，最内层必须要终止，因此也要区分开来</p>
+<p>是否破坏了Liskov替换原则</p>
+<p>concreteDecoratorB，因addedBehavior是public的，因此是有可能破坏Liskov</p>
+<p>但是如果只是在operation里面调用的话则不会，例如concreteDecoratorA</p>
+<p>在抽象的Decorator中调用component的方法</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPd3Ps.png" data-src="https://s2.ax1x.com/2019/12/24/lPd3Ps.png"></p>
+<p>具体的Decorator中调用新增的方法</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPdJx0.png" data-src="https://s2.ax1x.com/2019/12/24/lPdJx0.png"></p>
+<h2 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPdhIH.png" data-src="https://s2.ax1x.com/2019/12/24/lPdhIH.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPdHQP.png" data-src="https://s2.ax1x.com/2019/12/24/lPdHQP.png"></p>
+<p>半透明</p>
+<p>如果只是使用move，那么就是透明的</p>
+<p>如果要使用robot里面新加的方法，就要了解当前的类型，因此是不透明的</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPdzJs.png" data-src="https://s2.ax1x.com/2019/12/24/lPdzJs.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPwZFJ.png" data-src="https://s2.ax1x.com/2019/12/24/lPwZFJ.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPwI7F.png" data-src="https://s2.ax1x.com/2019/12/24/lPwI7F.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPwHh9.png" data-src="https://s2.ax1x.com/2019/12/24/lPwHh9.png"></p>
+<h2 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h2><p>装饰模式可以提供比继承更多的灵活性</p>
+<p>通过一种动态的方式来扩展一个对象的功能 </p>
+<p>通过使用不同的具体装饰类以及这些装饰类的排列组合，可以创造出很多不同行为的组合 </p>
+<p>具体构件类与具体装饰类可以独立变化 </p>
+<h2 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h2><p>装饰方法只能在正常对象前或者后调用，因此只能改变前置或者后置，而不能改变中间实现过程</p>
+<p>小对象太多，可以和工厂方法连用，用来创建小对象</p>
+<p>装饰模式比继承更加易于出错，排错也很困难，对于多次装饰 的对象，调试时寻找错误可能需要逐级排查，较为烦琐 </p>
+<h2 id="模式扩展-2"><a href="#模式扩展-2" class="headerlink" title="模式扩展"></a>模式扩展</h2><p>一个装饰类的接口必须与被装饰类的接口保持相同（实现透明性）</p>
+<p>不要把太多的逻辑和状态放在具体构件类中 ，而是通过装饰者来进行扩展</p>
+<p>如果只有一个具体构件类而没有抽象构件类，那么抽象装饰类可以作为具体构件类的直接子类 </p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPwXX6.png" data-src="https://s2.ax1x.com/2019/12/24/lPwXX6.png"></p>
+<h2 id="透明性与接口扩充"><a href="#透明性与接口扩充" class="headerlink" title="透明性与接口扩充"></a>透明性与接口扩充</h2><p>如果想要扩充接口，就无法实现透明，如果要透明，就无法扩充接口</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPwx0O.png" data-src="https://s2.ax1x.com/2019/12/24/lPwx0O.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP0Vnf.png" data-src="https://s2.ax1x.com/2019/12/24/lP0Vnf.png"></p>
+<h2 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h2><p>以动态、透明的方式给单个对象添加职责</p>
+<p>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时，例如继承会使得子类太多，或是final不能继承</p>
+<h1 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h1><h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p>外观模式(Facade Pattern):外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。<br>外观模式又称为门面模式，它是一种对象结构型模式</p>
+<h2 id="类图-4"><a href="#类图-4" class="headerlink" title="类图"></a>类图</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP0uNQ.png" data-src="https://s2.ax1x.com/2019/12/24/lP0uNQ.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP0XCj.png" data-src="https://s2.ax1x.com/2019/12/24/lP0XCj.png"></p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP06HO.png" data-src="https://s2.ax1x.com/2019/12/24/lP06HO.png"></p>
+<p>外观模式从很大程度上提高了客户端使用的便捷性，使得客户端无须关心子系统的工作细节，通过外观角色即可调用相关功能</p>
+<p><strong>外观模式并不提供抽象</strong></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPBTzR.png" data-src="https://s2.ax1x.com/2019/12/24/lPBTzR.png"></p>
+<h2 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP0v2n.png" data-src="https://s2.ax1x.com/2019/12/24/lP0v2n.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPB9bT.png" data-src="https://s2.ax1x.com/2019/12/24/lPB9bT.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPBiaF.png" data-src="https://s2.ax1x.com/2019/12/24/lPBiaF.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPBNsP.png" data-src="https://s2.ax1x.com/2019/12/24/lPBNsP.png"></p>
+<h2 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h2><p>对客户屏蔽子系统组件</p>
+<p>实现了子系统与客户之间的松耦合关系</p>
+<p>降低了大型软件系统中的编译依赖性，并简化了系统在不同平台之间的移植过程</p>
+<p>只是提供了一个访问子系统的统一入口，并不影响用户直接使用子系统类</p>
+<h2 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h2><p>不能很好地限制客户使用子系统类</p>
+<p>在不引入抽象外观类的情况下，增加新的子系统可能需要修改外观类或客户端的源代码，违背了”开闭原则”</p>
+<h2 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h2><p>当要为一个复杂子系统提供一个简单接口时可以使用外观模式</p>
+<p>客户程序与多个子系统之间存在很大的依赖性</p>
+<p>在层次化结构中，可以使用外观模式定义系统中每一层的入口，层与层之间不直接产生联系，而通过外观类建立联系，降低层之间的耦合度</p>
+<h2 id="模式扩展-3"><a href="#模式扩展-3" class="headerlink" title="模式扩展"></a>模式扩展</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPBfdU.png" data-src="https://s2.ax1x.com/2019/12/24/lPBfdU.png"></p>
+<p>不要通过继承一个外观类在子系统中加入新的行为，这种做法是错误的。外观模式的用意是为子系统提供一个集中化和简化的沟通渠道，而不是向子系统加入新的行为，新的行为的增加应该通过修改原有子系统类或增加新的子系统类来实现，不能通过外观类来实现</p>
+<h3 id="抽象外观"><a href="#抽象外观" class="headerlink" title="抽象外观"></a>抽象外观</h3><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPBbsx.png" data-src="https://s2.ax1x.com/2019/12/24/lPBbsx.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPDuSs.png" data-src="https://s2.ax1x.com/2019/12/24/lPDuSs.png"></p>
+<h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>享元模式通过共享技术实现相同或相似对象的重用 </p>
+<h2 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h2><p>享元模式(Flyweight Pattern):运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细粒度对象，因此它又称为<strong>轻量级模式</strong>，它是一种<br>对象结构型模式。</p>
+<h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><p>在享元模式中可以共享的相同内容称为内部状态(Intrinsic State)，而那些需要外部环境来设置的不能共享的内容称为外部状态(Extrinsic State)，由于区分了内部状态和外部状态，因此可以通过设置不同的外部状态使得相同的对象可以具有一些不同的特征，而相同的内部状态是可以共享的</p>
+<p>在享元模式中通常会出现工厂模式，需要创建一个享元工厂来负责维护一个享元池(Flyweight Pool)用于存储具有相同内部状态的享元对象</p>
+<h2 id="类图-5"><a href="#类图-5" class="headerlink" title="类图"></a>类图</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPDBm6.png" data-src="https://s2.ax1x.com/2019/12/24/lPDBm6.png"></p>
+<p>注意这里内部状态是共享的，右下角的意思是：不共享的话内部和外部就不分了，都是私有成员</p>
+<p>根据代码可以看出来：</p>
+<p>享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回给用户，并在享元池中保存该新增对象</p>
+<p>享元工厂是一个简单工厂</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPDfXt.png" data-src="https://s2.ax1x.com/2019/12/24/lPDfXt.png"></p>
+<h2 id="内部状态vs外部状态"><a href="#内部状态vs外部状态" class="headerlink" title="内部状态vs外部状态"></a>内部状态vs外部状态</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPDTAS.png" data-src="https://s2.ax1x.com/2019/12/24/lPDTAS.png"></p>
+<p>需要特别强调的是：外部状态 — 客户端保存，比如颜色的前景和背景都是保存在客户端的。只有内部状态是成员属性</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPD7tg.png" data-src="https://s2.ax1x.com/2019/12/24/lPD7tg.png"></p>
+<h2 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPDxBV.png" data-src="https://s2.ax1x.com/2019/12/24/lPDxBV.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPDz7T.png" data-src="https://s2.ax1x.com/2019/12/24/lPDz7T.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPri9J.png" data-src="https://s2.ax1x.com/2019/12/24/lPri9J.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPrAj1.png" data-src="https://s2.ax1x.com/2019/12/24/lPrAj1.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPrQ9H.png" data-src="https://s2.ax1x.com/2019/12/24/lPrQ9H.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPrUUS.png" data-src="https://s2.ax1x.com/2019/12/24/lPrUUS.png"></p>
+<h2 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>共享</li>
+<li>减少数量</li>
+</ol>
+<h2 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>复杂，需要分离外部状态和内部状态</li>
+<li>需要将某些状态外部化，使得运行时间变长</li>
+</ol>
+<h2 id="应用场景-5"><a href="#应用场景-5" class="headerlink" title="应用场景"></a>应用场景</h2><p>有大量相同或者相似的对象</p>
+<p>应当在多次重复使用享元对象时才值得使用享元模式</p>
+<h2 id="模式扩展-4"><a href="#模式扩展-4" class="headerlink" title="模式扩展"></a>模式扩展</h2><h3 id="单纯享元模式"><a href="#单纯享元模式" class="headerlink" title="单纯享元模式"></a>单纯享元模式</h3><p>就是上面类图中的右下角，所有的享元对象都是可以共享的</p>
+<h3 id="复合享元模式（和组合模式联用）"><a href="#复合享元模式（和组合模式联用）" class="headerlink" title="复合享元模式（和组合模式联用）"></a>复合享元模式（和组合模式联用）</h3><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPr6bV.png" data-src="https://s2.ax1x.com/2019/12/24/lPr6bV.png"></p>
+<h2 id="模式联用-1"><a href="#模式联用-1" class="headerlink" title="模式联用"></a>模式联用</h2><h3 id="和静态工厂联用"><a href="#和静态工厂联用" class="headerlink" title="和静态工厂联用"></a>和静态工厂联用</h3><p>享元工厂是静态工厂</p>
+<h3 id="和单例模式联用"><a href="#和单例模式联用" class="headerlink" title="和单例模式联用"></a>和单例模式联用</h3><p>享元工厂是单例的</p>
+<h3 id="和组合模式联用"><a href="#和组合模式联用" class="headerlink" title="和组合模式联用"></a>和组合模式联用</h3><p>享元模式可以结合组合模式形成复合享元模式，统一对享元对象设置外部状态，如上</p>
+<h1 id="享元模式vs原型模式"><a href="#享元模式vs原型模式" class="headerlink" title="享元模式vs原型模式"></a>享元模式vs原型模式</h1><p>和原型模式的比较：原型是复制相同的，可以存储状态和备份等</p>
+<p>原型管理器 vs 享元工厂</p>
+<p>原型管理器只负责管理<br>享元还负责创建<br>原型管理器不一定要有<br>但原型管理器是享元是模式的一部分</p>
+<h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p>通过引入一个新的对象(如小图片和远程代理对象)来实现对真实对象的操作或者将新的对象作为真实对象的一个替身，这种实现机制即为代理模式，通过引入代理对象来间接访问一个对象</p>
+<h2 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h2><p>代理模式(Proxy Pattern) :给某一个对象提供一个代理，并由代理对象控制对原对象的引用。代理模式的英文叫做Proxy或Surrogate，它是一种对象结构型模式</p>
+<h2 id="类图-6"><a href="#类图-6" class="headerlink" title="类图"></a>类图</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPrxxA.png" data-src="https://s2.ax1x.com/2019/12/24/lPrxxA.png"></p>
+<p>代理对象和真实对象接口是一致的<br>将任务委托给真实对象<br>可以增加一些新的行为来控制对真实对象的访问(preRequest和postRequest)，如下</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPsprt.png" data-src="https://s2.ax1x.com/2019/12/24/lPsprt.png"></p>
+<h2 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h2><p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPsPVf.png" data-src="https://s2.ax1x.com/2019/12/24/lPsPVf.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPcbyd.png" data-src="https://s2.ax1x.com/2019/12/24/lPcbyd.png"></p>
+<p>![](/Users/cengshaoxun/Library/Application Support/typora-user-images/image-20191224221400409.png)</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lPgAwq.png" data-src="https://s2.ax1x.com/2019/12/24/lPgAwq.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP27qA.png" data-src="https://s2.ax1x.com/2019/12/24/lP27qA.png"></p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP2LIP.png" data-src="https://s2.ax1x.com/2019/12/24/lP2LIP.png"></p>
+<h2 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h2><p>代理模式能够协调调用者和被调用者，在一定程度上降低了系统的耦合度</p>
+<h2 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h2><p>由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢</p>
+<p>实现代理模式需要额外的工作，有些代理模式的实现非常复杂（例如远程代理就非常复杂）</p>
+<h2 id="模式扩展-5"><a href="#模式扩展-5" class="headerlink" title="模式扩展"></a>模式扩展</h2><h3 id="保护（Protect-or-Access）代理"><a href="#保护（Protect-or-Access）代理" class="headerlink" title="保护（Protect or Access）代理"></a>保护（Protect or Access）代理</h3><p>控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限</p>
+<p>该代理用于控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。 见实例中的第一个例子</p>
+<h3 id="远程（Remote）代理"><a href="#远程（Remote）代理" class="headerlink" title="远程（Remote）代理"></a>远程（Remote）代理</h3><p>为一个位于不同的地址空间的对象提供一个本地的代理 对象，这个不同的地址空间可以是在同一台主机中，也可是在另一台主机中， 远程代理又叫做大使(Ambassador)</p>
+<p>远程代理使得客户端可以访问在远程机器上的对象，远程机器可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求</p>
+<p>和保护模式和虚拟代理相比，远程代理和业务逻辑无关，因此其实可以放在类库里面复用</p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP208U.png" data-src="https://s2.ax1x.com/2019/12/24/lP208U.png"></p>
+<h3 id="虚拟（Virtual）代理"><a href="#虚拟（Virtual）代理" class="headerlink" title="虚拟（Virtual）代理"></a>虚拟（Virtual）代理</h3><p>如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建。虚拟代理模式是一种内存节省技术。在应用程序启动的时候，可以用代理对象代替真实对象初始化，节省了内存的占用，并大大加速了系统的启动时间</p>
+<p>虚拟代理通过使用一个小对象来代表一个大对象，可以 减少系统资源的消耗，对系统进行优化并提高运行速度 </p>
+<p><img alt class="post-img b-lazy" href="https://s2.ax1x.com/2019/12/24/lP2fPK.png" data-src="https://s2.ax1x.com/2019/12/24/lP2fPK.png"></p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/软件设计/" rel="tag"># 软件设计</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="c++学习笔记（七）" href="/2019/12/30/c-学习笔记（七）/">
+            ← c++学习笔记（七）
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="设计模式--创建型模式" href="/2019/12/22/设计模式-创建型模式/">
+            设计模式--创建型模式 →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#适配器模式"><span class="toc-text">适配器模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类适配器vs对象适配器"><span class="toc-text">类适配器vs对象适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展"><span class="toc-text">模式扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认适配器"><span class="toc-text">默认适配器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双向适配器"><span class="toc-text">双向适配器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组合模式"><span class="toc-text">组合模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#组合模式-1"><span class="toc-text">组合模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-1"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-1"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-1"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-1"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-1"><span class="toc-text">模式扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#透明组合模式和安全组合模式"><span class="toc-text">透明组合模式和安全组合模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#桥接模式"><span class="toc-text">桥接模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-1"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-2"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-2"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-2"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-2"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式联用"><span class="toc-text">模式联用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#桥接模式vs命令模式"><span class="toc-text">桥接模式vs命令模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰者模式"><span class="toc-text">装饰者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-2"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-3"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-3"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-3"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-2"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-2"><span class="toc-text">模式扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#透明性与接口扩充"><span class="toc-text">透明性与接口扩充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-3"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#外观模式"><span class="toc-text">外观模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-3"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-4"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-1"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-4"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-4"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-3"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-4"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-3"><span class="toc-text">模式扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象外观"><span class="toc-text">抽象外观</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#享元模式"><span class="toc-text">享元模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-4"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-2"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-5"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部状态vs外部状态"><span class="toc-text">内部状态vs外部状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-5"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-5"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-4"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-5"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-4"><span class="toc-text">模式扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单纯享元模式"><span class="toc-text">单纯享元模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复合享元模式（和组合模式联用）"><span class="toc-text">复合享元模式（和组合模式联用）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式联用-1"><span class="toc-text">模式联用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#和静态工厂联用"><span class="toc-text">和静态工厂联用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#和单例模式联用"><span class="toc-text">和单例模式联用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#和组合模式联用"><span class="toc-text">和组合模式联用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#享元模式vs原型模式"><span class="toc-text">享元模式vs原型模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式"><span class="toc-text">代理模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-5"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-6"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-6"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-6"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-5"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-5"><span class="toc-text">模式扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保护（Protect-or-Access）代理"><span class="toc-text">保护（Protect or Access）代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程（Remote）代理"><span class="toc-text">远程（Remote）代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟（Virtual）代理"><span class="toc-text">虚拟（Virtual）代理</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2019/12/30/C-学习笔记（八）/">C++学习笔记八</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/30/c-学习笔记（七）/">c++学习笔记（七）</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2019/12/24/设计模式-结构型模式/">设计模式-结构型模式</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/翻译/">翻译</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 20.67px;">c++</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 15.67px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/动态规划/" style="font-size: 22.33px;">动态规划</a> <a href="/tags/双指针/" style="font-size: 15.67px;">双指针</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 15.67px;">容器</a> <a href="/tags/操作系统/" style="font-size: 14px;">操作系统</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 22.33px;">暴搜</a> <a href="/tags/架构/" style="font-size: 15.67px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 19px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 15.67px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 15.67px;">读书笔记</a> <a href="/tags/软件设计/" style="font-size: 17.33px;">软件设计</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <img class="search-overlay-logo" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="羊男">
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男</a>
+			&copy; 2020
+			<span id="busuanzi_container_site_pv">
+    			本站总访问量<span id="busuanzi_value_site_pv"></span>次
+			</span>
+			<span id="busuanzi_container_site_uv">
+  				访客数<span id="busuanzi_value_site_uv"></span>人次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>if(window.navigator && navigator.serviceWorker) {navigator.serviceWorker.getRegistrations().then(function(registrations) {for(let registration of registrations) {registration.unregister()}})}</script>
+
+
+<script async src="/js/allinone.min.js" id="scriptLoad"></script>
+
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        var bLazy = new Blazy()
+    })
+</script>
+
+
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+<script>
+    lightGallery(document.getElementById('lightgallery'), {
+        selector: '.post-img'
+    });
+</script>
+
+
+
+
+<script async src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script async src="https://unpkg.com/valine@1.3.4/dist/Valine.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Say something',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true,
+        })
+    });
+</script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function(){
+        searchFunc("/")
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
