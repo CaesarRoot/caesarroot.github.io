@@ -154,7 +154,7 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="C++学习笔记八" href="/2019/12/30/C-学习笔记（八）/">
+					<a class="post-card-content-link" title="C++学习笔记（五）" href="/2019/12/30/C-学习笔记（五）/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
 								
@@ -166,7 +166,7 @@
 									2019-12-30
 								</time>
 							</span>
-							<h2 class="post-card-title">C++学习笔记八</h2>
+							<h2 class="post-card-title">C++学习笔记（五）</h2>
 						</header>
 						<div class="post-card-excerpt">
 							<p>
@@ -200,63 +200,6 @@
 						</div>
 						<span class="reading-time">
 							51
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="c++学习笔记（七）" href="/2019/12/30/c-学习笔记（七）/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								c++
-								| 
-								
-								<time datetime="2019-12-30T07:53:44.000Z">
-									2019-12-30
-								</time>
-							</span>
-							<h2 class="post-card-title">c++学习笔记（七）</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								杂项静态成员变量static变量一定要在类外显式初始化
-否则就是声明
-不调用构造函数
-static在外面初始化的时候不能写static
-const成员变量类中的const需要在成员初始化表中初始化
-静态const成员变量static const需要在类外初始化
-如果在声明的时候直接给出初始值，这时候不会分配内存，当作宏使用，取地址会出错
-例如：
-123456789101112131415161718192021222324class A&#123;public:    // 
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
 							min read
 						</span>
 					</footer>
@@ -321,55 +264,6 @@ int 可以用以上4种修饰符组合修饰，例如long long int a;实际上�
 						</div>
 						<span class="reading-time">
 							33
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="c++学习笔记（五）" href="/2019/12/19/C-学习笔记（五）/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								c++
-								| 
-								
-								<time datetime="2019-12-19T11:41:47.000Z">
-									2019-12-19
-								</time>
-							</span>
-							<h2 class="post-card-title">c++学习笔记（五）</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								模板
-								
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							0
 							min read
 						</span>
 					</footer>
@@ -746,6 +640,58 @@ http://www.cplusplus.com/reference/i
 				</div>
 			</article>
 			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="c++默认实参和重载" href="/2019/09/24/c-默认实参和重载/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-09-24T11:20:05.000Z">
+									2019-09-24
+								</time>
+							</span>
+							<h2 class="post-card-title">c++默认实参和重载</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								c++函数的默认实参和重载混合之后的一些情况
+编程环境：
+Apple clang version 11.0.0 (clang-1100.0.20.17)
+重复定义12345678910111213141516#include &lt;iostream&gt;using namespace std;int func(int a,int b, int c = 1);int main()&#123;    cout &lt;&lt; "func(1,2): " &lt;&lt; f
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							3
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
 		</div>
 	</div>
 </div>
@@ -754,10 +700,6 @@ http://www.cplusplus.com/reference/i
 
 <div class="outer">
 	<nav class="pagination">
-		
-		<nav class="page-nav">
-			<span class="page-number current">1</span><a class="page-number" href="/categories/c/page/2/">2</a><a class="extend next" rel="next" href="/categories/c/page/2/">NEXT →</a>
-		</nav>
 		
 	</nav>
 </div>
@@ -790,13 +732,7 @@ http://www.cplusplus.com/reference/i
       
       
       <li>
-        <a href="/2019/12/30/C-学习笔记（八）/">C++学习笔记八</a>
-      </li>
-      
-      
-      
-      <li>
-        <a href="/2019/12/30/c-学习笔记（七）/">c++学习笔记（七）</a>
+        <a href="/2019/12/30/C-学习笔记（五）/">C++学习笔记（五）</a>
       </li>
       
       
@@ -807,7 +743,9 @@ http://www.cplusplus.com/reference/i
       
       
       
-      
+      <li>
+        <a href="/2019/12/22/设计模式-创建型模式/">设计模式--创建型模式</a>
+      </li>
       
       
       
