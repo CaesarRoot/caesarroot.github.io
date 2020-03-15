@@ -562,7 +562,17 @@
 			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
 		</nav>
 	</div>
-</footer>
+	<% if (config.highlightjs) { %>
+		<!-- Highlight.js -->
+		<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css">
+		<script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js">
+		</script>
+		<script>
+			hljs.initHighlightingOnLoad();
+		</script>
+	<% } %>
+</%></%></footer>
+
 	
 
 
