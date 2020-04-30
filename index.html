@@ -161,6 +161,63 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
+					<a class="post-card-content-link" title="ffmpeg常用功能精简使用指南" href="/2020/04/30/ffmpeg常用功能精简使用指南/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								linux
+								| 
+								
+								<time datetime="2020-04-30T02:16:16.000Z">
+									2020-04-30
+								</time>
+							</span>
+							<h2 class="post-card-title">ffmpeg常用功能精简使用指南</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								ffmpeg命令是一个强大的流媒体处理命令。下面是几个常用的可以使用ffmpeg来解决的问题场景：
+
+压缩文件大小
+剪辑视频长度
+下载网页视频
+
+安装直接看官网
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
 					<a class="post-card-content-link" title="flink源码阅读和解析笔记--任务执行" href="/2020/03/15/flink源码阅读和解析笔记-任务执行/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -183,9 +240,9 @@
 								
 								
 								
-								
-								
-								Flink任务运行流程StreamTask该类是所有流计算任务的基类，一个任务是部署在TaskManager上并且由它运行的一个本地处理单元。另外，有关chec
+								Flink任务运行流程StreamTask该类是所有流计算任务的基类，一个任务是部署在TaskManager上并且由它运行的一个本地处理单元。另外，有关checkpoint的实现也在这里。每一个任务运行着一个或多个StreamOperator，如下图所示
+
+这些StreamOperator会形成operator chain，形成条件包括上下游算子的并行度等。代码中将单个StreamOperator和它们所形成的chain统一表示，即统一采用StreamTask。对于chain
 								...
 							</p>
 						</div>
@@ -661,78 +718,6 @@ int 可以用以上4种修饰符组合修饰，例如long long int a;实际上�
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="C++学习笔记（二）" href="/2019/12/16/C-学习笔记（二）/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								c++
-								| 
-								
-								<time datetime="2019-12-16T11:19:45.000Z">
-									2019-12-16
-								</time>
-							</span>
-							<h2 class="post-card-title">C++学习笔记（二）</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								模板两种：类属函数，类属类
-类属函数同一函数对不同类型的数据完成相同的操作
-宏实现的缺陷：
-
-只能实现简单的功能
-没有类型检查
-
-函数重载的缺陷：
-
-需要定义的重载函数太多
-定义不全
-
-函数指针：
-
-
-需要定义额外参数
-大量指针运算
-实现起来复杂
-可读性差
-
-这就是template引入的目标：完全，清晰
-
-T类型只要符合：重载&gt;操作符，有=操作符（默认有），有拷贝构造函数（默认有）（尽量使用const &amp;的方式，可以避免使用拷贝构造）。
-函数模版在编译的时候会根
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							5
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -743,7 +728,7 @@ T类型只要符合：重载&gt;操作符，有=操作符（默认有），有�
 	<nav class="pagination">
 		
 		<nav class="page-nav">
-			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">NEXT →</a>
+			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">NEXT →</a>
 		</nav>
 		
 	</nav>
@@ -777,6 +762,12 @@ T类型只要符合：重载&gt;操作符，有=操作符（默认有），有�
       
       
       <li>
+        <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2020/03/15/flink源码阅读和解析笔记-任务执行/">flink源码阅读和解析笔记--任务执行</a>
       </li>
       
@@ -787,10 +778,6 @@ T类型只要符合：重载&gt;操作符，有=操作符（默认有），有�
       </li>
       
       
-      
-      <li>
-        <a href="/2019/12/24/设计模式-结构型模式/">设计模式-结构型模式</a>
-      </li>
       
       
       

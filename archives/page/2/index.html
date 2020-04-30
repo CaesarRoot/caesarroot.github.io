@@ -140,7 +140,7 @@
             <h1 class="site-title">
                 Archives
             </h1>
-            <h2 class="site-description">Total: 60</h2>
+            <h2 class="site-description">Total: 61</h2>
         </div>
         
         
@@ -151,6 +151,66 @@
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（二）" href="/2019/12/16/C-学习笔记（二）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-16T11:19:45.000Z">
+									2019-12-16
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（二）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								模板两种：类属函数，类属类
+类属函数同一函数对不同类型的数据完成相同的操作
+宏实现的缺陷：
+
+只能实现简单的功能
+没有类型检查
+
+函数重载的缺陷：
+
+需要定义的
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							5
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
 			
 			<article class="post-card post  no-image ">
 				
@@ -177,15 +237,19 @@
 								
 								
 								
-								
-								
 								哲学家就餐问题
 生产者-消费者问题
 
 生产者消费者问题中empty和full总是交替出现，和为定值，即为缓冲区大小
 读者-写者问题
 
-上述方案不限制同时读的读者
+上述方案不限制同时读的读者数量，可以在开头和结尾加入有初始值的P和V来限制同时读取的读者的数量
+理发师问题
+
+必须要比较大小，不能用另一个PV操作来实现，因为人满了之后顾客要离开，而不是继续排队等待椅子
+前驱关系如果各个程序之间有前驱和后继的先后执行顺序关系，那么可以用PV操作来表达
+
+设置6个初始值为0的信号量，在此进程之前必须要完成的进程用
 								...
 							</p>
 						</div>
@@ -329,6 +393,59 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
+					<a class="post-card-content-link" title="滑动谜题" href="/2019/11/24/滑动谜题/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								算法
+								| 
+								
+								<time datetime="2019-11-24T02:09:57.000Z">
+									2019-11-24
+								</time>
+							</span>
+							<h2 class="post-card-title">滑动谜题</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								题目在一个 2 x 3 的板上（board）有 5 块砖瓦，用数字 1~5 来表示, 以及一块空缺用 0 来表示.
+一次移动定义为选择 0 与一个相邻的数字（上下左右）进行交换.
+最终当板 board 的结果是 [[1,2,3],[4,5,0]] 谜板被解开。
+给出一个谜板的初始状态，返回最少可以通过多少次移动解开谜板，如果不能解开谜板，则返回 -1 。
+来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/sliding-pu
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							4
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
 					<a class="post-card-content-link" title="编辑距离" href="/2019/11/24/编辑距离/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -376,59 +493,6 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 						</div>
 						<span class="reading-time">
 							3
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="滑动谜题" href="/2019/11/24/滑动谜题/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-11-24T02:09:57.000Z">
-									2019-11-24
-								</time>
-							</span>
-							<h2 class="post-card-title">滑动谜题</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目在一个 2 x 3 的板上（board）有 5 块砖瓦，用数字 1~5 来表示, 以及一块空缺用 0 来表示.
-一次移动定义为选择 0 与一个相邻的数字（上下左右）进行交换.
-最终当板 board 的结果是 [[1,2,3],[4,5,0]] 谜板被解开。
-给出一个谜板的初始状态，返回最少可以通过多少次移动解开谜板，如果不能解开谜板，则返回 -1 。
-来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/sliding-pu
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
 							min read
 						</span>
 					</footer>
@@ -666,59 +730,6 @@ nums1 = [1, 2]nums2 = [3, 4]
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="无重复字符的最长子串" href="/2019/10/13/无重复字符的最长子串/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-13T09:41:46.000Z">
-									2019-10-13
-								</time>
-							</span>
-							<h2 class="post-card-title">无重复字符的最长子串</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								题目给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-示例 1:
-输入: “abcabcbb”输出: 3解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。示例 2:
-输入: “bbbbb”输出: 1解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。示例 3:
-输入: “pwwkew”输出: 3解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://s2.ax1x.com/2019/08/12/ex3faD.png" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							2
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -729,7 +740,7 @@ nums1 = [1, 2]nums2 = [3, 4]
 	<nav class="pagination">
 		
 		<nav class="page-nav">
-			<a class="extend prev" rel="prev" href="/archives/">← PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/3/">NEXT →</a>
+			<a class="extend prev" rel="prev" href="/archives/">← PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/3/">NEXT →</a>
 		</nav>
 		
 	</nav>
@@ -763,6 +774,12 @@ nums1 = [1, 2]nums2 = [3, 4]
       
       
       <li>
+        <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2020/03/15/flink源码阅读和解析笔记-任务执行/">flink源码阅读和解析笔记--任务执行</a>
       </li>
       
@@ -773,10 +790,6 @@ nums1 = [1, 2]nums2 = [3, 4]
       </li>
       
       
-      
-      <li>
-        <a href="/2019/12/24/设计模式-结构型模式/">设计模式-结构型模式</a>
-      </li>
       
       
       
