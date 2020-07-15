@@ -1,7 +1,7 @@
 # Config
 rss:            # link
 favicon: https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4
-blog_logo: 
+blog_logo:
 header_image: https://i.loli.net/2017/11/26/5a19c56faa29f.jpg
 bio: 南大在读
 post_toc: true
@@ -16,7 +16,7 @@ menu:
   # you can add here
 
 # author
-author_image:   # link
+author_image: https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4
 author_bio: 
 author_location: 
 

@@ -59,6 +59,14 @@
         <div id="comment"></div>
     </div>
     {% endif %}
+    <script src="https://utteranc.es/client.js"
+        repo="CaesarRoot/caesarroot.github.io"
+        issue-term="pathname"
+        label="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
 </div>
 {% if theme.post_toc %}
 {% include "public/toc.swig" %}
