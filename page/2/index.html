@@ -219,68 +219,6 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="操作系统PV问题汇总" href="/2019/12/08/操作系统PV问题汇总/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								操作系统
-								| 
-								
-								<time datetime="2019-12-08T08:03:18.000Z">
-									2019-12-08
-								</time>
-							</span>
-							<h2 class="post-card-title">操作系统PV问题汇总</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								哲学家就餐问题
-生产者-消费者问题
-
-生产者消费者问题中empty和full总是交替出现，和为定值，即为缓冲区大小
-读者-写者问题
-
-上述方案不限制同时读的读者数量，可以在开头和结尾加入有初始值的P和V来限制同时读取的读者的数量
-理发师问题
-
-必须要比较大小，不能用另一个PV操作来实现，因为人满了之后顾客要离开，而不是继续排队等待椅子
-前驱关系如果各个程序之间有前驱和后继的先后执行顺序关系，那么可以用PV操作来表达
-
-设置6个初始值为0的信号量，在此进程之前必须要完成的进程用
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							1
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
 					<a class="post-card-content-link" title="C++学习笔记（一）" href="/2019/12/06/C-学习笔记（一）/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -347,19 +285,19 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="我的日程安排表III" href="/2019/11/27/我的日程安排表III/">
+					<a class="post-card-content-link" title="c++容器库（二）" href="/2019/10/12/c-容器库（二）/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
 								
 								
-								算法
+								c++
 								| 
 								
-								<time datetime="2019-11-27T03:27:26.000Z">
-									2019-11-27
+								<time datetime="2019-10-12T15:14:25.000Z">
+									2019-10-12
 								</time>
 							</span>
-							<h2 class="post-card-title">我的日程安排表III</h2>
+							<h2 class="post-card-title">c++容器库（二）</h2>
 						</header>
 						<div class="post-card-excerpt">
 							<p>
@@ -370,10 +308,22 @@
 								
 								
 								
-								题目实现一个 MyCalendar 类来存放你的日程安排，你可以一直添加新的日程安排。
-MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end时间内增加一个日程安排，注意，这里的时间是半开区间，即 [start, end), 实数 x 的范围为，  start &lt;= x &lt; end。
-当 K 个日程安排有一些时间上的交叉时（例如K个日程安排都在同一时间内），就会产生 K 次预订。
-每次调用 MyCalend
+								顺序容器
+添加元素容器元素是拷贝。即容器中的元素与提供值的对象之间没有任何关联，修改容器的值不会影响到原始对象，反之亦然。
+
+push_back
+追加元素到尾部。array和forward_list不支持此操作。（string支持此操作）
+
+push_front
+在头部插入。
+list, forward_list, deque支持此操作
+vector不支持此操作。
+
+insert单一插入
+任意位置插入
+接受一个迭代器
+在迭代器之前插入
+vector不支持push_front，
 								...
 							</p>
 						</div>
@@ -390,7 +340,7 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 							</div>
 						</div>
 						<span class="reading-time">
-							3
+							2
 							min read
 						</span>
 					</footer>
@@ -400,19 +350,19 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="编辑距离" href="/2019/11/24/编辑距离/">
+					<a class="post-card-content-link" title="c++容器库（一）" href="/2019/10/06/c-容器库（一）/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
 								
 								
-								算法
+								c++
 								| 
 								
-								<time datetime="2019-11-24T02:09:57.000Z">
-									2019-11-24
+								<time datetime="2019-10-06T02:50:03.000Z">
+									2019-10-06
 								</time>
 							</span>
-							<h2 class="post-card-title">编辑距离</h2>
+							<h2 class="post-card-title">c++容器库（一）</h2>
 						</header>
 						<div class="post-card-excerpt">
 							<p>
@@ -423,68 +373,17 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 								
 								
 								
-								题目给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。
-你可以对一个单词进行如下三种操作：
-插入一个字符删除一个字符替换一个字符
-来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/edit-distance
-思路暴力搜索很难表示三种情况
-考虑利用动态规划
-长的字符串的编辑距离依赖于短的字符串的编辑距离
-利用一个二维数组DP[i][j]，表示word1从0开始长度为i的子
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							3
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="滑动谜题" href="/2019/11/24/滑动谜题/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-11-24T02:09:57.000Z">
-									2019-11-24
-								</time>
-							</span>
-							<h2 class="post-card-title">滑动谜题</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								题目在一个 2 x 3 的板上（board）有 5 块砖瓦，用数字 1~5 来表示, 以及一块空缺用 0 来表示.
-一次移动定义为选择 0 与一个相邻的数字（上下左右）进行交换.
-最终当板 board 的结果是 [[1,2,3],[4,5,0]] 谜板被解开。
-给出一个谜板的初始状态，返回最少可以通过多少次移动解开谜板，如果不能解开谜板，则返回 -1 。
-来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/sliding-pu
+								容器库操作层次
+所有容器类型都提供的
+仅针对三大容器类型中的一种：顺序容器、关联容器、无需容器
+仅适用于一小部分容器
+
+所有容器类型通用操作头文件容器一般在和容器同名的头文件中声明。
+类型所有的容器类型都是模版类，因此可以限定类型
+通用操作
+迭代器迭代器的范围[begin, end)
+迭代器大小只有能够随机访问的容器的迭代器才可以比较大小，例如vector；list因为不是随机的，因此只能比较是否相等：
+http://www.cplusplus.com/reference/i
 								...
 							</p>
 						</div>
@@ -511,19 +410,19 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="戳气球" href="/2019/11/23/戳气球/">
+					<a class="post-card-content-link" title="tmux使用简易入门" href="/2019/10/05/tmux使用简易入门/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
 								
 								
-								算法
+								linux
 								| 
 								
-								<time datetime="2019-11-23T02:09:57.000Z">
-									2019-11-23
+								<time datetime="2019-10-05T09:05:39.000Z">
+									2019-10-05
 								</time>
 							</span>
-							<h2 class="post-card-title">戳气球</h2>
+							<h2 class="post-card-title">tmux使用简易入门</h2>
 						</header>
 						<div class="post-card-excerpt">
 							<p>
@@ -534,11 +433,11 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 								
 								
 								
-								题目有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。
-现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] * nums[i] * nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。
-求所能获得硬币的最大数量。
-说明:
-你可以假设 nums[-1] = nums
+								为了使得断开SSH也能继续运行命令，下次继续返回现场，可以使用tmux
+参考 gist.github.com/MohamedAlaa/2961058
+键入tmux即可进入tmux环境在tmux环境中 按住 control-b 然后松开 再按 ？即可查看所有快捷键
+如何查看当前tmux的窗口状态呢？键入tmux ls可以列出所有的windows
+输入c-b w可以看到所有的windows，可以看出一组window表示一个一个tmux环境（用于返回到某个工作环境中），里面有多个b
 								...
 							</p>
 						</div>
@@ -555,29 +454,31 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 							</div>
 						</div>
 						<span class="reading-time">
-							4
+							2
 							min read
 						</span>
 					</footer>
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
+			<article class="post-card post ">
+				
+				<a class="post-card-image-link" title="建。。建站手册？🗝" href="/2019/08/11/Hello-World/">
+					<div class="post-card-image b-lazy" data-src="https://s2.ax1x.com/2019/08/12/exGipd.png"></div>
+				</a>
 				
 				<div class="post-card-content">
-					<a class="post-card-content-link" title="N皇后II" href="/2019/11/19/N皇后/">
+					<a class="post-card-content-link" title="建。。建站手册？🗝" href="/2019/08/11/Hello-World/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
 								
-								
-								算法
 								| 
 								
-								<time datetime="2019-11-19T02:09:57.000Z">
-									2019-11-19
+								<time datetime="2019-08-11T12:44:53.000Z">
+									2019-08-11
 								</time>
 							</span>
-							<h2 class="post-card-title">N皇后II</h2>
+							<h2 class="post-card-title">建。。建站手册？🗝</h2>
 						</header>
 						<div class="post-card-excerpt">
 							<p>
@@ -586,15 +487,24 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 								
 								
 								
-								
-								
-								题目n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
-给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。
-每一种解法包含一个明确的 n 皇后问题的棋子放置方案，该方案中 ‘Q’ 和 ‘.’ 分别代表了皇后和空位。
-示例:
-输入: 4输出: [ [“.Q..”,  // 解法 1  “…Q”,  “Q…”,  “..Q.”],
- [“..Q.”,  // 解法 2  “Q…”,  “…Q”,  “.Q..”]]
-来源：力扣
+								[TOC]
+修改历史
+
+
+时间
+内容
+
+
+
+2019-8-12
+初稿
+
+
+2019-8-29
+完善图片显示和其他格式问题
+
+
+前言花了点时间捣鼓了个Hexo博客，顺便记录一下捣鼓过程，不想看过程的可以
 								...
 							</p>
 						</div>
@@ -611,132 +521,7 @@ MyCalendar 有一个 book(int start, int end)方法。它意味着在start到end
 							</div>
 						</div>
 						<span class="reading-time">
-							4
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="N皇后II" href="/2019/11/14/N皇后II/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-11-14T13:56:19.000Z">
-									2019-11-14
-								</time>
-							</span>
-							<h2 class="post-card-title">N皇后II</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								题目n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
-给定一个整数 n，返回 n 皇后不同的解决方案的数量。
-示例:
-输入: 4
-输出: 2
-解释: 4 皇后问题存在如下两个不同的解法。
-[
- [“.Q..”,  // 解法 1
-  “…Q”,
-  “Q…”,
-  “..Q.”],
- [“..Q.”,  // 解法 2
-  “Q…”,
-  “…Q”,
-  “.Q..”]
-]
-来源：力扣（LeetCode）
-链接：https://
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							5
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="寻找两个有序数组的中位数" href="/2019/10/14/寻找两个有序数组的中位数/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2019-10-14T12:54:24.000Z">
-									2019-10-14
-								</time>
-							</span>
-							<h2 class="post-card-title">寻找两个有序数组的中位数</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								题目给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
-请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
-你可以假设 nums1 和 nums2 不会同时为空。
-示例 1:
-nums1 = [1, 3]nums2 = [2]
-则中位数是 2.0示例 2:
-nums1 = [1, 2]nums2 = [3, 4]
-则中位数是 (2 + 3)/2 = 2.5
-来源：力扣（LeetCode）链接：https://leetco
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
+							8
 							min read
 						</span>
 					</footer>
@@ -753,7 +538,7 @@ nums1 = [1, 2]nums2 = [3, 4]
 	<nav class="pagination">
 		
 		<nav class="page-nav">
-			<a class="extend prev" rel="prev" href="/">← PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT →</a>
+			<a class="extend prev" rel="prev" href="/">← PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
 		</nav>
 		
 	</nav>
@@ -829,96 +614,6 @@ nums1 = [1, 2]nums2 = [3, 4]
       
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
     </ul>
   </div>
   <footer class="read-next-card-footer">
@@ -935,7 +630,7 @@ nums1 = [1, 2]nums2 = [3, 4]
         <h3 class="read-next-card-header-title">Categories</h3>
     </header>
     <div class="read-next-card-content">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/并行计算/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/翻译/">翻译</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/并行计算/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li></ul>
     </div>
 </article>
 
@@ -949,7 +644,7 @@ nums1 = [1, 2]nums2 = [3, 4]
 		<h3 class="read-next-card-header-title">Tag Cloud</h3>
 	</header>
 	<div class="read-next-card-content-ext">
-		<a href="/tags/Emacs/" style="font-size: 14px;">Emacs</a> <a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 20.67px;">c++</a> <a href="/tags/flink/" style="font-size: 14px;">flink</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/org-mode/" style="font-size: 14px;">org-mode</a> <a href="/tags/stl/" style="font-size: 15.67px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/刷题/" style="font-size: 24px;">刷题</a> <a href="/tags/动态规划/" style="font-size: 22.33px;">动态规划</a> <a href="/tags/双指针/" style="font-size: 15.67px;">双指针</a> <a href="/tags/字符串/" style="font-size: 14px;">字符串</a> <a href="/tags/容器/" style="font-size: 15.67px;">容器</a> <a href="/tags/操作系统/" style="font-size: 14px;">操作系统</a> <a href="/tags/数学问题/" style="font-size: 14px;">数学问题</a> <a href="/tags/暴搜/" style="font-size: 22.33px;">暴搜</a> <a href="/tags/架构/" style="font-size: 15.67px;">架构</a> <a href="/tags/栈/" style="font-size: 14px;">栈</a> <a href="/tags/树/" style="font-size: 19px;">树</a> <a href="/tags/滑动窗口/" style="font-size: 14px;">滑动窗口</a> <a href="/tags/翻译/" style="font-size: 15.67px;">翻译</a> <a href="/tags/语法/" style="font-size: 14px;">语法</a> <a href="/tags/读书笔记/" style="font-size: 15.67px;">读书笔记</a> <a href="/tags/软件设计/" style="font-size: 17.33px;">软件设计</a> <a href="/tags/队列/" style="font-size: 14px;">队列</a>
+		<a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 24px;">c++</a> <a href="/tags/flink/" style="font-size: 14px;">flink</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/stl/" style="font-size: 17.33px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/容器/" style="font-size: 17.33px;">容器</a> <a href="/tags/软件设计/" style="font-size: 20.67px;">软件设计</a>
 	</div>
 </article>
 
