@@ -158,6 +158,61 @@
 			<article class="post-card post  no-image ">
 				
 				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-17T01:23:25.000Z">
+									2019-12-17
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（三）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								拷贝赋值和销毁拷贝构造函数形式：
+
+即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数
+合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
 					<a class="post-card-content-link" title="C++学习笔记（二）" href="/2019/12/16/C-学习笔记（二）/">
 						<header class="post-card-header">
 							<span class="post-card-tags">
@@ -181,8 +236,6 @@
 								
 								
 								
-								
-								
 								模板两种：类属函数，类属类
 类属函数同一函数对不同类型的数据完成相同的操作
 宏实现的缺陷：
@@ -192,7 +245,21 @@
 
 函数重载的缺陷：
 
-需要定义的
+需要定义的重载函数太多
+定义不全
+
+函数指针：
+
+
+需要定义额外参数
+大量指针运算
+实现起来复杂
+可读性差
+
+这就是template引入的目标：完全，清晰
+
+T类型只要符合：重载&gt;操作符，有=操作符（默认有），有拷贝构造函数（默认有）（尽量使用const &amp;的方式，可以避免使用拷贝构造）。
+函数模版在编译的时候会根
 								...
 							</p>
 						</div>
@@ -572,6 +639,12 @@ http://www.cplusplus.com/reference/i
       
       
       <li>
+        <a href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">从字节跳动到苏州微软--当我们在谈实习时我们在谈些什么</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
       </li>
       
@@ -582,10 +655,6 @@ http://www.cplusplus.com/reference/i
       </li>
       
       
-      
-      <li>
-        <a href="/2019/12/30/C-学习笔记（五）/">C++学习笔记（五）</a>
-      </li>
       
       
       

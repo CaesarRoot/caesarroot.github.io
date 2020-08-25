@@ -141,7 +141,7 @@
             <h1 class="site-title">
                 Archives
             </h1>
-            <h2 class="site-description">Total: 16</h2>
+            <h2 class="site-description">Total: 17</h2>
         </div>
         
         
@@ -152,6 +152,57 @@
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="从字节跳动到苏州微软--当我们在谈实习时我们在谈些什么" href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								| 
+								
+								<time datetime="2020-08-25T02:05:49.000Z">
+									2020-08-25
+								</time>
+							</span>
+							<h2 class="post-card-title">从字节跳动到苏州微软--当我们在谈实习时我们在谈些什么</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+
+								
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							0
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
 			
 			<article class="post-card post  no-image ">
 				
@@ -179,15 +230,19 @@
 								
 								
 								
-								
-								
 								ffmpeg命令是一个强大的流媒体处理命令。下面是几个常用的可以使用ffmpeg来解决的问题场景：
 
 压缩文件大小
 剪辑视频长度
 下载网页视频
 
-安装直接看官网
+安装直接看官网就行
+https://www.ffmpeg.org/download.html
+macos下可以用brew安装
+1brew install ffmpeg
+
+压缩文件大小ffmpeg本身支持多种压缩方法，包括码率和其他的格式等。这些命令一般比较复杂，其实有一个特别简单的方法：
+1ffmpeg -i input.mp4 o
 								...
 							</p>
 						</div>
@@ -667,62 +722,6 @@ int 可以用以上4种修饰符组合修饰，例如long long int a;实际上�
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								c++
-								| 
-								
-								<time datetime="2019-12-17T01:23:25.000Z">
-									2019-12-17
-								</time>
-							</span>
-							<h2 class="post-card-title">C++学习笔记（三）</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								拷贝赋值和销毁拷贝构造函数形式：
-
-即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数
-合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷贝构造函数来拷贝，内置类型直接拷贝，对于数组，一个一个拷贝数组类型的成员，如果数组类型是类类型，则使用元素的拷贝构造函数来进行拷贝。注意以上的拷贝为浅拷贝
-调用时机
-拷贝赋值运算符形式：
-1234class Foo &#123;public:  Foo&amp; operator=(const Foo&amp;);&#
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">CaesarRoot</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							2
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -767,6 +766,12 @@ int 可以用以上4种修饰符组合修饰，例如long long int a;实际上�
       
       
       <li>
+        <a href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">从字节跳动到苏州微软--当我们在谈实习时我们在谈些什么</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
       </li>
       
@@ -777,10 +782,6 @@ int 可以用以上4种修饰符组合修饰，例如long long int a;实际上�
       </li>
       
       
-      
-      <li>
-        <a href="/2019/12/30/C-学习笔记（五）/">C++学习笔记（五）</a>
-      </li>
       
       
       
