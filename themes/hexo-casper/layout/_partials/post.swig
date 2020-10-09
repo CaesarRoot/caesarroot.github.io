@@ -15,9 +15,9 @@
                 {% endif %}
             </div>
             <h1 class="post-full-title">{{ page.title }}</h1>
-            <span id="busuanzi_container_page_pv">
+            {# <span id="busuanzi_container_page_pv">
               阅读 <span id="busuanzi_value_page_pv"></span>
-            </span>
+            </span> #}
         </header>
         <div class="post-full {% if not page.feature_img %}no-image{% endif %}">
             {% if page.feature_img %}
