@@ -161,11 +161,9 @@
 <h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h2><p>与构造函数相反，销毁对象的非static数据成员</p>
 <h3 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  	~Foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <h3 id="合成析构函数"><a href="#合成析构函数" class="headerlink" title="合成析构函数"></a>合成析构函数</h3><p>如果没有定义自己的析构函数，那么会合成一个析构函数，默认函数体为空。析构函数体自身并不直接销毁成员。成员是在析构函数之后隐含的析构阶段中被销毁的，整个对象销毁过程中，析构函数体是作为成员销毁步骤之外的另一部分而进行的</p>
 <h2 id="三五法则"><a href="#三五法则" class="headerlink" title="三五法则"></a>三五法则</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/17/QIe1oR.png" data-index="2" data-src="https://s2.ax1x.com/2019/12/17/QIe1oR.png"></p>
-<h2 id="default"><a href="#default" class="headerlink" title="=default"></a>=default</h2><p><a href="https://stackoverflow.com/questions/6502828/what-does-default-mean-after-a-class-function-declaration">https://stackoverflow.com/questions/6502828/what-does-default-mean-after-a-class-function-declaration</a></p>
+<h2 id="default"><a href="#default" class="headerlink" title="=default"></a>=default</h2><p><a href="https://stackoverflow.com/questions/6502828/what-does-default-mean-after-a-class-function-declaration" target="_blank" rel="noopener">https://stackoverflow.com/questions/6502828/what-does-default-mean-after-a-class-function-declaration</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> &#123;</span></span><br><span class="line">  C(<span class="keyword">const</span> C&amp;) = <span class="keyword">default</span>;</span><br><span class="line">  C(C&amp;&amp;) = <span class="keyword">default</span>;</span><br><span class="line">  C&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> C&amp;) &amp; = <span class="keyword">default</span>;</span><br><span class="line">  C&amp; <span class="keyword">operator</span>=(C&amp;&amp;) &amp; = <span class="keyword">default</span>;</span><br><span class="line">  <span class="keyword">virtual</span> ~C() &#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>只能对具有合成版本的成员函数使用=default，来显式地要求编译器生成合成的版本</p>
@@ -325,12 +323,6 @@
       
       
       <li>
-        <a href="/2020/10/14/test/">test</a>
-      </li>
-      
-      
-      
-      <li>
         <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
       </li>
       
@@ -341,6 +333,10 @@
       </li>
       
       
+      
+      <li>
+        <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
+      </li>
       
       
       

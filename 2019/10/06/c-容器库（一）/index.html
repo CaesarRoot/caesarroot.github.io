@@ -158,7 +158,7 @@
 <h2 id="通用操作"><a href="#通用操作" class="headerlink" title="通用操作"></a>通用操作</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/10/06/u62jyj.png" data-index="0" data-src="https://s2.ax1x.com/2019/10/06/u62jyj.png"></p>
 <h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><h3 id="迭代器的范围"><a href="#迭代器的范围" class="headerlink" title="迭代器的范围"></a>迭代器的范围</h3><p>[begin, end)</p>
 <h3 id="迭代器大小"><a href="#迭代器大小" class="headerlink" title="迭代器大小"></a>迭代器大小</h3><p>只有能够随机访问的容器的迭代器才可以比较大小，例如vector；list因为不是随机的，因此只能比较是否相等：</p>
-<p><a href="http://www.cplusplus.com/reference/iterator/">http://www.cplusplus.com/reference/iterator/</a></p>
+<p><a href="http://www.cplusplus.com/reference/iterator/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/iterator/</a></p>
 <p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/10/06/u6RMtK.png" data-index="1" data-src="https://s2.ax1x.com/2019/10/06/u6RMtK.png"></p>
 <p>即这个写法是错的：</p>
 <p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/10/06/u6RLAx.png" data-index="2" data-src="https://s2.ax1x.com/2019/10/06/u6RLAx.png"></p>
@@ -166,14 +166,10 @@
 <p>反向迭代器的所有操作都会相反。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    v.push_back(<span class="number">1</span>);</span><br><span class="line">    v.push_back(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::reverse_iterator rit;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> rit = v.rbegin(); rit != v.rend(); rit++) &#123;  <span class="comment">// rbegin和reverse_iterator是配套的</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *rit &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// 注意这里要解引用</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <h3 id="const迭代器"><a href="#const迭代器" class="headerlink" title="const迭代器"></a>const迭代器</h3><p>当使用begin的时候，会根据容器的内容来决定是否是一个const_iterator。</p>
 <p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/10/06/u6fXlD.png" data-index="3" data-src="https://s2.ax1x.com/2019/10/06/u6fXlD.png"></p>
 <p>如果使用begin而且是一个const_iterator，那么就会报错：（报错）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cv;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator cvi = cv.begin();</span><br></pre></td></tr></table></figure>
-
-
 
 <h2 id="其他容器类型"><a href="#其他容器类型" class="headerlink" title="其他容器类型"></a>其他容器类型</h2><p>容器定义了很多类型，这些类型和具体的容器类型以及他的模版类型都有关系，例如迭代器类型和size_type。</p>
 <p>元素类型：value_type</p>
@@ -202,9 +198,7 @@
 
 <p>也会初始化为全0</p>
 <p>注意虽然array没有迭代器，但是仍然可以用指针来初始化，例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">3</span>];</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(arr, arr+<span class="number">3</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">3</span>];</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(arr, arr+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="初始化和拷贝"><a href="#初始化和拷贝" class="headerlink" title="初始化和拷贝"></a>初始化和拷贝</h3><p>创建一个容器为另一个容器拷贝时，类型必须严格匹配；</p>
 <p>用迭代器参数来指定拷贝范围时，不需要严格匹配。</p>
@@ -217,7 +211,7 @@
 <p>assign的两种形式：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names.assign(oldstyle.cbegin(), oldstyle.cend())</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slist1.assign(<span class="number">10</span>, <span class="string">&quot;Hiya!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slist1.assign(<span class="number">10</span>, <span class="string">"Hiya!"</span>);</span><br></pre></td></tr></table></figure>
 
 <p>注意assign的参数类型不必严格匹配，但是用=赋值必须保证参数类型严格匹配。</p>
 <p>assign之后指向原来容器的所有指针都会失效，例如迭代器等。</p>
@@ -234,7 +228,7 @@
 <p>因为比较的是容器内的元素，所以要容器中的元素定义了比较，容器才可以比较。</p>
 <h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><ol>
 <li>《Primer c++ 第五版》</li>
-<li><a href="http://www.cplusplus.com/reference/iterator/">http://www.cplusplus.com/reference/iterator/</a></li>
+<li><a href="http://www.cplusplus.com/reference/iterator/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/iterator/</a></li>
 </ol>
 
                 </article>
@@ -393,12 +387,6 @@
       
       
       <li>
-        <a href="/2020/10/14/test/">test</a>
-      </li>
-      
-      
-      
-      <li>
         <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
       </li>
       
@@ -409,6 +397,10 @@
       </li>
       
       
+      
+      <li>
+        <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
+      </li>
       
       
       

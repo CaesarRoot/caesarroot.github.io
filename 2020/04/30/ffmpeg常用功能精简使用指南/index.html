@@ -158,11 +158,9 @@
 <li>下载网页视频</li>
 </ol>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>直接看官网就行</p>
-<p><a href="https://www.ffmpeg.org/download.html">https://www.ffmpeg.org/download.html</a></p>
+<p><a href="https://www.ffmpeg.org/download.html" target="_blank" rel="noopener">https://www.ffmpeg.org/download.html</a></p>
 <p>macos下可以用brew安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
-
-
 
 <h2 id="压缩文件大小"><a href="#压缩文件大小" class="headerlink" title="压缩文件大小"></a>压缩文件大小</h2><p>ffmpeg本身支持多种压缩方法，包括码率和其他的格式等。这些命令一般比较复杂，其实有一个特别简单的方法：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 output.mp4</span><br></pre></td></tr></table></figure>
@@ -178,7 +176,7 @@
 <p><code>-c</code>表示不重新编码。这个参数应该是为了加速处理过程，应该不是特别重要</p>
 <h2 id="下载网页视频"><a href="#下载网页视频" class="headerlink" title="下载网页视频"></a>下载网页视频</h2><p>在这个需求上ffmpeg真的是神器。</p>
 <p>现在网页播放的视频，基本没有网站会把完整的mp4的url放在response中，基本都会采用另外一些格式，例如m3u8格式，这种格式会有一个index文件，标识了视频的元信息，后续的视频通过分片的方式，每个分片都是一个小的ts文件，这些文件组合起来就是一个完整的视频。如果手动下载所有的ts再组合就太麻烦了，这里用ffmpeg就会变得非常简单。</p>
-<p>我们随便打开一个视频：<a href="http://www.dytt.com/vod-play-id-94467-src-1-num-7.html">http://www.dytt.com/vod-play-id-94467-src-1-num-7.html</a></p>
+<p>我们随便打开一个视频：<a href="http://www.dytt.com/vod-play-id-94467-src-1-num-7.html" target="_blank" rel="noopener">http://www.dytt.com/vod-play-id-94467-src-1-num-7.html</a></p>
 <p>打开控制台，看network，搜索m3u8</p>
 <img alt="JbEDEQ.png" border="0" class="post-img b-lazy" data-img="https://s1.ax1x.com/2020/04/30/JbEDEQ.png" data-index="0" data-src="https://s1.ax1x.com/2020/04/30/JbEDEQ.png">
 
@@ -345,12 +343,6 @@
       
       
       <li>
-        <a href="/2020/10/14/test/">test</a>
-      </li>
-      
-      
-      
-      <li>
         <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
       </li>
       
@@ -361,6 +353,10 @@
       </li>
       
       
+      
+      <li>
+        <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
+      </li>
       
       
       

@@ -182,7 +182,7 @@
 <li>将两个类扭在一起</li>
 </ol>
 <h2 id="模式扩展"><a href="#模式扩展" class="headerlink" title="模式扩展"></a>模式扩展</h2><h3 id="默认适配器"><a href="#默认适配器" class="headerlink" title="默认适配器"></a>默认适配器</h3><p>当不需要全部实现接口提供的方法时，可先设计一个抽象类实现接口，并为该接口中每个方法提供一个默认实现(空方法)，那么该抽象类的子类可有选择地覆盖父类的某些方法来实现需求，它适用于一个接口不想使用其所有的方法的情况。因此也称为单接口适配器模式</p>
-<p><a href="https://blog.csdn.net/IO_Field/article/details/52791975">https://blog.csdn.net/IO_Field/article/details/52791975</a></p>
+<p><a href="https://blog.csdn.net/IO_Field/article/details/52791975" target="_blank" rel="noopener">https://blog.csdn.net/IO_Field/article/details/52791975</a></p>
 <p><strong>本质就是绕过接口必须实现</strong>这一规则</p>
 <h3 id="双向适配器"><a href="#双向适配器" class="headerlink" title="双向适配器"></a>双向适配器</h3><p>在对象适配器的使用过程中，如果在适配器中同时包含对目标类和适配者类的引用，适配者可以通过它调用目标类中的方法，目标类也可以通过它调用适配者类中的方法，那么该适配器就是一个双向适配器。</p>
 <p>分析：只能用对象适配器模式，且两边都是，因此是一个对称的结构。且要有专门的方法set进适配者。在两个不同的方法中封装对于实现方法的调用</p>
@@ -258,7 +258,7 @@
 <p>不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系 统 </p>
 <h2 id="模式联用"><a href="#模式联用" class="headerlink" title="模式联用"></a>模式联用</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/24/lPae74.png" data-index="33" data-src="https://s2.ax1x.com/2019/12/24/lPae74.png"></p>
 <p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/24/lPa3jK.png" data-index="34" data-src="https://s2.ax1x.com/2019/12/24/lPa3jK.png"></p>
-<h1 id="桥接模式vs命令模式"><a href="#桥接模式vs命令模式" class="headerlink" title="桥接模式vs命令模式"></a>桥接模式vs命令模式</h1><p>参考：<a href="https://www.iteye.com/blog/c610367182-1965668">https://www.iteye.com/blog/c610367182-1965668</a></p>
+<h1 id="桥接模式vs命令模式"><a href="#桥接模式vs命令模式" class="headerlink" title="桥接模式vs命令模式"></a>桥接模式vs命令模式</h1><p>参考：<a href="https://www.iteye.com/blog/c610367182-1965668" target="_blank" rel="noopener">https://www.iteye.com/blog/c610367182-1965668</a></p>
 <p>不仅Implementor具有变化（ConcreteImplementor），而且Abstraction也可以发生变化（RefinedAbstraction），而且两者的变化是完全独立的，RefinedAbstraction与ConcreateImplementor之间松散耦合，它们仅仅通过Abstraction与Implementor之间的关系联系起来。强调Implementor接口仅提供基本操作，而Abstraction则基于这些基本操作定义更高层次的操作</p>
 <p>并不考虑Context的变化，只有算法的可替代性。强调Strategy抽象接口的提供的是一种算法，一般是无状态、无数据的，Context简单调用这些算法完成其操作</p>
 <h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><p>对客户透明的方式动态地给一个对象附加上更多的责任</p>
@@ -534,12 +534,6 @@
       
       
       <li>
-        <a href="/2020/10/14/test/">test</a>
-      </li>
-      
-      
-      
-      <li>
         <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
       </li>
       
@@ -550,6 +544,10 @@
       </li>
       
       
+      
+      <li>
+        <a href="/2020/04/30/ffmpeg常用功能精简使用指南/">ffmpeg常用功能精简使用指南</a>
+      </li>
       
       
       
