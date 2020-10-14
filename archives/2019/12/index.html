@@ -1,8 +1,952 @@
-<html><head></head><body>{# 归档 #}
-{% extends '_layout.swig' %}
-{% import '_partials/index.swig' as template %}
-{% block content %}
-{% set description = _p('total', site.posts.length) %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+ 
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>Archives | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content="This is the personal blog of CaesarRoot">
+
+	
+	<meta name="keywords" content="hexo, casper, ghost, theme">
+	
+
+	
+	<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	<link rel="apple-touch-icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="blog">
+	<meta property="og:title" content="Archives | 羊男">
+	<meta property="og:description" content="This is the personal blog of CaesarRoot">
+	<meta property="og:url" content="https://caesarroot.github.io/archives/2019/12/index.html">
+
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+</head>
+
+<body class="tag-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header outer " style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <div class="inner">
+        
+        
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/CaesarRoot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+        
+        <div class="site-header-content">
+            
+            <h1 class="site-title">
+                Archives
+            </h1>
+            <h2 class="site-description">Total: 19</h2>
+        </div>
+        
+        
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+	<div class="inner">
+		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（五）" href="/2019/12/30/C-学习笔记（五）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-30T09:34:26.000Z">
+									2019-12-30
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（五）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								面向对象为什么要有OO解决名空间冲突问题
+消除安全隐患（对成员的直接赋值和修改）
+封装和信息隐藏
+封装内部结构，提供统一接口，更多的类型检查
+构造函数重载构造函
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							53
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="设计模式-结构型模式" href="/2019/12/24/设计模式-结构型模式/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								软件设计
+								| 
+								
+								<time datetime="2019-12-24T08:59:55.000Z">
+									2019-12-24
+								</time>
+							</span>
+							<h2 class="post-card-title">设计模式-结构型模式</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								适配器模式当客户类调用适配器的方法时，在适配器类的内部将调用适配者类的方法，而这个过程对客户类是透明的，客户类并不直接访问适配者类。因此，适配器可以使由于接口不兼容而不能交互的类可以一起工作
+定义适配器模式(Adapter Pattern) :将一个接口转换成客户希望的另一个接口，适配器模式使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。
+适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。
+类图分为两种
+
+
+类适配器中Target是接口，因为Ad
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							14
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="设计模式--创建型模式" href="/2019/12/22/设计模式-创建型模式/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								软件设计
+								| 
+								
+								<time datetime="2019-12-22T07:33:53.000Z">
+									2019-12-22
+								</time>
+							</span>
+							<h2 class="post-card-title">设计模式--创建型模式</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								简单工厂模式Simple Factory Pattern
+又称为静态工厂方法 Static Factory Method
+属于类创建型模式：类来创建，不需要实例化出对象来创建
+在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类（创建的是具体类型，但是返回的还是抽象类型）
+类图三个角色：
+工厂角色
+抽象产品角色
+具体产品角色
+
+简单工厂代码
+
+分析复杂性转移：整个程序的复杂性没有变化，只不过转
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							14
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="软件设计—行为型模式" href="/2019/12/22/软件设计-行为型模式/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								软件设计
+								| 
+								
+								<time datetime="2019-12-22T06:49:28.000Z">
+									2019-12-22
+								</time>
+							</span>
+							<h2 class="post-card-title">软件设计—行为型模式</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								策略模式一个例子我们要设计一个鸭子类型，自然的就想到继承。设计一个父类为鸭子，然后具体的鸭子子类去继承这个父类
+
+如果我们需要添加接口，就在父类上添加接口，然后具体的子类实现
+但是这会产生一个问题，即添加的行为不是所有子类都有，例如有的橡皮鸭子不会飞
+而且每次产生新的类型的鸭子的时候，可能都需要覆盖掉这些不需要的方法
+因此我们考虑接口，如下：
+
+但是接口同样不好，因为我们不能复用代码，例如有的行为是一样的，原先继承父类的方法就行了，现在接口就无法复用代码了
+因此我们要重新设计
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							14
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="软件设计--面向对象设计原则概述" href="/2019/12/22/软件设计-面向对象设计原则概述/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								软件设计
+								| 
+								
+								<time datetime="2019-12-22T03:21:29.000Z">
+									2019-12-22
+								</time>
+							</span>
+							<h2 class="post-card-title">软件设计--面向对象设计原则概述</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								软件的可维护性和可复用性软件的复用(Reuse)或重用拥有众多优点，如可以提高软件的开发效率，提高软件质量，节约开发成本，恰当的复用还可以改善系统的可维护性。
+面向对象设计复用的目标在于实现支持可维护性的复用。
+在面向对象的设计里面，可维护性复用都是以面向对象设计原则为基础的，这些设计原则首先都是复用的原则，遵循这些设计原 则可以有效地提高系统的复用性，同时提高系统的可维护性 。
+笔记：
+复用和维护通常情况下目标是相同的，但是有时候会有抵触，中的目标是既能复用，又将维护成本降
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							8
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="c++学习笔记（六）" href="/2019/12/21/c-学习笔记（六）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-21T03:39:48.000Z">
+									2019-12-21
+								</time>
+							</span>
+							<h2 class="post-card-title">c++学习笔记（六）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								C部分Data数据包括：
+
+名
+值
+地址
+类型
+性质
+
+其中类型指的是：取值范围和操作
+c++是强类型，动静结合的语言（实际上还是静态）
+基本数据类型char int float double
+修饰符：long short signed unsigned
+char 只能用signed、unsigned修饰
+float 不能被修饰
+double 只能用long修饰
+int 可以用以上4种修饰符组合修饰，例如long long int a;实际上为8个字节，和long long长
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							33
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（四）" href="/2019/12/17/C-学习笔记（四）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-17T07:42:51.000Z">
+									2019-12-17
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（四）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								类继承成员函数两种成员函数
+
+基类希望其派生类进行覆盖的函数，这一种函数是虚函数，当我们使用指针或引用调用虚函数时，该调用将被动态绑定，根据应用或指针所绑定的对象类型的不同，该调用可能执行基类的版本，也可能执行某个派生类的版本。如果基类把一个函数声明成虚函数，则该函数在派生类中隐式地也是虚函数
+基类不希望派生类进行覆盖的函数，这一类函数为非虚函数
+
+注意，如果派生类没有覆盖基类中的某个虚函数，则该虚函数的行为类似于其他的普通成员，派生类会直接继承其在基类中的版本
+类型转化派生
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							15
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-17T01:23:25.000Z">
+									2019-12-17
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（三）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								拷贝赋值和销毁拷贝构造函数形式：
+
+即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数
+合成的拷贝构造函数的默认行为：对于类类型的成员，会使用其拷贝构造函数来拷贝，内置类型直接拷贝，对于数组，一个一个拷贝数组类型的成员，如果数组类型是类类型，则使用元素的拷贝构造函数来进行拷贝。注意以上的拷贝为浅拷贝
+调用时机
+拷贝赋值运算符形式：
+1234class Foo &#123;public:  Foo&amp; operator=(const Foo&amp;);&#
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（二）" href="/2019/12/16/C-学习笔记（二）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-16T11:19:45.000Z">
+									2019-12-16
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（二）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								模板两种：类属函数，类属类
+类属函数同一函数对不同类型的数据完成相同的操作
+宏实现的缺陷：
+
+只能实现简单的功能
+没有类型检查
+
+函数重载的缺陷：
+
+需要定义的重载函数太多
+定义不全
+
+函数指针：
+
+
+需要定义额外参数
+大量指针运算
+实现起来复杂
+可读性差
+
+这就是template引入的目标：完全，清晰
+
+T类型只要符合：重载&gt;操作符，有=操作符（默认有），有拷贝构造函数（默认有）（尽量使用const &amp;的方式，可以避免使用拷贝构造）。
+函数模版在编译的时候会根
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							5
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="C++学习笔记（一）" href="/2019/12/06/C-学习笔记（一）/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								c++
+								| 
+								
+								<time datetime="2019-12-06T09:32:45.000Z">
+									2019-12-06
+								</time>
+							</span>
+							<h2 class="post-card-title">C++学习笔记（一）</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								运算符重载条件不能重载内置类型的操作符，因此至少有一个运算分量是自定义类型
+分类从重载的形式来看：
+
+作为成员函数重载
+作为全局函数重载
+
+其中，如果一个运算符函数是成员函数，则它的第一个（左侧）运算对象绑定到隐式的thi指针上
+从运算分量的数目来看：
+
+单目
+双目
+
+其中对于二元运算来说，左侧运算对象传递给第一个参数，而右侧对象传递给第二个参数
+不能被重载的操作符
+四个操作符不能被重载
+不推荐被重载的操作符逗号、取地址、逻辑与和逻辑或运算符
+因为使用重载的运算符本质上是一次
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">CaesarRoot</div>
+								
+								<a href="/about" class="static-avatar">
+									<img class="author-profile-image" src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="CaesarRoot">
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							13
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+		</div>
+	</div>
+</div>
+
+
+
+<div class="outer">
+	<nav class="pagination">
+		
+	</nav>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2020/10/14/test/">test</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/保研/">保研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/并行计算/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 24px;">c++</a> <a href="/tags/flink/" style="font-size: 14px;">flink</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/stl/" style="font-size: 17.33px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/保研/" style="font-size: 14px;">保研</a> <a href="/tags/容器/" style="font-size: 17.33px;">容器</a> <a href="/tags/软件设计/" style="font-size: 20.67px;">软件设计</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="羊男">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男 &copy; 2020  </a>
+			
+			<span id="busuanzi_container_site_pv">
+			    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,7 +1,662 @@
-<html><head></head><body>{# 文章页 #}
-{% extends '_layout.swig' %}
-{% import '_partials/post.swig' as template %}
-{% block content %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>设计模式--创建型模式 | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	<link rel="apple-touch-icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="设计模式--创建型模式 | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2019/12/22/设计模式-创建型模式/">
+
+	
+	<meta property="article:published_time" content="2019-12-22T15:12:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/12/22/设计模式-创建型模式/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+</head>
+
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/CaesarRoot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-12-22T07:33:53.000Z">
+                    2019-12-22
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/软件设计/">软件设计</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">设计模式--创建型模式</h1>
+            
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><p>Simple Factory Pattern</p>
+<p>又称为静态工厂方法 Static Factory Method</p>
+<p>属于类创建型模式：类来创建，不需要实例化出对象来创建</p>
+<p>在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类（创建的是具体类型，但是返回的还是抽象类型）</p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p>三个角色：</p>
+<p>工厂角色</p>
+<p>抽象产品角色</p>
+<p>具体产品角色</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzFLQJ.png" data-index="0" data-src="https://s2.ax1x.com/2019/12/22/QzFLQJ.png"></p>
+<p>简单工厂代码</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzkZwt.png" data-index="1" data-src="https://s2.ax1x.com/2019/12/22/QzkZwt.png"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>复杂性转移：整个程序的复杂性没有变化，只不过转移了</p>
+<p>将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。 </p>
+<p>工厂方法是静态方法，可以通过类名直接调用。</p>
+<p>可以将调用时所传入的参数写在配置文件中</p>
+<p><strong>简单工厂模式的要点在于:当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节</strong></p>
+<p>策略模式经常和工厂模式配合，因为要新建一个策略，通常可以通过工厂来管理</p>
+<p>模式的引入经常会增加对象的数量，因此工厂模式很容易和其他模式结合</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>工厂类含有必要的判断逻辑，可以决定在什么时候创建 哪一个产品类的实例，客户端可以免除直接创建产品对 象的责任，而仅仅“消费”产品;简单工厂模式通过这种做法实现了<strong>对责任的分割，它提供了专门的工厂类用于创建对象</strong>。 </p>
+<p>客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可，对于一些复杂的类名 ，通过<strong>简单工厂模式可以减少使用者的记忆量。</strong> </p>
+<p>通过引入<strong>配置文件</strong>，可以在不修改任何客户端代码的情 况下更换和增加新的具体产品类，在一定程度上提高了 系统的灵活性。 </p>
+<p>对于需要先创建一些xx，才能创建xx的情况，简单工厂提供了封装。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>工厂类的职责相对过重。由于工厂类集中了所有产品创建逻辑，一旦不 能正常工作，整个系统都要受到影响。 具体产品与工厂类之间的耦合度高，严重影响了系统的灵活性和扩展性</p>
+<p>使用简单工厂模式将会增加系统中类的个数， 在一定程序上增加了系统的复杂度和理解难度 </p>
+<p>系统扩展困难，一旦添加新产品就不得不修改 工厂逻辑，在产品类型较多时，有可能造成工 厂逻辑过于复杂，不利于系统的扩展和维护。 </p>
+<p>简单工厂模式由于使用了静态工厂方法，造成 工厂角色无法形成基于继承的等级结构。 </p>
+<p>简单工厂模式最大的缺点是当有新产品要加入到系统中时，必须修改工厂类，加入必要的处理逻辑，这违背了 “开闭原则”。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzkllQ.png" data-index="2" data-src="https://s2.ax1x.com/2019/12/22/QzkllQ.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzkUYT.png" data-index="3" data-src="https://s2.ax1x.com/2019/12/22/QzkUYT.png"></p>
+<p>注意上面对于具体产品的关系是依赖（虚线表示）</p>
+<p>可以和代理模式结合起来</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qzkj1g.png" data-index="4" data-src="https://s2.ax1x.com/2019/12/22/Qzkj1g.png"></p>
+<p>在JDK类库中，日期时间类用到了简单工厂模式：</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzAE3F.png" data-index="5" data-src="https://s2.ax1x.com/2019/12/22/QzAE3F.png"></p>
+<p>加密也可以使用简单工厂</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzAZjJ.png" data-index="6" data-src="https://s2.ax1x.com/2019/12/22/QzAZjJ.png"></p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>工厂类负责创建的对象比较少:由于<strong>创建的对象较少</strong>，不会造成工厂方法中的业务逻辑太过复杂。 </p>
+<p>客户端只知道传入工厂类的参数，<strong>对于如何创建对象不关心</strong>:客户端既不需要关心创建细节 ，甚至连类名都不需要记住，只需要知道类型 所对应的参数。 </p>
+<p><strong>变化比较少的情况</strong></p>
+<h2 id="模式扩展"><a href="#模式扩展" class="headerlink" title="模式扩展"></a>模式扩展</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzAUHI.png" data-index="7" data-src="https://s2.ax1x.com/2019/12/22/QzAUHI.png"></p>
+<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><p>Factory Method Pattern</p>
+<p>虚拟构造器 Virtual Constructor</p>
+<p>多态工厂 Polymorphic Factory</p>
+<p>类创建型模式</p>
+<p>我们先定义一个<strong>抽象的按钮工厂类</strong>，再定义<strong>具体的工厂</strong>类来生成圆形按钮、矩形按钮、菱形按钮等，它们实现在抽象按钮工厂类中定义的方法。这种抽象化的结果使这种结构可以在<strong>不修改具体工厂类的情况下引进新的产品</strong>，如果出现新的按钮类型，只需要为这种新类型的按钮<strong>创建一个具体的工厂类</strong>就可以获得该新按钮的实例，这一特点无疑使得工厂方法模式具有超越简单工厂模式的优越性</p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>不再设计一个按钮工厂类来统一负责所有产品的创建，而是将具体按钮的创建过程交给<strong>专门的工厂子类</strong>去完成</p>
+<p>在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作<strong>延迟到工厂子类中完成</strong>，即<strong>通过工厂子类来确定究竟应该实例化哪一个具体产品类</strong></p>
+<p>具体化延迟：将具体化子类的实例化工作延迟到具体工厂来完成</p>
+<p>不是时间上的延迟，而是设计上的延迟</p>
+<p><strong>并不是解决简单工厂的if else的问题</strong>，因为就算是工厂模式，具体的工厂仍然需要指明（可以把工厂方法看作是策略模式的应用，那么这个缺点其实就是策略模式的弊端）</p>
+<p>工厂方法<strong>解决的是简单工厂增添产品需要大幅度修改的问题</strong></p>
+<p>工厂方法只需要增加具体的工厂就行，可修改性更好</p>
+<p>工厂方法模式退化后可以演变成简单工厂模式</p>
+<p><strong>为了提高系统的可扩展性和灵活性，在定义工厂和产品时都必须使用抽象层</strong></p>
+<p>工厂方法模式也是策略模式的一个体现。具体的工厂可以看成是一类策略，抽象的工厂就是策略的接口</p>
+<h2 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h2><p>对比简单工厂，这里的类图增加了一个工厂父类</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzEMrj.png" data-index="8" data-src="https://s2.ax1x.com/2019/12/22/QzEMrj.png"></p>
+<p>为了提高系统的可扩展性和灵活性，在定义工厂和产品时都必须使用抽象层</p>
+<p>客户端代码：</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzEcRO.png" data-index="9" data-src="https://s2.ax1x.com/2019/12/22/QzEcRO.png"></p>
+<p><strong>工厂方法模式里面的具体工厂仍然可以接受参数，将不太会变化的放在一类工厂里面</strong></p>
+<p>一般将具体工厂类的实例化过程进行改进，不直接使用new关键字来创建对象，而是将具体类的类名写入配置文件中，再通过Java的反射机制，读取XML格式的配置文件，根据存储在XML文件中的类名字符串生成对象。</p>
+<h2 id="补充：JAVA反射"><a href="#补充：JAVA反射" class="headerlink" title="补充：JAVA反射"></a>补充：JAVA反射</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzETFP.png" data-index="10" data-src="https://s2.ax1x.com/2019/12/22/QzETFP.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzEOyQ.png" data-index="11" data-src="https://s2.ax1x.com/2019/12/22/QzEOyQ.png"></p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzVCWT.png" data-index="12" data-src="https://s2.ax1x.com/2019/12/22/QzVCWT.png"></p>
+<p>客户端拥有两个抽象的父类，具体的工厂和具体的产品都是实现父类接口，然后由具体工厂创建具体产品</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzVwp8.png" data-index="13" data-src="https://s2.ax1x.com/2019/12/22/QzVwp8.png"></p>
+<p>工厂方法模式也是策略模式的一个体现。具体的工厂可以看成是一类策略，抽象的工厂就是策略的接口</p>
+<h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><p>用户只需要关心所需产品对应的工厂，<strong>无须关心创建细节，甚至无须知道具体产品类的类名</strong>。（这一点和简单工厂类似）</p>
+<p>基于工厂角色和产品角色的多态性设计是工厂方法模式的关键。它 能够使<strong>工厂可以自主确定创建何种产品对象，而如何创建这个对象 的细节则完全封装在具体工厂内部</strong>。工厂方法模式之所以又被称为 多态工厂模式，是因为所有的具体工厂类都具有同一抽象父类。 </p>
+<p>使用工厂方法模式的另一个优点是在系统中加入新产品时，无须修 改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其他的具体工厂和具体产品，而<strong>只要添加一个具体工厂和具体产品就可以了。这样，系统的可扩展性也就变得非常好，完全符合“开闭原则”</strong>（比简单工厂改进的地方） </p>
+<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><p>需要编写新的具体产品类，而且<strong>还要提供与之对应的具体工厂类</strong>，系统中类的个数将成对增加，在一定程度上增加了系统的复杂度</p>
+<p>增加了系统的抽象性和理解难度</p>
+<p>每种产品都是独立创建，无法在产品之间创建依赖关系，即无法生产一组互相依赖的产品</p>
+<h2 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h2><p>一个类不知道它所需要的对象的类，只需要知道所对应的工厂即可</p>
+<p>将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定，可将具体工厂类的类名存储在配置文件或数据库中。</p>
+<h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><p>我们需要一个工厂可以提供多个产品对象，而不是单一的产品对象</p>
+<p>产品等级结构:产品等级结构即产品的<strong>继承结构</strong></p>
+<p>产品族:在抽象工厂模式中，<strong>产品族是指由同一个工厂生产的 ，位于不同产品等级结构中的一组产品</strong></p>
+<p>产品等级结构和产品族：<strong>纵向和横向关系</strong>，产品族包含了多个产品等级结构的产品</p>
+<p>当系统所提供的工厂所需生产的具体产品并不是一个简单的对象，而是多个位于不同产品等级结构中属于不同类型的具体产品时需要使用抽象工厂模式。</p>
+<p>工厂方法模式针对的是<strong>一个产品等级结构</strong>，而抽象工厂模式则需要面对<strong>多个产品等级结构</strong></p>
+<p>抽象工厂模式(Abstract Factory Pattern):提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为<strong>Kit模式</strong>，属于对象创建型模式。</p>
+<h2 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h2><p>对比于工厂方法模式，至少有两个抽象产品，一个具体的工厂和这些产品都有联系</p>
+<p>客户端持有抽象的工厂和所有抽象的产品</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzmpFI.png" data-index="14" data-src="https://s2.ax1x.com/2019/12/22/QzmpFI.png"></p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzmAOg.png" data-index="15" data-src="https://s2.ax1x.com/2019/12/22/QzmAOg.png"></p>
+<p>和上面的类图一模一样</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzmQpV.png" data-index="16" data-src="https://s2.ax1x.com/2019/12/22/QzmQpV.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qzm3XF.png" data-index="17" data-src="https://s2.ax1x.com/2019/12/22/Qzm3XF.png"></p>
+<p>这里的connection和statement是针对一个同一个系列的产品的，应该组合起来一起生产</p>
+<p>有两种数据库，对应的就是抽象的connection和statement有两种产品</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qzmf9P.png" data-index="18" data-src="https://s2.ax1x.com/2019/12/22/Qzmf9P.png"></p>
+<h2 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h2><p>隔离了具体类的生成</p>
+<p>只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为</p>
+<p>增加新的具体工厂和产品族很方便，无须修改已有系统，符合“<br>开闭原则”</p>
+<p>（以上都是工厂方法哦是就有的优点）</p>
+<p>能够保证客户端始终只使用同一个产品族中的对象（这个才是抽象工厂引入的目的）</p>
+<h2 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h2><p>在添加新的产品对象时，难以扩展抽象工厂来生产新种类的产品。</p>
+<p>因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。</p>
+<p>开闭原则的倾斜性（<strong>增加新的工厂和产品族容易，增加新的产品等级结构麻烦</strong>）</p>
+<ol>
+<li>增加产品族:对于增加新的产品族，工厂方法模式很好的支持 了“开闭原则”，对于新增加的产品族，只需要对应增加一个新的具体工 厂即可，对已有代码无须做任何修改。 </li>
+<li>增加新的产品等级结构:对于增加新的产品等级结构，需要修 改所有的工厂角色，包括抽象工厂类，在所有的工厂类中都需要增加生 产新产品的方法，不能很好地支持“开闭原则”。 </li>
+</ol>
+<h2 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h2><p>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的 </p>
+<p>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</p>
+<p>系统中有多于一个的产品族，而每次只使用其中某一产品族。</p>
+<p>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</p>
+<h1 id="三个工厂模式的关系"><a href="#三个工厂模式的关系" class="headerlink" title="三个工厂模式的关系"></a>三个工厂模式的关系</h1><p>当抽象工厂模式中每一个具体工厂类只创建一个产品对象，也就是只存在一个产品等级结构时，抽象工厂模式退化成工厂方法模式</p>
+<p>当工厂方法模式中抽象工厂与具体工厂合并，提供一个统一的工厂来创建产品对象，并将创建对象的工厂方法设计为静态方法时，工厂方法模式退化成简单工厂模式</p>
+<h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><p>复杂对象相当于一辆有待建造的汽车，而对象的属性相当于汽车的部件，建造产品的过程就相当于组合部件的过程。<strong>由于组合部件的过程很复杂，因此，这些部件的组合过程往往被“外部化”到一个称作建造者的对象里</strong>，建造者返还给客户端的是一个已经建造完毕的完整产品对象，而用户无须关心该对象所包含的属性以及它们的组装方式，这就是建造者模式的模式动机</p>
+<p><strong>外部化：把本来放在一起的职责分开创建对象的职责放到另一个对象中</strong></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>建造者模式(Builder Pattern):将一个复杂对象的<strong>构建</strong>与它的<strong>表示</strong>分离，使得同样的构建过程可以创建不同的表示</p>
+<p><strong>表示：一个对象的不同内容</strong></p>
+<p>建造者模式是<strong>一步一步创建一个复杂的对象</strong>，它允许用户<strong>只通过指定复杂对象的类型和内容</strong>就可以构建它们，用户不需要知道内部的具体构建细节。</p>
+<p>对象创建型模式，又可称为生成器模式</p>
+<h2 id="类图-3"><a href="#类图-3" class="headerlink" title="类图"></a>类图</h2><p>分成两大部分</p>
+<p>Director负责封装创建过程（可以被复用）</p>
+<p>Builder负责创建具体的每个部分（可以被多个指挥者复用；也可以被工厂方法代替，由工厂方法生产产品）</p>
+<p><strong>下面这个类图稍微有点问题，主要是Product和Builder的关系有点问题，详见实例第一题的图</strong></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qzr9qe.png" data-index="19" data-src="https://s2.ax1x.com/2019/12/22/Qzr9qe.png"></p>
+<p>其中Builder是一个抽象类，代码如下</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzrVRP.png" data-index="20" data-src="https://s2.ax1x.com/2019/12/22/QzrVRP.png"></p>
+<p>Director的作用主要有两个：一方面它隔离了客户与生产过程;另一方面它负责控制产品的生成过程</p>
+<p>客户端只需要知道具体建造者的类型，即可通过指挥者类调用建造者的相关方法，返回一个完整的产品对象。<strong>也就是说客户将Builder传入指挥者，就可以返回构造之后的对象了</strong></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzrQaj.png" data-index="21" data-src="https://s2.ax1x.com/2019/12/22/QzrQaj.png"></p>
+<p>客户端：</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qzrby8.png" data-index="22" data-src="https://s2.ax1x.com/2019/12/22/Qzrby8.png"></p>
+<h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><p>其实说的是三件事情</p>
+<ol>
+<li>返回给客户端的是一个完整的、构造完的对象</li>
+<li>创建过程（步骤）被封装在Director中</li>
+<li>具体的每个部分的构造由Builder完成</li>
+</ol>
+<p>后两条就是定义中的将<strong>对象的表现（Builder中完成的）和对象的构建（Director中完成的）分离开</strong>，使得同样的构建过程可以创建出不同的表现</p>
+<p>第一条说的是另一个好处：<strong>客户只需要确定指挥者和构造者就可以得到构造完的对象</strong></p>
+<h2 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzsJkd.png" data-index="23" data-src="https://s2.ax1x.com/2019/12/22/QzsJkd.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzyC4A.png" data-index="24" data-src="https://s2.ax1x.com/2019/12/22/QzyC4A.png"></p>
+<p>JavaMail</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qz6GRI.png" data-index="25" data-src="https://s2.ax1x.com/2019/12/22/Qz6GRI.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qz6oWR.png" data-index="26" data-src="https://s2.ax1x.com/2019/12/22/Qz6oWR.png"></p>
+<h2 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h2><p>客户端不必知道产品内部组成的细节</p>
+<p>将对象的构建与它的表示分离，使得相同的创建过程可以创建不同的产品对象</p>
+<p>用户使用不同的具体建造者即可得到不同的产品对象</p>
+<p>可以更加精细地控制产品的创建过程</p>
+<p>增加新的具体建造者无须修改原有类库的代码，指挥者类针对抽象<br>建造者类编程，系统扩展方便，符合“开闭原则”</p>
+<h2 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h2><p>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似（<strong>例如套餐这样的</strong>），如果产品之间的差异性很大，则不适合使用建造者模式，因此其使用范围受到一定的限制</p>
+<p>如果产品的内部变化复杂（<strong>变化复杂而不是构造过程复杂，导致的结果是类数目增多</strong>），可能会导致需要定义很多具体建造者类<br>来实现这种变化，导致系统变得很庞大</p>
+<p>一个改进的尝试：在指挥者中指定各个部分的构造，而不是在builder中让他们组合；即指挥者来决定如何组合builder<br>但是这样其实没有好处（基本可以认为是复杂性转移，将builder的工作移动到了director中），反而将生产原料的生产和组装放在一起，理解更困难</p>
+<h2 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h2><p>需要生成的产品对象有复杂的内部结构，这些产品对象通常包含多<br>个成员属性</p>
+<p>需要生成的产品对象的属性相互依赖，需要指定其生成顺序</p>
+<p>对象的创建过程独立于创建该对象的类</p>
+<p>隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同<br>的产品</p>
+<h2 id="模式扩展-1"><a href="#模式扩展-1" class="headerlink" title="模式扩展"></a>模式扩展</h2><p>省略抽象建造者角色:如果系统中只需要一个具体建造者的话，可以省略掉抽象建造者。 </p>
+<p>省略指挥者角色:在具体建造者只有一个的情况下，如果抽象建造者角色已经被省略掉，那么还可以省略指挥者角色，让Builder角色扮演指挥者与建造者双重角色。 <strong>这样的话就和普通的构造函数没什么区别只不过分到了很多小的方法中去</strong></p>
+<h1 id="建造者模式和抽象工厂的关系"><a href="#建造者模式和抽象工厂的关系" class="headerlink" title="建造者模式和抽象工厂的关系"></a>建造者模式和抽象工厂的关系</h1><p>与抽象工厂模式相比，建造者模式返回一个<strong>组装好的完整产品</strong>，而抽象工 厂模式返回<strong>一系列相关的产品</strong>，这些产品位于不同的产品等级结构，构成 了一个产品族。 </p>
+<p>在抽象工厂模式中，客户端实例化工厂类，然后调用工厂方法获取所需产品对象，而在建造者模式中，客户端可以<strong>不直接调用建造者的相关方法， 而是通过指挥者类来指导如何生成对象</strong>，包括对象的组装过程和建造步骤， <strong>它侧重于一步步构造一个复杂对象，返回一个完整的对象</strong>。 </p>
+<p>如果将抽象工厂模式看成<strong>汽车配件生产工厂</strong>，生产一个产品族的产品，那么建造者模式就是一个<strong>汽车组装工厂</strong>，通过对部件的组装可以返回一辆完整的汽车。 </p>
+<h1 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h1><p>建造者模式 — 复杂对象，表现很不一样；原型模式：复杂对象，但是很像</p>
+<p>使用原型模式来复制一个对象自身，从而克隆出多个与原型对象一模一样的对象 </p>
+<p>在软件系统中，有些对象的创建过程较为复杂，而且有时候需要频繁创建，原型模式通过给出一个原型对象来指明所要创建的对象的类型，然后用复制这个原型对象的办法 创建出更多同类型的对象，这就是原型模式的意图所在。 </p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>原型模式(Prototype Pattern):原型模式是一种对象创建型模式，用原型实例指定创建对象的种类，并且通过复制这些原型创建新的对象。原型模式允许一个对象再创建另外一个可定制的对象，无须知道任何创建的细节。</p>
+<h2 id="类图-4"><a href="#类图-4" class="headerlink" title="类图"></a>类图</h2><p>原型模式的基本工作原理是通过将一个原型对象传给那个要发动创建的对象，这个要发动创建的对象通过请求原型对象拷贝原型自己来实现创建过程</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzWhGQ.png" data-index="27" data-src="https://s2.ax1x.com/2019/12/22/QzWhGQ.png"></p>
+<h2 id="Java提供的机制"><a href="#Java提供的机制" class="headerlink" title="Java提供的机制"></a>Java提供的机制</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzgUUg.png" data-index="28" data-src="https://s2.ax1x.com/2019/12/22/QzgUUg.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/Qz2tQ1.png" data-index="29" data-src="https://s2.ax1x.com/2019/12/22/Qz2tQ1.png"></p>
+<h2 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h2><p>通常情况下，一个类包含一些成员对象，在使用原型模式克隆对象时，根据其成员对象是否也克隆，原型模式可以分为两种形式:深克隆和浅克隆。</p>
+<h2 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h2><p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzRupd.png" data-index="30" data-src="https://s2.ax1x.com/2019/12/22/QzRupd.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzRETO.png" data-index="31" data-src="https://s2.ax1x.com/2019/12/22/QzRETO.png"></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzRL3d.png" data-index="32" data-src="https://s2.ax1x.com/2019/12/22/QzRL3d.png"></p>
+<h2 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h2><p>当创建新的对象实例较为复杂时，使用原型模式可以简化对象的创建过程，通过一个已有实例可以提高新实例的创建效率。（<strong>只要按位拷贝就行了</strong>）</p>
+<p>可以动态增加或减少产品类。 </p>
+<p>原型模式提供了简化的创建结构。 </p>
+<p>可以使用深克隆的方式<strong>保存对象的状态</strong>。 </p>
+<h2 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h2><p><strong>需要为每一个类配备一个克隆方法</strong>，而且这个克隆方法 需要对类的功能进行通盘考虑，这对全新的类来说不是 很难，但对已有的类进行改造时，不一定是件容易的事， 必须修改其源代码，违背了“开闭原则”。 </p>
+<p>在<strong>实现深克隆时需要编写较为复杂的代码</strong>。 </p>
+<h2 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h2><p><strong>创建新对象成本较大</strong>。新的对象可以通过原型模式对已有对象<br>进行复制来获得，如果是相似对象，则可以<strong>对其属性稍作修改</strong>。</p>
+<p>如果系统要<strong>保存对象的状态</strong>，而对象的<strong>状态变化很小</strong>，或者对象本身占内存不大的时候，也可以使用原型模式<strong>配合备忘录模式来应用</strong>。相反，如果对象的状态变化很大，或者对象占用的内存很大，那么采用<strong>状态模式</strong>会比原型模式更好。 </p>
+<p>需要避免使用分层次的工厂类来创建分层次的对象，并且类的 实例对象只有一个或很少的几个组合状态，通过复制原型对象 得到新实例可能比使用构造函数创建一个新实例更加方便。 </p>
+<h2 id="补充：备忘录模式"><a href="#补充：备忘录模式" class="headerlink" title="补充：备忘录模式"></a>补充：备忘录模式</h2><p><a href="https://www.runoob.com/design-pattern/memento-pattern.html">https://www.runoob.com/design-pattern/memento-pattern.html</a></p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzW7q0.png" data-index="33" data-src="https://s2.ax1x.com/2019/12/22/QzW7q0.png"></p>
+<p>将备忘录对象作为状态，实现clone方法，每次都clone一下，然后改变一些状态，保存起来</p>
+<h2 id="模式扩展-2"><a href="#模式扩展-2" class="headerlink" title="模式扩展"></a>模式扩展</h2><p>带原型管理器的原型模式</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/22/QzRWcR.png" data-index="34" data-src="https://s2.ax1x.com/2019/12/22/QzRWcR.png"></p>
+<p>很多情况下，复制所得到的对象与原型对象并不是完全相同的，它们的某些属性值存在异同。<strong>通过原型模式获得相同对象后可以再对其属性进行修改，从而获取所需对象</strong>。如多个学生对象的信息的区别在于性别、姓名和年龄，而专业、学院、学校等信息都相同，为了简化创建过程，可以通过原型模式来实现相似对象的复制。</p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/软件设计/" rel="tag"># 软件设计</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="设计模式-结构型模式" href="/2019/12/24/设计模式-结构型模式/">
+            ← 设计模式-结构型模式
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="软件设计—行为型模式" href="/2019/12/22/软件设计-行为型模式/">
+            软件设计—行为型模式 →
+        </a>
+        
+    </nav>
+
+    
+    <script src="https://utteranc.es/client.js" repo="CaesarRoot/caesarroot.github.io" issue-term="pathname" label="blog" theme="github-light" crossorigin="anonymous" async>
+    </script>
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简单工厂模式"><span class="toc-text">简单工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类图"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展"><span class="toc-text">模式扩展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工厂方法模式"><span class="toc-text">工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-1"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-1"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充：JAVA反射"><span class="toc-text">补充：JAVA反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-1"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-1"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-1"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象工厂模式"><span class="toc-text">抽象工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-2"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-2"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-2"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-2"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-2"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三个工厂模式的关系"><span class="toc-text">三个工厂模式的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建造者模式"><span class="toc-text">建造者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-3"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-2"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-3"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-3"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-3"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-3"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-1"><span class="toc-text">模式扩展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建造者模式和抽象工厂的关系"><span class="toc-text">建造者模式和抽象工厂的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原型模式"><span class="toc-text">原型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-1"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-4"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java提供的机制"><span class="toc-text">Java提供的机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深克隆和浅克隆"><span class="toc-text">深克隆和浅克隆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例-4"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点-4"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点-4"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景-4"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充：备忘录模式"><span class="toc-text">补充：备忘录模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式扩展-2"><span class="toc-text">模式扩展</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2020/10/14/test/">test</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/保研/">保研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/并行计算/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 24px;">c++</a> <a href="/tags/flink/" style="font-size: 14px;">flink</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/stl/" style="font-size: 17.33px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/保研/" style="font-size: 14px;">保研</a> <a href="/tags/容器/" style="font-size: 17.33px;">容器</a> <a href="/tags/软件设计/" style="font-size: 20.67px;">软件设计</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="羊男">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男 &copy; 2020  </a>
+			
+				
+    		
+			<span id="busuanzi_container_site_pv">
+			    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

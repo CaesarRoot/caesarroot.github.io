@@ -1,7 +1,559 @@
-<html><head></head><body>{# 文章页 #}
-{% extends '_layout.swig' %}
-{% import '_partials/post.swig' as template %}
-{% block content %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>C++学习笔记（二） | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	<link rel="apple-touch-icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="C++学习笔记（二） | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2019/12/16/C-学习笔记（二）/">
+
+	
+	<meta property="article:published_time" content="2019-12-16T19:12:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2019/12/16/C-学习笔记（二）/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+</head>
+
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/CaesarRoot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-12-16T11:19:45.000Z">
+                    2019-12-16
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/c/">c++</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">C++学习笔记（二）</h1>
+            
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>两种：类属函数，类属类</p>
+<h2 id="类属函数"><a href="#类属函数" class="headerlink" title="类属函数"></a>类属函数</h2><p>同一函数对不同类型的数据完成相同的操作</p>
+<p>宏实现的缺陷：</p>
+<ol>
+<li>只能实现简单的功能</li>
+<li>没有类型检查</li>
+</ol>
+<p>函数重载的缺陷：</p>
+<ol>
+<li>需要定义的重载函数太多</li>
+<li>定义不全</li>
+</ol>
+<p>函数指针：</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/16/Q5Pwxs.png" data-index="0" data-src="https://s2.ax1x.com/2019/12/16/Q5Pwxs.png"></p>
+<ol>
+<li>需要定义额外参数</li>
+<li>大量指针运算</li>
+<li>实现起来复杂</li>
+<li>可读性差</li>
+</ol>
+<p>这就是template引入的目标：完全，清晰</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/16/Q5Pfz9.png" data-index="1" data-src="https://s2.ax1x.com/2019/12/16/Q5Pfz9.png"></p>
+<p>T类型只要符合：重载&gt;操作符，有=操作符（默认有），有拷贝构造函数（默认有）（尽量使用const &amp;的方式，可以避免使用拷贝构造）。</p>
+<p>函数模版在编译的时候会根据传入的类型生成另一段代码，即编译系统自动实例化函数模板</p>
+<p>函数模板的参数可以是普通参数，不过调用的时候需要显式实例化，例如：</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/16/Q5PvQA.png" data-index="2" data-src="https://s2.ax1x.com/2019/12/16/Q5PvQA.png"></p>
+<p>调用顺序：</p>
+<ol>
+<li>调用非模板函数</li>
+<li>模板的显式化版本</li>
+<li>调用模板</li>
+</ol>
+<p>其中模板的显式化版本的意思是 <a href="https://zh.cppreference.com/w/cpp/language/template_specialization">https://zh.cppreference.com/w/cpp/language/template_specialization</a></p>
+<p>对于某个模板，可以直接给定它的类型，将其实例化</p>
+<p>例如：</p>
+<p>显式特化必须出现在非特化模板声明后</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">class</span> <span class="title">X</span> &#123;</span> <span class="comment">/*...*/</span> &#125;; <span class="comment">// 主模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="class"><span class="keyword">class</span> <span class="title">X</span>&lt;int&gt; &#123;</span> <span class="comment">/*...*/</span> &#125;; <span class="comment">// 同命名空间中的特化</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">class</span> <span class="title">Y</span> &#123;</span> <span class="comment">/*...*/</span> &#125;; <span class="comment">// 主模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="class"><span class="keyword">class</span> <span class="title">Y</span>&lt;double&gt;;</span> <span class="comment">// 对 double 特化的前置声明</span></span><br></pre></td></tr></table></figure>
+
+<p>当特化函数模板时，若能从函数实参予以提供，则可忽略其实参：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">class</span> <span class="title">Array</span> &#123;</span> <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt; <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Array&lt;T&gt;&amp; v)</span></span>; <span class="comment">// 主模板</span></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;&gt; <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Array&lt;<span class="keyword">int</span>&gt;&amp;)</span></span>; <span class="comment">// 对 T = int 的特化</span></span><br><span class="line"><span class="comment">// 不需要写为</span></span><br><span class="line"><span class="comment">// template&lt;&gt; void sort&lt;int&gt;(Array&lt;int&gt;&amp;);</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="类属类"><a href="#类属类" class="headerlink" title="类属类"></a>类属类</h2><p>类属类必须显式实例化，因为类要做检查，例如push的时候就要保证每次push的都是同一个类型</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/16/Q5FWuR.png" data-index="3" data-src="https://s2.ax1x.com/2019/12/16/Q5FWuR.png"></p>
+<p>类模板中的静态成员属于实例化后的类而不是模板</p>
+<p>是否实例化模板的某个实例由使用点来决定；如果未使用到一个模板的某个实例，则编译系统不会生成相应实例的代码</p>
+<p>n如果在模块A中要使用模块B中定义的某模板的实例，而在模块B中未使用这个实例，则模块A无法使用这个实例（因为并没有生成对应代码）</p>
+<p>模板元编程</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s2.ax1x.com/2019/12/16/Q5A201.png" data-index="4" data-src="https://s2.ax1x.com/2019/12/16/Q5A201.png"></p>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>常见处理方法：</p>
+<ol>
+<li>函数参数（返回值或引用参数）</li>
+<li>逐层返回</li>
+</ol>
+<p>缺点：程序结构不清楚</p>
+<h2 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h2><p><em>比重载严格，需要精确匹配</em></p>
+<p><em>只有三种情况可以转化：</em></p>
+<p><em>除了非<strong>const</strong>到**const</em></p>
+<p><em>从派生类到基类</em></p>
+<p><em>从数组或函数到指向数组或函数的指针</em></p>
+<h2 id="静态编译"><a href="#静态编译" class="headerlink" title="静态编译"></a>静态编译</h2><p>下面的代码的输出为</p>
+<p>derived f()<br>Base<br>base f()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseException</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    BaseException():a(<span class="number">1</span>)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;base f()&quot;</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DerivedException</span>:</span> <span class="keyword">public</span> BaseException&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    DerivedException():a(<span class="number">100</span>)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;derived f()&quot;</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;</span><br><span class="line">    DerivedException e;</span><br><span class="line">    <span class="keyword">throw</span> e;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            f();</span><br><span class="line">            <span class="comment">// 引用和切片的区别在于这个catch里面能否获得动态绑定的类型</span></span><br><span class="line">            <span class="comment">// 抛出的时候都是基类（编译类型）</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(BaseException&amp; a)&#123;</span><br><span class="line">            a.f();</span><br><span class="line">            <span class="keyword">throw</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span>(DerivedException a)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Derived&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        a.f();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(BaseException a)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Base&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        a.f();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="RAII"><a href="#RAII" class="headerlink" title="RAII"></a>RAII</h1><p>资源获得即初始化，解决多出口、碎片问题</p>
+<p>例子：智能指针</p>
+<p>如下：</p>
+<p><img class="post-img b-lazy" data-img="https://s2.ax1x.com/2020/01/06/ly6hy8.png" data-index="5" data-src="https://s2.ax1x.com/2020/01/06/ly6hy8.png"></p>
+<h1 id="非虚接口解决打印问题"><a href="#非虚接口解决打印问题" class="headerlink" title="非虚接口解决打印问题"></a>非虚接口解决打印问题</h1><p>如果父类有打印的全局函数，想要子类也有自己的打印函数，可以再写一个，但是解决不了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Father &amp;f = son;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; f &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p>因此需要用到非虚接口</p>
+<p>即在父类中写一个虚函数（子类有自己的版本），通过该虚函数可以调用到不同的版本的打印</p>
+<p>然后再重载操作符，非虚函数调用虚函数</p>
+<p><img class="post-img b-lazy" data-img="https://s2.ax1x.com/2020/01/06/lyc31P.png" data-index="6" data-src="https://s2.ax1x.com/2020/01/06/lyc31P.png"></p>
+<h1 id="原型模式解决复制问题"><a href="#原型模式解决复制问题" class="headerlink" title="原型模式解决复制问题"></a>原型模式解决复制问题</h1><p>用了一个父类的指针，又要具体的子类复制</p>
+<p><img class="post-img b-lazy" data-img="https://s2.ax1x.com/2020/01/06/lycD10.png" data-index="7" data-src="https://s2.ax1x.com/2020/01/06/lycD10.png"></p>
+<p><img class="post-img b-lazy" data-img="https://s2.ax1x.com/2020/01/06/lyc6nU.png" data-index="8" data-src="https://s2.ax1x.com/2020/01/06/lyc6nU.png"></p>
+<h1 id="不要把数组处理成多态"><a href="#不要把数组处理成多态" class="headerlink" title="不要把数组处理成多态"></a>不要把数组处理成多态</h1><p>指针偏移会有问题，偏移量是静态编译计算好的，如果说子类的大小和父类一样，那么没有问题，否则不能正确偏移</p>
+<p><img class="post-img b-lazy" data-img="https://s2.ax1x.com/2020/01/06/lycWN9.png" data-index="9" data-src="https://s2.ax1x.com/2020/01/06/lycWN9.png"></p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/c/" rel="tag"># c++</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="C++学习笔记（三）" href="/2019/12/17/C-学习笔记（三）/">
+            ← C++学习笔记（三）
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="C++学习笔记（一）" href="/2019/12/06/C-学习笔记（一）/">
+            C++学习笔记（一） →
+        </a>
+        
+    </nav>
+
+    
+    <script src="https://utteranc.es/client.js" repo="CaesarRoot/caesarroot.github.io" issue-term="pathname" label="blog" theme="github-light" crossorigin="anonymous" async>
+    </script>
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#模板"><span class="toc-text">模板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类属函数"><span class="toc-text">类属函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类属类"><span class="toc-text">类属类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转化"><span class="toc-text">类型转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态编译"><span class="toc-text">静态编译</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RAII"><span class="toc-text">RAII</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#非虚接口解决打印问题"><span class="toc-text">非虚接口解决打印问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原型模式解决复制问题"><span class="toc-text">原型模式解决复制问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不要把数组处理成多态"><span class="toc-text">不要把数组处理成多态</span></a></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2020/10/14/test/">test</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/保研/">保研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/并行计算/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 24px;">c++</a> <a href="/tags/flink/" style="font-size: 14px;">flink</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/stl/" style="font-size: 17.33px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/保研/" style="font-size: 14px;">保研</a> <a href="/tags/容器/" style="font-size: 17.33px;">容器</a> <a href="/tags/软件设计/" style="font-size: 20.67px;">软件设计</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="羊男">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男 &copy; 2020  </a>
+			
+				
+    		
+			<span id="busuanzi_container_site_pv">
+			    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

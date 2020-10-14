@@ -1,7 +1,555 @@
-<html><head></head><body>{# 文章页 #}
-{% extends '_layout.swig' %}
-{% import '_partials/post.swig' as template %}
-{% block content %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>flink源码阅读和解析笔记--任务执行 | 羊男</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="CaesarRoot">
+	<meta name="description" content>
+
+	
+	<meta name="keywords" content>
+	
+
+	
+	<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	<link rel="apple-touch-icon" href="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="羊男">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="flink源码阅读和解析笔记--任务执行 | 羊男">
+	<meta property="og:description" content>
+	<meta property="og:url" content="https://caesarroot.github.io/2020/03/15/flink源码阅读和解析笔记-任务执行/">
+
+	
+	<meta property="article:published_time" content="2020-03-15T13:03:00+08:00"> 
+	<meta property="article:author" content="CaesarRoot">
+	<meta property="article:published_first" content="羊男, /2020/03/15/flink源码阅读和解析笔记-任务执行/">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	
+	
+</head>
+
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/CaesarRoot" target="_blank" rel="noopener">
+        <svg viewbox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"/></svg>
+    </a>
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2020-03-15T05:42:38.000Z">
+                    2020-03-15
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/并行计算/">并行计算</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">flink源码阅读和解析笔记--任务执行</h1>
+            
+        </header>
+        <div class="post-full ">
+            
+            <figure class="post-full-image" style="background-image: url(https://s1.ax1x.com/2020/08/25/dcRZnA.jpg)">
+            </figure>
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h1 id="Flink任务运行流程"><a href="#Flink任务运行流程" class="headerlink" title="Flink任务运行流程"></a>Flink任务运行流程</h1><h2 id="StreamTask"><a href="#StreamTask" class="headerlink" title="StreamTask"></a>StreamTask</h2><p>该类是所有流计算任务的基类，一个任务是部署在<code>TaskManager</code>上并且由它运行的一个本地处理单元。另外，有关checkpoint的实现也在这里。<br>每一个任务运行着一个或多个<code>StreamOperator</code>，如下图所示</p>
+<p><img alt="image" class="post-img b-lazy" data-img="https://s1.ax1x.com/2020/03/15/83kiDK.png" data-index="0" data-src="https://s1.ax1x.com/2020/03/15/83kiDK.png"></p>
+<p>这些<code>StreamOperator</code>会形成operator chain，形成条件包括上下游算子的并行度等。<br>代码中将单个<code>StreamOperator</code>和它们所形成的chain统一表示，即统一采用<code>StreamTask</code>。对于chain来说，<code>StreamTask</code>包含了chain的”head”，此时<code>StreamTask</code>的类型就是这个”head” operator的类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamTask</span>&lt;<span class="title">OUT</span>, <span class="title">OP</span> <span class="keyword">extends</span> <span class="title">StreamOperator</span>&lt;<span class="title">OUT</span>&gt;&gt;</span></span><br><span class="line"><span class="class">		<span class="keyword">extends</span> <span class="title">AbstractInvokable</span></span></span><br><span class="line"><span class="class">		<span class="keyword">implements</span> <span class="title">AsyncExceptionHandler</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">	<span class="comment">/** the head operator that consumes the input streams of this task. */</span></span><br><span class="line">	<span class="keyword">protected</span> OP headOperator;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个chain里面的所有算子在同一个线程中同步执行，因此它们在同一个stream partition上。<br>一个任务处理一个流的建立（由head operator读入），和流的产生（chain中最后一个operator的输出），注意一个chain可能有多个流出（end）。</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>一个task的生命周期如下：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">*  -- setInitialState -&gt; provides state of all operators in the chain</span><br><span class="line">*</span><br><span class="line">*  -- invoke()</span><br><span class="line">*        |</span><br><span class="line">*        +----&gt; Create basic utils (config, etc) and load the chain of operators</span><br><span class="line">*        +----&gt; operators.setup()</span><br><span class="line">*        +----&gt; task specific init()</span><br><span class="line">*        +----&gt; initialize-operator-states()</span><br><span class="line">*        +----&gt; open-operators()</span><br><span class="line">*        +----&gt; run()</span><br><span class="line">*        +----&gt; close-operators()</span><br><span class="line">*        +----&gt; dispose-operators()</span><br><span class="line">*        +----&gt; common cleanup</span><br><span class="line">*        +----&gt; task specific cleanup()</span><br></pre></td></tr></table></figure>
+
+<p>注意：在一个chain里面，<code>StreamOperator</code>的方法是不能并发调用的，内部实现是通过一个锁。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        beforeInvoke();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// final check to exit early before starting to run</span></span><br><span class="line">        <span class="keyword">if</span> (canceled) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> CancelTaskException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// let the task do its work</span></span><br><span class="line">        runMailboxLoop();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if this left the run() method cleanly despite the fact that this was canceled,</span></span><br><span class="line">        <span class="comment">// make sure the &quot;clean shutdown&quot; is not attempted</span></span><br><span class="line">        <span class="keyword">if</span> (canceled) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> CancelTaskException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        afterInvoke();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">finally</span> &#123;</span><br><span class="line">        cleanUpInvoke();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>beforeInvoke</code>中会做一些初始化工作，包括提取出所有的operator等。<br>在<code>runMailboxLoop</code>中调用task运行<br>在<code>afterInvoke</code>中结束</p>
+<p>任务的运行使用了<code>mailbox-based execution model</code>，这个模型做了很多封装。<br>在invoke中会启动这个模型的处理循环吗，之后各个行为都被封装在Action中被调用执行。invoke的调用链：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invoke() -&gt; runMailboxLoop() -&gt; mailboxProcessor.runMailboxLoop()</span><br></pre></td></tr></table></figure>
+
+<p>最后交由<code>MailboxProcessor</code>来循环处理各个action，因此只要关注任务的action即可把握任务的运行情况。</p>
+<h2 id="执行任务"><a href="#执行任务" class="headerlink" title="执行任务"></a>执行任务</h2><p>这个是任务运行的核心，即这里会产生action交由<code>MailboxProcessor</code>执行。<br><code>processInput</code>方法处理输入，是task的默认action，在输入上处理一个事件（event）。该方法又会调用<code>StreamInputProcessor</code>来处理输入，返回一个处理后的状态。<br>判断当前状态来决定是否要继续这个action：如果当前有更多输入，且输出（<code>recordWriter</code>）就绪，那么直接返回（因为还有更多的输入，因此不结束action）；如果输入已经结束，标记一下action为结束状态，直接返回；否则将当前的action暂停，直到有输入且输出（<code>recordWriter</code>）就绪的时候恢复执行（异步等待）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">processInput</span><span class="params">(MailboxDefaultAction.Controller controller)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    InputStatus status = inputProcessor.processInput();</span><br><span class="line">    <span class="keyword">if</span> (status == InputStatus.MORE_AVAILABLE &amp;&amp; recordWriter.isAvailable()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (status == InputStatus.END_OF_INPUT) &#123;</span><br><span class="line">        controller.allActionsCompleted();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    CompletableFuture&lt;?&gt; jointFuture = getInputOutputJointFuture(status);</span><br><span class="line">    MailboxDefaultAction.Suspension suspendedDefaultAction = controller.suspendDefaultAction();</span><br><span class="line">    jointFuture.thenRun(suspendedDefaultAction::resume);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="StreamInputProcessor"><a href="#StreamInputProcessor" class="headerlink" title="StreamInputProcessor"></a>StreamInputProcessor</h3><p>这个是真正执行读取上游输入并且处理任务的接口，该接口只有一个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StreamInputProcessor</span> <span class="keyword">extends</span> <span class="title">AvailabilityProvider</span>, <span class="title">Closeable</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> input status to estimate whether more records can be processed immediately or not.</span></span><br><span class="line"><span class="comment">	 * If there are no more records available at the moment and the caller should check finished</span></span><br><span class="line"><span class="comment">	 * state and/or &#123;<span class="doctag">@link</span> #getAvailableFuture()&#125;.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">InputStatus <span class="title">processInput</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该方法处理完输入之后，会返回状态，是一个枚举类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">InputStatus</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Indicator that more data is available and the input can be called immediately again</span></span><br><span class="line"><span class="comment">	 * to emit more data.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	MORE_AVAILABLE,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Indicator that no data is currently available, but more data will be available in the</span></span><br><span class="line"><span class="comment">	 * future again.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	NOTHING_AVAILABLE,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Indicator that the input has reached the end of data.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	END_OF_INPUT</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>StreamInputProcessor</code>有三个实现类，分别是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StreamOneInputProcessor</span><br><span class="line">StreamTwoInputProcessor</span><br><span class="line">StreamMultipleInputProcessor</span><br></pre></td></tr></table></figure>
+
+<p>这三个实现类都有一个成员变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OperatorChain&lt;?, ?&gt; operatorChain;</span><br></pre></td></tr></table></figure>
+
+<p>配套这个成员变量的还有两组成员变量，配套的意思是如果是<code>StreamTwoInputProcessor</code>，那么下面就有两组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StreamTaskInput&lt;IN&gt; input;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> DataOutput&lt;IN&gt; output;</span><br></pre></td></tr></table></figure>
+
+<p>这里的input负责读，读到ouput中，调用ouput的方法，例如<code>emitRecord</code>，这个方法的实现类一般是某个<code>StreamTask</code>子类的实现类，在这里会开始处理这个输入数据，例如<code>OneInputStreamTask</code>的内部类中的一个实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitRecord</span><span class="params">(StreamRecord&lt;IN&gt; record)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    numRecordsIn.inc();</span><br><span class="line">    operator.setKeyContextElement1(record);</span><br><span class="line">    operator.processElement(record);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面具体看一下整个调用链</p>
+<h4 id="StreamOneInputProcessor"><a href="#StreamOneInputProcessor" class="headerlink" title="StreamOneInputProcessor"></a>StreamOneInputProcessor</h4><p>核心的方法为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> InputStatus <span class="title">processInput</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    InputStatus status = input.emitNext(output);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (status == InputStatus.END_OF_INPUT) &#123;</span><br><span class="line">        operatorChain.endHeadOperatorInput(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> status;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>StreamInputProcessor</code>的三个实现类都有类似的语句，可以看到<code>StreamTaskInput</code>类型的<code>emitNext</code>方法返回的<code>InputStatus</code>即为<code>processInput</code>判断的状态，即只包含三种输入流的状态。<br>在这个方法中，最核心的就是下面这条语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStatus status = input.emitNext(output);</span><br></pre></td></tr></table></figure>
+
+<p>这里的input和output分别是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StreamTaskInput&lt;IN&gt; input;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> DataOutput&lt;IN&gt; output;</span><br></pre></td></tr></table></figure>
+
+<p><code>StreamTaskInput</code>有<code>emitNext</code>接口方法，两个实现，其中一个还是TODO状态，<code>StreamTaskNetworkInput</code>已有实现。<br>首先，从deserializer中获得一个反序列化之后的结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InputStatus <span class="title">emitNext</span><span class="params">(DataOutput&lt;T&gt; output)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="comment">// get the stream element from the deserializer</span></span><br><span class="line">        <span class="keyword">if</span> (currentRecordDeserializer != <span class="keyword">null</span>) &#123;</span><br><span class="line">            DeserializationResult result = currentRecordDeserializer.getNextRecord(deserializationDelegate);</span><br><span class="line">            <span class="keyword">if</span> (result.isBufferConsumed()) &#123;</span><br><span class="line">                currentRecordDeserializer.getCurrentBuffer().recycleBuffer();</span><br><span class="line">                currentRecordDeserializer = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (result.isFullRecord()) &#123;</span><br><span class="line">                processElement(deserializationDelegate.getInstance(), output);</span><br><span class="line">                <span class="keyword">return</span> InputStatus.MORE_AVAILABLE;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Optional&lt;BufferOrEvent&gt; bufferOrEvent = checkpointedInputGate.pollNext();</span><br><span class="line">        <span class="keyword">if</span> (bufferOrEvent.isPresent()) &#123;</span><br><span class="line">            processBufferOrEvent(bufferOrEvent.get());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (checkpointedInputGate.isFinished()) &#123;</span><br><span class="line">                checkState(checkpointedInputGate.getAvailableFuture().isDone(), <span class="string">&quot;Finished BarrierHandler should be available&quot;</span>);</span><br><span class="line">                <span class="keyword">if</span> (!checkpointedInputGate.isEmpty()) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">&quot;Trailing data in checkpoint barrier handler.&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> InputStatus.END_OF_INPUT;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> InputStatus.NOTHING_AVAILABLE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再将这个结果放到<code>DataOutput</code>中，根据流中元素的类型，调用不同的方法，例如，如果是一条记录，那么调用其<code>emitRecord</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">processElement</span><span class="params">(StreamElement recordOrMark, DataOutput&lt;T&gt; output)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (recordOrMark.isRecord())&#123;</span><br><span class="line">        output.emitRecord(recordOrMark.asRecord());</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (recordOrMark.isWatermark()) &#123;</span><br><span class="line">        statusWatermarkValve.inputWatermark(recordOrMark.asWatermark(), lastChannel);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (recordOrMark.isLatencyMarker()) &#123;</span><br><span class="line">        output.emitLatencyMarker(recordOrMark.asLatencyMarker());</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (recordOrMark.isStreamStatus()) &#123;</span><br><span class="line">        statusWatermarkValve.inputStreamStatus(recordOrMark.asStreamStatus(), lastChannel);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">&quot;Unknown type of StreamElement&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里，output的实现类就会将这一条输入记录进行处理，例如调用各种operator等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitRecord</span><span class="params">(StreamRecord&lt;IN&gt; record)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    numRecordsIn.inc();</span><br><span class="line">    operator.setKeyContextElement1(record);</span><br><span class="line">    operator.processElement(record);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="OperatorChain"><a href="#OperatorChain" class="headerlink" title="OperatorChain"></a>OperatorChain</h4><p>另外说一下chain operator是怎么处理元素的，上面说到只要实现<code>DataOutput</code>接口就可以处理输入，但是我们可以看到实现<code>DataOutput</code>接口的类其实很少，比如<code>OperatorChain</code>就没有实现这个接口，那么是如何实现处理的呢？<br>看到它的内部有一个实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ChainingOutput</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">WatermarkGaugeExposingOutput</span>&lt;<span class="title">StreamRecord</span>&lt;<span class="title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">collect</span><span class="params">(StreamRecord&lt;T&gt; record)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.outputTag != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// we are not responsible for emitting to the main output.</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pushToOperator(record);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> &lt;X&gt; <span class="function"><span class="keyword">void</span> <span class="title">pushToOperator</span><span class="params">(StreamRecord&lt;X&gt; record)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// we know that the given outputTag matches our OutputTag so the record</span></span><br><span class="line">            <span class="comment">// must be of the type that our operator expects.</span></span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">            StreamRecord&lt;T&gt; castRecord = (StreamRecord&lt;T&gt;) record;</span><br><span class="line"></span><br><span class="line">            numRecordsIn.inc();</span><br><span class="line">            operator.setKeyContextElement1(castRecord);</span><br><span class="line">            operator.processElement(castRecord);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInChainedOperatorException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitWatermark</span><span class="params">(Watermark mark)</span> </span>&#123; ...&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitLatencyMarker</span><span class="params">(LatencyMarker latencyMarker)</span> </span>&#123; ... &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里实现了operator对数据的处理，而在这个内部类外面，有个方法可以返回一组Output：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> &lt;IN, OUT&gt; WatermarkGaugeExposingOutput&lt;StreamRecord&lt;IN&gt;&gt; createChainedOperator(...)&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个<code>WatermarkGaugeExposingOutput</code>继承于<code>Output</code>接口（注意不是<code>DataOutput</code>接口）,该接口定义了几个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Output</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Collector</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">emitWatermark</span><span class="params">(Watermark mark)</span></span>;</span><br><span class="line"></span><br><span class="line">	&lt;X&gt; <span class="function"><span class="keyword">void</span> <span class="title">collect</span><span class="params">(OutputTag&lt;X&gt; outputTag, StreamRecord&lt;X&gt; record)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">emitLatencyMarker</span><span class="params">(LatencyMarker latencyMarker)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>Operator</code>接口的各个实现中，很多都有<code>Output</code>类型的的成员变量或是其内部实现类，这些类通过层层调用，达到处理元素或者其他消息的目的。即<code>Output</code>一般是作为实现了<code>DataOutput</code>接口的成员变量而存在的，通过调用<code>DataOutput</code>，用<code>Output</code>来处理，推测可能是因为版本的原因，<code>Output</code>很早的版本就已经存在了（我看了1.4版本就已经有了），但是<code>DataOutput</code>是之后的版本才加入的，引入的目的就是重构读取输入并且处理的这个框架。它们之间的调用情况可以看一个具体的类实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SourceReaderStreamTask</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">StreamTask</span>&lt;<span class="title">T</span>, <span class="title">SourceReaderOperator</span>&lt;<span class="title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Implementation of &#123;<span class="doctag">@link</span> DataOutput&#125; that wraps a specific &#123;<span class="doctag">@link</span> Output&#125; to emit</span></span><br><span class="line"><span class="comment">	 * stream elements for &#123;<span class="doctag">@link</span> SourceReaderOperator&#125;.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamTaskSourceOutput</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractDataOutput</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> Output&lt;StreamRecord&lt;T&gt;&gt; output;</span><br><span class="line"></span><br><span class="line">		StreamTaskSourceOutput(</span><br><span class="line">				Output&lt;StreamRecord&lt;T&gt;&gt; output,</span><br><span class="line">				StreamStatusMaintainer streamStatusMaintainer) &#123;</span><br><span class="line">			<span class="keyword">super</span>(streamStatusMaintainer);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">this</span>.output = checkNotNull(output);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitRecord</span><span class="params">(StreamRecord&lt;T&gt; streamRecord)</span> </span>&#123;</span><br><span class="line">			output.collect(streamRecord);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitLatencyMarker</span><span class="params">(LatencyMarker latencyMarker)</span> </span>&#123;</span><br><span class="line">			output.emitLatencyMarker(latencyMarker);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitWatermark</span><span class="params">(Watermark watermark)</span> </span>&#123;</span><br><span class="line">			output.emitWatermark(watermark);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里output的collect会进一步调用到operator的<code>processElement</code>（可以看到<code>OperatorChain</code>的实现就是这样）</p>
+<p>可以理解成整个读取输入并处理的过程就是从input读取，给output处理，中间通过几个接口的委托，最后会委托到具体算子来处理</p>
+<h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><p>在<code>StreamTask</code>中有一个成员变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> RecordWriterDelegate&lt;SerializationDelegate&lt;StreamRecord&lt;OUT&gt;&gt;&gt; recordWriter;</span><br></pre></td></tr></table></figure>
+
+<p>改成员变量负责写入结果，其内部又代理给了<code>RecordWriter</code>，这个类里面定义了各种类型的<code>emit</code>方法，在这里面写记录</p>
+<h4 id="numRecordsIn"><a href="#numRecordsIn" class="headerlink" title="numRecordsIn"></a>numRecordsIn</h4><p>这个<code>Counter</code>类型的变量封装了处理的记录数，基本上，每次operator处理一条记录，都会累加以<code>numRecordsIn</code>为变量名的<code>Counter</code>类型的变量，例如在各种的Output里面等。</p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/flink/" rel="tag"># flink</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="ffmpeg常用功能精简使用指南" href="/2020/04/30/ffmpeg常用功能精简使用指南/">
+            ← ffmpeg常用功能精简使用指南
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="C++学习笔记（五）" href="/2019/12/30/C-学习笔记（五）/">
+            C++学习笔记（五） →
+        </a>
+        
+    </nav>
+
+    
+    <script src="https://utteranc.es/client.js" repo="CaesarRoot/caesarroot.github.io" issue-term="pathname" label="blog" theme="github-light" crossorigin="anonymous" async>
+    </script>
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flink任务运行流程"><span class="toc-text">Flink任务运行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#StreamTask"><span class="toc-text">StreamTask</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行任务"><span class="toc-text">执行任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#StreamInputProcessor"><span class="toc-text">StreamInputProcessor</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#StreamOneInputProcessor"><span class="toc-text">StreamOneInputProcessor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OperatorChain"><span class="toc-text">OperatorChain</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出结果"><span class="toc-text">输出结果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numRecordsIn"><span class="toc-text">numRecordsIn</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; 羊男 &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2020/10/14/test/">test</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/10/09/中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历/">中科院计算所｜上交软院ipads｜清华计算机系夏令营保研推免经历</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2020/08/25/从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么/">从字节跳动到苏州微软-当我们在谈实习时我们在谈些什么</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/保研/">保研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/并行计算/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件设计/">软件设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/Hello-World/" style="font-size: 14px;">Hello World</a> <a href="/tags/c/" style="font-size: 24px;">c++</a> <a href="/tags/flink/" style="font-size: 14px;">flink</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/stl/" style="font-size: 17.33px;">stl</a> <a href="/tags/tmux/" style="font-size: 14px;">tmux</a> <a href="/tags/保研/" style="font-size: 14px;">保研</a> <a href="/tags/容器/" style="font-size: 17.33px;">容器</a> <a href="/tags/软件设计/" style="font-size: 20.67px;">软件设计</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://avatars0.githubusercontent.com/u/35787647?s=400&u=84a9297891a0fe94cdd18ce2f80d2c3d825c15fb&v=4" alt="羊男">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="羊男">羊男 &copy; 2020  </a>
+			
+				
+    		
+			<span id="busuanzi_container_site_pv">
+			    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+			</span>
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
